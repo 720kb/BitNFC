@@ -1,20 +1,22 @@
-angular.module('starter.controllers', [])
+/*global angular*/
+(function withAngular(angular) {
+  'use strict';
 
-.controller('DashCtrl', function($scope) {})
+  angular.module('bitNFC.controllers', [])
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  }
-})
+  .controller('DashCtrl', function DashCtrlController() {
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
+  })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-});
+  .controller('ChatsCtrl', function ChatsCtrlController() {
+
+  })
+
+  .controller('ChatDetailCtrl', function ChatDetailCtrlController() {
+
+  })
+
+  .controller('AccountCtrl', function AccountCtrlController() {
+
+  });
+}(angular));
