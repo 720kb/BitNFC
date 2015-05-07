@@ -1,16 +1,57 @@
+<ion-side-menus enable-menu-with-back-views="false">
+<ion-side-menu-content>
 <ion-nav-bar class="bar-light">
-<ion-nav-back-button class="button-stable">
+<ion-nav-back-button class="stable">
 Back
 </ion-nav-back-button>
+<ion-nav-buttons side="right">
+<button class="button button-icon button-clear ion-grid button-royal" menu-toggle="right">
+</button>
+</ion-nav-buttons>
 </ion-nav-bar>
 <ion-nav-view name="appContent"></ion-nav-view>
+</ion-side-menu-content>
+<ion-side-menu side="right">
+<ion-header-bar class="bar-light">
+<h1 class="title">
+	<span class="royal">
+		Settings
+	</span>
+</h1>
+</ion-header-bar>
+<ion-content ng-controller="SettingsCtrl">
+<div class="list">
+	<label class="item item-input item-toggle">
+		<div class="input-label">
+			CURRENCY
+		</div>
+		<label class="toggle toggle-royal">
+			<input type="checkbox">
+			<div class="track">
+				<div class="handle"></div>
+			</div>
+		</label>
+	</label>
+	<label class="item item-input item-select">
+		<div class="input-label">
+			UID
+		</div>
+		<select>
+			<option selected>EUR</option>
+			<option>DOLLAR</option>
+			<option>YEN</option>
+		</select>
+	</label>
+</div>
+</ion-content>
+</ion-side-menu>
+</ion-side-menus>
+
+<!--footer tabs-->
 <div class="tabs tabs-light tabs-icon-top">
 	<div class="button-bar">
 		<a class="button button-royal" ui-sref="app.receive">
 			<i class="icon ion-arrow-down-a"></i>
-		</a>
-		<a class="button button-dark" ui-sref="app.settings">
-			<i class="icon ion-gear-a"></i>
 		</a>
 		<a class="button button-royal" ui-sref="app.send">
 			<i class="icon ion-arrow-up-a"></i>
