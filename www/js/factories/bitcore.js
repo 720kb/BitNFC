@@ -8,132 +8,128 @@
     function BitCoinFactory($window) {
 
     var bitcore = require('bitcore')
-      , BchainApi = require('blockchain-api-basic');
+      , BchainApi = require('blockchain-api-basic')
+      // Bitcoin
+      //   bitcoin wallet
+      //
+      // - based on bitcore
+      // - localstorage (saves keys locally in the browser)
+      // - reveal private key
+      // - one-to-many transaction TODO one input, many outputs
+      //
+      // TODO import bitcoin private key
+      , Bitcoin = {
+        'init': function init() {
+          this.privateKey = null;
+          this.address = null;
 
-    // Bitcoin
-    //   bitcoin wallet
-    //
-    // - based on bitcore
-    // - localstorage (saves keys locally in the browser)
-    // - reveal private key
-    // - one-to-many transaction TODO one input, many outputs
-    //
+          this._loadFromBackup();
+          if ( !this.privateKey || !this.privateKey.toString() ) {
+            this._generateKeyPair();
+            // optional
+            this._saveToBackup();
+          }
+          return this;
+        },
 
-    // TODO import bitcoin private key
+        'address': function address() {
 
-  var Bitcoin = {
-    'init': function init() {
-      this.privateKey = null;
-      this.address    = null;
+          return this.address;
+        },
 
-      this._loadFromBackup();
-      if ( !this.privateKey || !this.privateKey.toString() ) {
-        this._generateKeyPair();
-        // optional
-        this._saveToBackup();
-      }
-      return this;
-    },
+        // sends [amount] to each address
+        'send': function send(amount, addresses) {
 
-    'address': function address() {
+          var transaction = this._buildTransaction(amount, addresses);
+          return this._broadcastTransaction(transaction); // TODO: callback
+        },
 
-      return this.address;
-    },
+        // -- private
+        // backup
+        '_loadFromBackup': function _loadFromBackup() {
 
-    // sends [amount] to each address
-    'send': function send(amount, addresses) {
+          // TODO: naive way, writes the private key in clear, hash it with a password, use bip38?
+          if (this._backupStorage()) {
+            // TODO catch exception
+            this.privateKey = new bitcore.PrivateKey($window.localStorage.swbPrivateKey);
+            this.address = $window.localStorage.swbAddress;
+          }
+        },
 
-      var transaction = this._buildTransaction(amount, addresses);
-      return this._broadcastTransaction(transaction); // TODO: callback
-    },
+        '_saveToBackup': function _saveToBackup() {
 
-    // -- private
-    // backup
-    '_loadFromBackup': function _loadFromBackup() {
+          $window.localStorage.swbPrivateKey = this.privateKey.toString();
+          $window.localStorage.swbAddress = this.address;
+        },
 
-      // TODO: naive way, writes the private key in clear, hash it with a password, use bip38?
-      if (this._backupStorage()) {
-        // TODO catch exception
-        this.privateKey = new bitcore.PrivateKey($window.localStorage.swbPrivateKey);
-        this.address = $window.localStorage.swbAddress;
-      }
-    },
+        '_backupStorage': function _backupStorage() {
 
-    '_saveToBackup': function _saveToBackup() {
+          return $window.localStorage.swbPrivateKey;
+        },
 
-      $window.localStorage.swbPrivateKey = this.privateKey.toString();
-      $window.localStorage.swbAddress = this.address;
-    },
+        // keypair
+        '_generateKeyPair': function _generateKeyPair() {
 
-    '_backupStorage': function _backupStorage() {
+          this.privateKey = new bitcore.PrivateKey();
+          this.address = this.privateKey.publicKey.toAddress();
+        },
 
-      return $window.localStorage.swbPrivateKey;
-    },
+        // query for unspent outputs
+        '_unspentOutputs': function _unspentOutputs() {
 
-    // keypair
-    '_generateKeyPair': function _generateKeyPair() {
+          return BchainApi.unspent(this.address);
+        },
 
-      this.privateKey = new bitcore.PrivateKey();
-      this.address = this.privateKey.publicKey.toAddress();
-    },
+        '_signTransaction': function _signTransaction() {
 
-    // query for unspent outputs
-    '_unspentOutputs': function _unspentOutputs() {
+          //TODO: something?
+        },
 
-      return BchainApi.unspent(address);
-    },
+        '_broadcastTransaction': function _broadcastTransaction(/*transaction*/) {
 
-    '_signTransaction': function _signTransaction() {
+          /*transaction // ...*/
+        },
 
-      //TODO: something?
-    },
+        '_buildTransaction': function _buildTransaction(amount, addresses) {
 
-    '_broadcastTransaction': function _broadcastTransaction(/*transaction*/) {
+          // TODO: right now sends [amount] only to the first address
+          var address = addresses[0];
 
-      /*transaction // ...*/
-    },
+          $window.console.log('address >>>>', this.address);
 
-    '_buildTransaction': function _buildTransaction(amount, addresses) {
+          BchainApi.unspent(this.address, function unspent(result) {
 
-      // TODO: right now sends [amount] only to the first address
-      var address = addresses[0];
+            var unspentOutput = result.unspentOutputs[0] // TODO temporary - takes only the first output!
+              , newInput = {
+                  'address': this.address,
+                  'txid': unspentOutput.tx_hash_big_endian,
+                  'scriptPubKey': unspentOutput.script,
+                  'amount': unspentOutput.value,
+                  'vout': unspentOutput.tx_output_n
+                }
+              , transaction = this._bitcoreBuildTx(address, amount, newInput)
+              , txHash = transaction.serialize();
 
-      console.log('address >>>>', this.address);
+            $window.console.log('unspentOutput', unspentOutput);
+            $window.console.log('new input', newInput);
 
-      BchainApi.unspent(this.address, function unspent(result) {
+            BchainApi.pushTx(txHash, function onTransactionFinished() {
 
-        var unspentOutput = result.unspentOutputs[0]; // TODO temporary - takes only the first output!
-        // console.log('unspentOutput', unspentOutput)
+              $window.console.log('Transaction pushed to the bitcoin network!');
+            });
+          }.bind(this));
+        },
 
-        var newInput = {
-            'address': this.address,
-            'txid': unspentOutput.tx_hash_big_endian,
-            'scriptPubKey': unspentOutput.script,
-            'amount': unspentOutput.value,
-            'vout': unspentOutput.tx_output_n
-          },
-          transaction = this._bitcoreBuildTx(address, amount, newInput),
-          txHash = transaction.serialize();
+        '_bitcoreBuildTx': function _bitcoreBuildTx(address, amount, unspentOutput) {
 
-        console.log('new input', newInput);
-
-        BchainApi.pushTx(txHash, function(){
-          console.log('Transaction pushed to the bitcoin network!');
-        });
-
-      }.bind(this));
-    },
-
-    '_bitcoreBuildTx': function _bitcoreBuildTx(address, amount, unspentOutput) {
-
-        return new bitcore.Transaction()
-          .from([unspentOutput]) // Feed information about what unspent outputs one can use
-          .to(address, amount) // Add an output with the given amount of satoshis
-          .change(this.address) // Sets up a change address where the rest of the funds will go
-          .sign(this.privateKey); // Signs all the inputs it can
-          // .fee(10000)    // maybe
-    }
-  };
+            return new bitcore.Transaction()
+              .from([unspentOutput]) // Feed information about what unspent outputs one can use
+              .to(address, amount) // Add an output with the given amount of satoshis
+              .change(this.address) // Sets up a change address where the rest of the funds will go
+              .sign(this.privateKey); // Signs all the inputs it can
+              // .fee(10000)    // maybe
+        }
+      };
 
   return Bitcoin;
   }]);
