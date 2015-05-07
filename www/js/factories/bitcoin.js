@@ -2,7 +2,7 @@
 (function withAngular(angular, require) {
   'use strict';
 
-  angular.module('bitcore.factory', [])
+  angular.module('BitCoin.factory', [])
 
   .factory('BitCoin', ['$window',
     function BitCoinFactory($window) {
