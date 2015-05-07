@@ -33,6 +33,7 @@
             // a payload that can be converted to a string.
             $window.alert($window.nfc.bytesToString(ndefMessage[0].payload).substring(3));
           };
+
         // Read NDEF formatted NFC Tags
         $window.nfc.addNdefListener(onNFCEvent, onNFCInitSuccess, onNFCInitError);
       }]
