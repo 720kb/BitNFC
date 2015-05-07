@@ -11,60 +11,34 @@
   .config(['$stateProvider', '$urlRouterProvider',
     function configurationFunction($stateProvider, $urlRouterProvider) {
 
-    $stateProvider
-      .state('tab', {
-        'url': '/tab',
+      $stateProvider
+      .state('app', {
+        'url': '/app',
         'abstract': true,
-        'templateUrl': 'templates/tabs.html'
+        'templateUrl': 'views/layout/index.html'
       })
-      .state('tab.dash', {
-        'url': '/dash',
+      .state('app.home', {
+        'url': '/home',
         'views': {
-          'tab-dash': {
-            'templateUrl': 'templates/tab-dash.html',
-            'controller': 'DashCtrl'
-          }
-        }
-      })
-      .state('tab.chats', {
-        'url': '/chats',
-        'views': {
-          'tab-chats': {
-            'templateUrl': 'templates/tab-chats.html',
-            'controller': 'ChatsCtrl'
-          }
-        }
-      })
-      .state('tab.chat-detail', {
-        'url': '/chats/:chatId',
-        'views': {
-          'tab-chats': {
-            'templateUrl': 'templates/chat-detail.html',
-            'controller': 'ChatDetailCtrl'
-          }
-        }
-      })
-      .state('tab.account', {
-        'url': '/account',
-        'views': {
-          'tab-account': {
-            'templateUrl': 'templates/tab-account.html',
-            'controller': 'AccountCtrl'
+          'appContent': {
+            'templateUrl': 'views/home/index.html',
+            'controller': 'HomeCtrl'
           }
         }
       });
-    $urlRouterProvider.otherwise('/tab/dash');
-  }])
+
+      $urlRouterProvider.otherwise('/app/home');
+    }])
 
   .run(['$ionicPlatform', '$window',
     function onApplicationStart($ionicPlatform, $window) {
 
-    $ionicPlatform.ready(function onReady() {
+      $ionicPlatform.ready(function onReady() {
 
-      if ($window.cordova && $window.cordova.plugins &&
-        $window.cordova.plugins.Keyboard) {
+        if ($window.cordova && $window.cordova.plugins &&
+          $window.cordova.plugins.Keyboard) {
 
-        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+          cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       }
 
       if ($window.StatusBar) {
@@ -72,5 +46,5 @@
         $window.StatusBar.styleLightContent();
       }
     });
-  }]);
+    }]);
 }(angular, cordova));

@@ -1,0 +1,17 @@
+<ion-side-menus class="sidemenu">
+<ion-pane ion-side-menu-content>
+<ion-nav-view name="appContent" animation="slide-left-right-ios7"></ion-nav-view>
+</ion-pane>
+<ion-side-menu side="right" class="sidemenu">
+<ion-content class="has-header">
+<ion-list ng-if="!session.id" class="text-center">
+<div class="col col-80 col-offset-10">
+  <div class="separator15"></div>
+  <b>BitNFC</b>
+  <span class="color-muted-more"> some settings
+  </span>
+</div>
+</ion-list>
+</ion-content>
+</ion-side-menu>
+</ion-side-menus>
