@@ -48,8 +48,8 @@
       $urlRouterProvider.otherwise('/app/home');
     }])
 
-  .run(['$ionicPlatform', '$window',
-    function onApplicationStart($ionicPlatform, $window) {
+  .run(['$ionicPlatform', '$window', 'nfc',
+    function onApplicationStart($ionicPlatform, $window, nfc) {
 
       $ionicPlatform.ready(function onReady() {
 

@@ -7,7 +7,7 @@
   .provider('nfc', [function nfcProvider() {
 
     return {
-      '$get': ['$window', '$rootScope'
+      '$get': ['$window', '$rootScope',
         function providerConstructor($window, $rootScope) {
 
         var onNFCInitSuccess = function onNFCInitSuccess() {
@@ -29,13 +29,19 @@
             // the payload from each record
             $window.alert(JSON.stringify(ndefMessage));
 
-            // assuming the first record in the message has
+            // assuminahg the first record in the message has
             // a payload that can be converted to a string.
             $window.alert($window.nfc.bytesToString(ndefMessage[0].payload).substring(3));
           };
 
-        // Read NDEF formatted NFC Tags
-        $window.nfc.addNdefListener(onNFCEvent, onNFCInitSuccess, onNFCInitError);
+        if ($window.nfc) {
+
+          // Read NDEF formatted NFC Tags
+          $window.nfc.addNdefListener(onNFCEvent, onNFCInitSuccess, onNFCInitError);
+        } else {
+
+          $rootScope.$emit('nfc:in-browser');
+        }
       }]
     };
   }]);
