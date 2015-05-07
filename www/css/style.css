@@ -1,1 +1,44 @@
 /* Empty. Add your own CSS if you like */
+/*vertical spacing*/
+.separator3 {
+	min-height:3px;
+	clear:both;
+	float:none;
+	width:100%;
+}
+.separator5 {
+	min-height:5px;
+	clear:both;
+	float:none;
+	width:100%;
+}
+.separator10 {
+	min-height:10px;
+	clear:both;
+	float:none;
+	width:100%;
+}
+.separator15 {
+	min-height:15px;
+	clear:both;
+	float:none;
+	width:100%;
+}
+.separator30 {
+	min-height:30px;
+	clear:both;
+	float:none;
+	width:100%;
+}
+.separator50 {
+	min-height:50px;
+	clear:both;
+	float:none;
+	width:100%;
+}
+.separator100 {
+	min-height:100px;
+	clear:both;
+	float:none;
+	width:100%;
+}

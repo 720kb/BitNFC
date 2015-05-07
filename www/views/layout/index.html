@@ -1,16 +1,26 @@
-<ion-side-menus class="sidemenu">
-<ion-pane ion-side-menu-content>
-<ion-nav-view name="appContent" animation="slide-left-right-ios7"></ion-nav-view>
-</ion-pane>
-<ion-side-menu side="right" class="sidemenu">
-<ion-content class="has-header">
-<ion-list ng-if="!session.id" class="text-center">
-<div class="col col-80 col-offset-10">
-  <div class="separator15"></div>
-  <b>BitNFC</b>
-  <span class="color-muted-more"> some settings
-  </span>
-</div>
+<ion-side-menus enable-menu-with-back-views="false">
+<ion-side-menu-content>
+<ion-nav-bar class="bar-light">
+<ion-nav-buttons side="left">
+<button ui-sref="app.home" class="button button-icon button-clear">
+	<div class="separator3"></div>
+	<img src="img/logo.png" width="100">
+</button>
+</ion-nav-buttons>
+<ion-nav-buttons side="right">
+<button class="button button-icon button-clear button-royal ion-gear-a" menu-toggle="right">
+</button>
+</ion-nav-buttons>
+</ion-nav-bar>
+<ion-nav-view name="appContent"></ion-nav-view>
+</ion-side-menu-content>
+<ion-side-menu side="right">
+<ion-header-bar class="bar-light">
+<h1 class="title">Settings</h1>
+</ion-header-bar>
+<ion-content>
+<ion-list>
+settings space
 </ion-list>
 </ion-content>
 </ion-side-menu>
