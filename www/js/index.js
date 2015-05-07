@@ -1,5 +1,5 @@
-/*global angular cordova*/
-(function withAngular(angular, cordova) {
+/*global angular*/
+(function withAngular(angular) {
   'use strict';
 
   angular.module('bitNFC', [
@@ -35,10 +35,11 @@
 
       $ionicPlatform.ready(function onReady() {
 
-        if ($window.cordova && $window.cordova.plugins &&
+        if ($window.cordova &&
+          $window.cordova.plugins &&
           $window.cordova.plugins.Keyboard) {
 
-          cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+          $window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       }
 
       if ($window.StatusBar) {
@@ -47,4 +48,4 @@
       }
     });
     }]);
-}(angular, cordova));
+}(angular));
