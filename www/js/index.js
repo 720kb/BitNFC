@@ -25,6 +25,15 @@
             'controller': 'HomeCtrl'
           }
         }
+      })
+      .state('app.send', {
+        'url': '/send',
+        'views': {
+          'appContent': {
+            'templateUrl': 'views/send/index.html',
+            'controller': 'SendCtrl'
+          }
+        }
       });
 
       $urlRouterProvider.otherwise('/app/home');

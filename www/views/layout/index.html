@@ -1,27 +1,19 @@
-<ion-side-menus enable-menu-with-back-views="false">
-<ion-side-menu-content>
+
 <ion-nav-bar class="bar-light">
-<ion-nav-buttons side="left">
-<button ui-sref="app.home" class="button button-icon button-clear">
-	<div class="separator3"></div>
-	<img src="img/logo.png" width="100">
-</button>
-</ion-nav-buttons>
-<ion-nav-buttons side="right">
-<button class="button button-icon button-clear button-royal ion-ios-gear-outline" menu-toggle="right">
-</button>
-</ion-nav-buttons>
+<ion-nav-back-button class="royal">
+</ion-nav-back-button>
 </ion-nav-bar>
 <ion-nav-view name="appContent"></ion-nav-view>
-</ion-side-menu-content>
-<ion-side-menu side="right">
-<ion-header-bar class="bar-light">
-<h1 class="title">Settings</h1>
-</ion-header-bar>
-<ion-content>
-<ion-list>
-settings space
-</ion-list>
-</ion-content>
-</ion-side-menu>
-</ion-side-menus>
+<div class="tabs tabs-light tabs-icon-top">
+	<div class="button-bar">
+		<a class="button button-royal" ui-sref="app.receive">
+			<i class="icon ion-arrow-down-a"></i>
+		</a>
+		<a class="button button-dark" ui-sref="app.settings">
+			<i class="icon ion-gear-a"></i>
+		</a>
+		<a class="button button-royal" ui-sref="app.send">
+			<i class="icon ion-arrow-up-a"></i>
+		</a>
+	</div>
+</div>

@@ -1,10 +1,13 @@
 /*global angular*/
 (function withAngular(angular) {
-  'use strict';
+	'use strict';
 
-  angular.module('bitNFC.controllers', [])
+	angular.module('bitNFC.controllers', [])
 
-  .controller('HomeCtrl', function DashCtrlController() {
+	.controller('HomeCtrl', function HomeCtrlController() {
 
-  });
+	})
+	.controller('SendCtrl', function SendCtrlController() {
+
+	});
 }(angular));
