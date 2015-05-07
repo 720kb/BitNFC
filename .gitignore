@@ -1,7 +1,6 @@
 node_modules/
-www/lib/
+www/lib/*
 platforms/
 plugins/
 engine/
-resources/
 .DS_Store
