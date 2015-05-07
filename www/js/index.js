@@ -26,6 +26,24 @@
           }
         }
       })
+      .state('app.settings', {
+        'url': '/settings',
+        'views': {
+          'appContent': {
+            'templateUrl': 'views/settings/index.html',
+            'controller': 'SettingsCtrl'
+          }
+        }
+      })
+      .state('app.receive', {
+        'url': '/receive',
+        'views': {
+          'appContent': {
+            'templateUrl': 'views/receive/index.html',
+            'controller': 'ReceiveCtrl'
+          }
+        }
+      })
       .state('app.send', {
         'url': '/send',
         'views': {
@@ -39,22 +57,22 @@
       $urlRouterProvider.otherwise('/app/home');
     }])
 
-  .run(['$ionicPlatform', '$window',
-    function onApplicationStart($ionicPlatform, $window) {
+.run(['$ionicPlatform', '$window',
+  function onApplicationStart($ionicPlatform, $window) {
 
-      $ionicPlatform.ready(function onReady() {
+    $ionicPlatform.ready(function onReady() {
 
-        if ($window.cordova &&
-          $window.cordova.plugins &&
-          $window.cordova.plugins.Keyboard) {
+      if ($window.cordova &&
+        $window.cordova.plugins &&
+        $window.cordova.plugins.Keyboard) {
 
-          $window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      }
+        $window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    }
 
-      if ($window.StatusBar) {
+    if ($window.StatusBar) {
 
-        $window.StatusBar.styleLightContent();
-      }
-    });
-    }]);
+      $window.StatusBar.styleLightContent();
+    }
+  });
+  }]);
 }(angular));

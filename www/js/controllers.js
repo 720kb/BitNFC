@@ -7,6 +7,12 @@
 	.controller('HomeCtrl', function HomeCtrlController() {
 
 	})
+	.controller('SettingsCtrl', function SettingsCtrlController() {
+
+	})
+	.controller('ReceiveCtrl', function ReceiveCtrlController() {
+
+	})
 	.controller('SendCtrl', function SendCtrlController() {
 
 	});
