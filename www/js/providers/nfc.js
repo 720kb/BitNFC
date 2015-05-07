@@ -7,12 +7,20 @@
   .provider('nfc', [function nfcProvider() {
 
     return {
-      '$get': ['$window',
-        function providerConstructor($window) {
+      '$get': ['$window', '$rootScope'
+        function providerConstructor($window, $rootScope) {
 
-        // Read NDEF formatted NFC Tags
-        $window.nfc.addNdefListener(
-          function onNFCEvent(nfcEvent) {
+        var onNFCInitSuccess = function onNFCInitSuccess() {
+
+            $rootScope.$emit('nfc:status-ok');
+          }
+          , onNFCInitError = function onNFCInitError(error) {
+
+            $rootScope.$emit('nfc:status-ko', {
+              'error': error
+            });
+          }
+          , onNFCEvent = function onNFCEvent(nfcEvent) {
             var tag = nfcEvent.tag
               , ndefMessage = tag.ndefMessage;
 
@@ -24,14 +32,9 @@
             // assuming the first record in the message has
             // a payload that can be converted to a string.
             $window.alert($window.nfc.bytesToString(ndefMessage[0].payload).substring(3));
-          },
-          function onSuccessNFCInit() { // success callback
-            $window.alert('Waiting for NDEF tag');
-          },
-          function OnErrorNFCInit(error) { // error callback
-            $window.alert('Error adding NDEF listener ' + JSON.stringify(error));
-          }
-        );
+          };
+        // Read NDEF formatted NFC Tags
+        $window.nfc.addNdefListener(onNFCEvent, onNFCInitSuccess, onNFCInitError);
       }]
     };
   }]);
