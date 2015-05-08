@@ -11,7 +11,7 @@
   .config(['$stateProvider', '$urlRouterProvider',
     function configurationFunction($stateProvider, $urlRouterProvider) {
 
-      $stateProvider
+    $stateProvider
       .state('app', {
         'url': '/app',
         'abstract': true,
@@ -45,8 +45,8 @@
         }
       });
 
-      $urlRouterProvider.otherwise('/app/home');
-    }])
+    $urlRouterProvider.otherwise('/app/home');
+  }])
 
   .run(['$ionicPlatform', '$window', 'nfc',
     function onApplicationStart($ionicPlatform, $window, nfc) {
@@ -64,6 +64,8 @@
 
         $window.StatusBar.styleLightContent();
       }
+
+      nfc.registerListeners();
     });
-    }]);
+  }]);
 }(angular));
