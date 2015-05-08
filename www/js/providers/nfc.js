@@ -30,21 +30,22 @@
 
             var tag = nfcEvent.tag
               , ndefMessage = tag.ndefMessage
-              , message = $window.nfc.bytesToString(ndefMessage[0].payload).substring(3);
+              , message = ndefMessage && $window.nfc.bytesToString(ndefMessage[0].payload).substring(3);
             $rootScope.$apply(function doApply(scope) {
 
-              if (message.indexOf('s:0?body=') >= 0) {
+              if (message && message.indexOf('s:0?body=') >= 0) {
 
                 scope.$emit('nfc:status-message', {
                   'privateKey': message.substr(0, 9)
                 });
+                $window.console.log('message: the tag contains: \'' + message.substr(0, 9) + '\'');
               } else {
 
                 scope.$emit('nfc:status-empty');
+                $window.console.log('message: found an empty tag');
               }
             });
 
-            $window.console.log('message: The NFC tag contains: \'' + message + '\'');
           }
           , registerListeners = function registerListeners() {
 
