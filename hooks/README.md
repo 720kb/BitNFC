@@ -59,6 +59,7 @@ you could embed a link
 
 - embed link to url as other NFC record or dedicated url like bitnfc:// or bitcoin://import/pvtkey
 - scan qr code to send payment
+- export private key via SMS
 - use password protected nfc tokens
 - use BIP38 password protected private keys
 
