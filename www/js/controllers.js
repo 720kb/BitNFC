@@ -7,10 +7,11 @@
   .controller('HomeCtrl', function HomeCtrlController() {
 
   })
-  .controller('SettingsCtrl', ['$scope', 'BitCoin',
-    function SettingsCtrlController($scope, BitCoin) {
+  .controller('SettingsCtrl', ['$scope', 'BitCoin', 'BlockChain',
+    function SettingsCtrlController($scope, BitCoin, BlockChain) {
 
-    $scope.test = BitCoin;
+      $scope.bitcoin = BitCoin;
+      $scope.blockchain = BlockChain;
   }])
   .controller('ReceiveCtrl', function ReceiveCtrlController() {
 
