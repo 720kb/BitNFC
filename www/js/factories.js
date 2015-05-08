@@ -3,5 +3,6 @@
   'use strict';
 
   angular.module('bitNFC.factories', [
-    'BitCoin.factory']);
+    'BitCoin.factory',
+    'BlockChain.factory']);
 }(angular));

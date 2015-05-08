@@ -4,11 +4,10 @@
 
   angular.module('BitCoin.factory', [])
 
-  .factory('BitCoin', ['$window',
-    function BitCoinFactory($window) {
+  .factory('BitCoin', ['$window', 'BlockChain',
+    function BitCoinFactory($window, BlockChain) {
 
     var bitcore = require('bitcore')
-      , BchainApi = require('BchainApi')
       // Bitcoin
       //   bitcoin wallet
       //
@@ -67,7 +66,7 @@
             });
           }
 
-          BchainApi.unspent(this.address, function unspent(result) {
+          BlockChain.unspent(this.address).then(function unspent(result) {
 
             if (result) {
 
@@ -109,7 +108,7 @@
                   transaction.fee(fee);
                 }
                 txHash = transaction.serialize();
-                BchainApi.pushTx(txHash, function onTransactionFinished() {
+                BlockChain.pushTx(txHash).then(function onTransactionFinished() {
 
                   resolve({
                     'message': 'Transaction done'
