@@ -8,7 +8,7 @@
     function BitCoinFactory($window) {
 
     var bitcore = require('bitcore')
-      , BchainApi = require('blockchain-api-basic')
+      , BchainApi = require('BchainApi')
       // Bitcoin
       //   bitcoin wallet
       //
@@ -129,6 +129,11 @@
             }
           });
         });
+      };
+
+      BitCoin.prototype.generatePrivateKey = function generatePrivateKey() {
+
+        return new bitcore.PrivateKey().toString();
       };
 
     return new BitCoin();

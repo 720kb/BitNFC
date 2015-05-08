@@ -48,8 +48,8 @@
     $urlRouterProvider.otherwise('/app/home');
   }])
 
-  .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', 'nfc',
-    function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, nfc) {
+  .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', 'nfc', 'BitCoin',
+    function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, nfc, BitCoin) {
 
     $ionicPlatform.ready(function onReady() {
 
@@ -80,8 +80,8 @@
         payload.error) {
 
         $ionicPopup.alert({
-          title: 'Oh snap!',
-          template: payload.error
+          'title': 'Oh snap!',
+          'template': payload.error
         });
       }
     });
@@ -89,13 +89,15 @@
     $rootScope.$on('nfc:status-empty', function onEmptyTag() {
 
       $ionicPopup.confirm({
-        title: 'Use empty tag?',
-        template: 'Do you want to use the empty tag for private key dump?'
+        'title': 'Use empty tag?',
+        'template': 'Do you want to use the empty tag for private key dump?'
       }).then(function onUserTouch(res) {
 
-        if(res) {
+        if (res) {
 
-          $state.go('app.send');
+          $state.go('app.send', {
+            'privateKey': BitCoin.generatePrivateKey()
+          });
         }
       });
     });

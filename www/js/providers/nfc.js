@@ -49,7 +49,7 @@
           }
           , registerListeners = function registerListeners() {
 
-            if (window.nfc) {
+            if ($window.nfc) {
 
               nfc.addNdefListener(onNFCEvent, onNFCInitSuccess, onNFCInitError);
             } else {
