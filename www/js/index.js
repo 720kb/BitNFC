@@ -89,8 +89,8 @@
     $rootScope.$on('nfc:status-empty', function onEmptyTag() {
 
       $ionicPopup.confirm({
-        'title': 'Use empty tag?',
-        'template': 'Do you want to use the empty tag for private key dump?'
+        'title': 'NFC Bitcoin Wallet Generated',
+        'template': 'Your empty NFC tag is now a bitcoin wallet!<br>A Private Key has been loaded into the Tag and this is the corresponding (public) Address: 1asdasdasdasd - 0 mBTC -- you can now send money to the token.'
       }).then(function onUserTouch(res) {
 
         if (res) {
