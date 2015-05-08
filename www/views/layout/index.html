@@ -42,7 +42,7 @@
 <div class="tabs tabs-light tabs-icon-top">
   <div class="button-bar">
     <span class="button button-royal">
-      <i class="icon ion-arrow-down-a"></i>
+      <i class="icon" ng-class="{'ion-close': !nfcStatus, 'ion-checkmark': nfcStatus}"></i>
     </span>
     <a class="button button-royal" ui-sref="app.receive">
       <i class="icon ion-arrow-down-a"></i>

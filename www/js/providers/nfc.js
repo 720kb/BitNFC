@@ -48,7 +48,13 @@
           }
           , registerListeners = function registerListeners() {
 
-            nfc.addNdefListener(onNFCEvent, onNFCInitSuccess, onNFCInitError);
+            if (window.nfc) {
+
+              nfc.addNdefListener(onNFCEvent, onNFCInitSuccess, onNFCInitError);
+            } else {
+
+              onNFCInitError('Your are in browser');
+            }
           };
 
         return {

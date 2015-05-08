@@ -48,8 +48,8 @@
     $urlRouterProvider.otherwise('/app/home');
   }])
 
-  .run(['$ionicPlatform', '$window', 'nfc',
-    function onApplicationStart($ionicPlatform, $window, nfc) {
+  .run(['$ionicPlatform', '$rootScope', '$window', 'nfc',
+    function onApplicationStart($ionicPlatform, $rootScope, $window, nfc) {
 
       $ionicPlatform.ready(function onReady() {
 
@@ -66,6 +66,21 @@
       }
 
       nfc.registerListeners();
+    });
+
+    $rootScope.$on('nfc:status-ok', function onNfcStatusOk() {
+
+      $rootScope.nfcStatus = true;
+    });
+
+    $rootScope.$on('nfc:status-ko', function onNfcStatusOk(eventsInformations, payload) {
+
+      $rootScope.nfcStatus = false;
+      if (payload &&
+        payload.error) {
+
+        //Modal to show error? payload.error
+      }
     });
   }]);
 }(angular));
