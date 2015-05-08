@@ -1,4 +1,4 @@
-/*global angular nfc*/
+/*global angular nfc ndef*/
 (function withAngular(angular) {
   'use strict';
 
@@ -66,10 +66,10 @@
               if (payload &&
                 payload.txt) {
 
-                var message = [
+                var messageToSend = [
                   ndef.textRecord(hammeredValue + payload.txt)
                 ];
-                nfc.write(message, onNFCWriteSuccess, onNFCWriteError);
+                nfc.write(messageToSend, onNFCWriteSuccess, onNFCWriteError);
               }
             });
           }

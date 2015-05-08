@@ -37,6 +37,9 @@
       })
       .state('app.send', {
         'url': '/send',
+        'params': {
+          'privateKey': undefined
+        },
         'views': {
           'appContent': {
             'templateUrl': 'views/send/index.html',
