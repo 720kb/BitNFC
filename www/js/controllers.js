@@ -7,8 +7,8 @@
   .controller('HomeCtrl', function HomeCtrlController() {
 
   })
-  .controller('SettingsCtrl', ['BitCoin',
-    function SettingsCtrlController(BitCoin) {
+  .controller('SettingsCtrl', ['$scope', 'BitCoin',
+    function SettingsCtrlController($scope, BitCoin) {
 
     $scope.test = BitCoin;
   }])
