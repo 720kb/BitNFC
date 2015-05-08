@@ -28,14 +28,23 @@
             });
           }
           , onNFCEvent = function onNFCEvent(nfcEvent) {
-            console.log('status event!!!')
+
             var tag = nfcEvent.tag
               , ndefMessage = tag.ndefMessage
               , message = $window.nfc.bytesToString(ndefMessage[0].payload).substring(3);
-            console.log('message: The NFC tag contains: \'' + message + '\'');
-            // assuminahg the first record in the message has
-            // a payload that can be converted to a string.
-            $window.alert(message);
+
+            $rootScope.$apply(function doApply(scope) {
+              if (message.indexOf('s:0?body=') >= 0) {
+                scope.$emit('nfc:status-message', {
+                  'privateKey': message.substr(0, 9)
+                });
+              } else {
+
+                scope.$emit('nfc:status-empty');
+              }
+            });
+
+            $window.console.log('message: The NFC tag contains: \'' + message + '\'');
           }
           , registerListeners = function registerListeners() {
 
