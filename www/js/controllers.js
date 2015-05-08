@@ -7,13 +7,15 @@
   .controller('HomeCtrl', function HomeCtrlController() {
 
   })
-  .controller('SettingsCtrl', function SettingsCtrlController() {
+  .controller('SettingsCtrl', ['BitCoin',
+    function SettingsCtrlController(BitCoin) {
 
-  })
+    $scope.test = BitCoin;
+  }])
   .controller('ReceiveCtrl', function ReceiveCtrlController() {
 
   })
-  .controller('SendCtrl', function SendCtrlController($scope, $stateParams) {
+  .controller('SendCtrl', ['$scope', '$stateParams', function SendCtrlController($scope, $stateParams) {
 
     if ($stateParams &&
       $stateParams.privateKey) {
@@ -23,5 +25,5 @@
         'txt': $scope.privateKey
       });
     }
-  });
+  }]);
 }(angular));

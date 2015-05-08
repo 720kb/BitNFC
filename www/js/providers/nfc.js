@@ -27,20 +27,6 @@
               });
             });
           }
-          , onNFCWriteSuccess = function onNFCWriteSuccess() {
-
-            $rootScope.$apply(function doApply(scope) {
-
-              scope.$emit('nfc:write-ok');
-            });
-          }
-          , onNFCWriteError = function onNFCWriteError() {
-
-            $rootScope.$apply(function doApply(scope) {
-
-              scope.$emit('nfc:write-ko');
-            });
-          }
           , onNFCEvent = function onNFCEvent(nfcEvent) {
 
             var tag = nfcEvent.tag
@@ -60,18 +46,6 @@
                 $window.console.log('message: found an empty tag');
               }
             });
-
-            $rootScope.$on('nfc:write-tag', function onWriteTag(eventsInformations, payload) {
-
-              if (payload &&
-                payload.txt) {
-
-                var messageToSend = [
-                  ndef.textRecord(hammeredValue + payload.txt)
-                ];
-                nfc.write(messageToSend, onNFCWriteSuccess, onNFCWriteError);
-              }
-            });
           }
           , registerListeners = function registerListeners() {
 
@@ -82,7 +56,39 @@
 
               onNFCInitError('Your are in browser');
             }
+          }
+          , onNFCWriteSuccess = function onNFCWriteSuccess() {
+
+            $rootScope.$apply(function doApply(scope) {
+
+              scope.$emit('nfc:write-ok');
+            });
+            registerListeners();
+          }
+          , onNFCWriteError = function onNFCWriteError() {
+
+            $rootScope.$apply(function doApply(scope) {
+
+              scope.$emit('nfc:write-ko');
+            });
+          }
+          , onNFCCallForRemove = function onNFCCallForRemove(payload) {
+
+            var messageToSend = [
+              ndef.textRecord(hammeredValue + payload.txt)
+            ];
+            nfc.write(messageToSend, onNFCWriteSuccess, onNFCWriteError);
           };
+
+
+        $rootScope.$on('nfc:write-tag', function onWriteTag(eventsInformations, payload) {
+
+          if (payload &&
+            payload.txt) {
+
+            nfc.removeNdefListener(onNFCEvent, onNFCCallForRemove.bind(undefined, payload));
+          }
+        });
 
         return {
           'registerListeners': registerListeners
