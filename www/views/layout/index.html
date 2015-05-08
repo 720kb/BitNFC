@@ -3,6 +3,9 @@
     <ion-nav-bar class="bar-light">
       <ion-nav-back-button class="stable">Back</ion-nav-back-button>
       <ion-nav-buttons side="right">
+        <span>
+          <i class="icon" ng-class="{'ion-close': !nfcStatus, 'ion-checkmark': nfcStatus}"></i>
+        </span>
         <button class="button button-icon button-clear ion-grid button-royal" menu-toggle="right">
         </button>
       </ion-nav-buttons>
@@ -41,9 +44,6 @@
 <!--footer tabs-->
 <div class="tabs tabs-light tabs-icon-top">
   <div class="button-bar">
-    <span class="button button-royal">
-      <i class="icon" ng-class="{'ion-close': !nfcStatus, 'ion-checkmark': nfcStatus}"></i>
-    </span>
     <a class="button button-royal" ui-sref="app.receive">
       <i class="icon ion-arrow-down-a"></i>
     </a>

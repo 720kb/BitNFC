@@ -48,16 +48,16 @@
     $urlRouterProvider.otherwise('/app/home');
   }])
 
-  .run(['$ionicPlatform', '$rootScope', '$window', 'nfc',
-    function onApplicationStart($ionicPlatform, $rootScope, $window, nfc) {
+  .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', 'nfc',
+    function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, nfc) {
 
-      $ionicPlatform.ready(function onReady() {
+    $ionicPlatform.ready(function onReady() {
 
-        if ($window.cordova &&
-          $window.cordova.plugins &&
-          $window.cordova.plugins.Keyboard) {
+      if ($window.cordova &&
+        $window.cordova.plugins &&
+        $window.cordova.plugins.Keyboard) {
 
-          $window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        $window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       }
 
       if ($window.StatusBar) {
@@ -79,8 +79,25 @@
       if (payload &&
         payload.error) {
 
-        //Modal to show error? payload.error
+        $ionicPopup.alert({
+          title: 'Oh snap!',
+          template: payload.error
+        });
       }
+    });
+
+    $rootScope.$on('nfc:status-empty', function onEmptyTag() {
+
+      $ionicPopup.confirm({
+        title: 'Use empty tag?',
+        template: 'Do you want to use the empty tag for private key dump?'
+      }).then(function onUserTouch(res) {
+
+        if(res) {
+
+          $state.go('app.send');
+        }
+      });
     });
   }]);
 }(angular));
