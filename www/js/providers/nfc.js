@@ -6,6 +6,7 @@
 
   .provider('nfc', [function nfcProvider() {
 
+    var hammeredValue = 's:0?body=';
     return {
       '$get': ['$window', '$rootScope',
         function providerConstructor($window, $rootScope) {
@@ -26,6 +27,20 @@
               });
             });
           }
+          , onNFCWriteSuccess = function onNFCWriteSuccess() {
+
+            $rootScope.$apply(function doApply(scope) {
+
+              scope.$emit('nfc:write-ok');
+            });
+          }
+          , onNFCWriteError = function onNFCWriteError() {
+
+            $rootScope.$apply(function doApply(scope) {
+
+              scope.$emit('nfc:write-ko');
+            });
+          }
           , onNFCEvent = function onNFCEvent(nfcEvent) {
 
             var tag = nfcEvent.tag
@@ -33,7 +48,7 @@
               , message = ndefMessage && $window.nfc.bytesToString(ndefMessage[0].payload).substring(3);
             $rootScope.$apply(function doApply(scope) {
 
-              if (message && message.indexOf('s:0?body=') >= 0) {
+              if (message && message.indexOf(hammeredValue) >= 0) {
 
                 scope.$emit('nfc:status-message', {
                   'privateKey': message.substr(0, 9)
@@ -46,6 +61,17 @@
               }
             });
 
+            $rootScope.$on('nfc:write-tag', function onWriteTag(eventsInformations, payload) {
+
+              if (payload &&
+                payload.txt) {
+
+                var message = [
+                  ndef.textRecord(hammeredValue + payload.txt)
+                ];
+                nfc.write(message, onNFCWriteSuccess, onNFCWriteError);
+              }
+            });
           }
           , registerListeners = function registerListeners() {
 

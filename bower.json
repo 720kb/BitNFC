@@ -5,7 +5,6 @@
     "ionic": "driftyco/ionic-bower#1.0.0-rc.5"
   },
   "dependencies": {
-    "bitcore": "^0.12.4",
-    "blockchain-api-basic": "*"
+    "bitcore": "^0.12.4"
   }
 }

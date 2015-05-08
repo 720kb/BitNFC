@@ -19,6 +19,9 @@
       $stateParams.privateKey) {
 
       $scope.privateKey = $stateParams.privateKey;
+      $scope.$emit('nfc:write-tag', {
+        'txt': $scope.privateKey
+      });
     }
   });
 }(angular));
