@@ -23,7 +23,7 @@
 		<ion-content ng-controller="SettingsCtrl">
 			<div class="list">
 				<label class="item item-input item-toggle">
-					<div class="input-label">CURRENCY</div>
+					<div class="input-label">Always antani</div>
 					<label class="toggle toggle-royal">
 						<input type="checkbox" />
 						<div class="track">
@@ -32,11 +32,23 @@
 					</label>
 				</label>
 				<label class="item item-input item-select">
-					<div class="input-label">UID</div>
+					<div class="input-label">Denomination</div>
+					<select>
+						<option selected>mBTC</option>
+						<option>BTC</option>
+						<option>satoshi</option>
+					</select>
+				</label>
+				<label class="item item-input item-select">
+					<div class="input-label">Currency</div>
 					<select>
 						<option selected>EUR</option>
-						<option>DOLLAR</option>
-						<option>YEN</option>
+						<option>USD</option>
+						<option>GBP</option>
+						<option>CNY</option>
+						<option>JPY</option>
+						<option>RUB</option>
+						<option>TODO</option>
 					</select>
 				</label>
 			</div>
