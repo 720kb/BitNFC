@@ -40,11 +40,11 @@
           }
         },
         'address': {
-          'get': function privateKey() {
+          'get': function address() {
 
             if ($window.localStorage.bitNfcAddress) {
 
-              return $window.localStorage.bitNfcAddress;
+              return bitcore.Address($window.localStorage.bitNfcAddress);
             }
 
             var address = this.privateKey.publicKey.toAddress();
