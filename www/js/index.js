@@ -52,8 +52,10 @@
       $urlRouterProvider.otherwise('/app/home');
     }])
 
-.run(['$ionicPlatform', '$rootScope', '$scope', '$window', '$state', '$ionicPopup', 'nfc', 'BitCoin',
-  function onApplicationStart($ionicPlatform, $rootScope, $scope, $window, $state, $ionicPopup, nfc, BitCoin) {
+.run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', 'nfc', 'BitCoin',
+  function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, nfc, BitCoin) {
+
+    var address;
 
     $ionicPlatform.ready(function onReady() {
 
@@ -93,12 +95,11 @@
 
     $rootScope.$on('nfc:status-empty', function onEmptyTag() {
 
-      $scope.address = BitCoin.address;
+      address = BitCoin.address;
 
       $ionicPopup.confirm({
         'title': 'NFC Bitcoin Wallet Generated',
-        'templateUrl': 'views/layout/popups/walletGenerated.html',
-        'scope': $scope
+        'template': '<p>Your empty NFC tag is now a bitcoin wallet<p><p>A Private Key has been loaded into the Tag and this is the corresponding (public) Address: ' + address + ' - 0 mBTC -- you can now send money to the token.</p>'
       }).then(function onUserTouch(res) {
 
         if (res) {
