@@ -92,9 +92,12 @@
 
     $rootScope.$on('nfc:status-empty', function onEmptyTag() {
 
+      // var address = antani.BitCoin.get.address ?
+      var address = "1asdasd";
+
       $ionicPopup.confirm({
         'title': 'NFC Bitcoin Wallet Generated',
-        'template': 'Your empty NFC tag is now a bitcoin wallet!<br>A Private Key has been loaded into the Tag and this is the corresponding (public) Address: 1asdasdasdasd - 0 mBTC -- you can now send money to the token.'
+        'template': 'Your empty NFC tag is now a bitcoin wallet!<br>A Private Key has been loaded into the Tag and this is the corresponding (public) Address: '+this.address+' - 0 mBTC -- you can now send money to the token.'
       }).then(function onUserTouch(res) {
 
         if (res) {
