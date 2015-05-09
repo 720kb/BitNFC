@@ -54,7 +54,8 @@
               nfc.addNdefListener(onNFCEvent, onNFCInitSuccess, onNFCInitError);
             } else {
 
-              onNFCInitError('Your are in browser');
+              // onNFCInitError('Your are in browser'); // rompe il cazzo 4 debugging, re-enable later?
+              $window.console.log('Your are in browser');
             }
           }
           , onNFCWriteSuccess = function onNFCWriteSuccess() {

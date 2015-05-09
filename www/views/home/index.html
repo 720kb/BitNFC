@@ -1,14 +1,16 @@
-<ion-view title="BIT<span class='royal'>NFC</span>">
+<ion-view title="Bit<span class='royal'>NFC</span>">
   <ion-content>
     <div class="text-center">
-      <div class="separator50"></div>
-      <img class="light-bg" src="http://www.harrowhouse.com/Sites/Harrow%20House/library/files/1-Harrow-House-QR-code.png" width="60%"/>
-      <div class="separator50"></div>
-    </div>
-    <div class="text-center">
-      <h3>Address</h3>
+      <div class="separator30"></div>
+      <h3>Phone Wallet</h3>
+      <div class="separator10"></div>
+      <h4>Address</h4>
+      <div class="separator10"></div>
+      <img class="light-bg" src="http://www.harrowhouse.com/Sites/Harrow%20House/library/files/1-Harrow-House-QR-code.png" width="35%"/>
+      <p>Tap to enlarge</p>
+      <div class="separator40"></div>
       <div class="col col-80 col-offset-10">
-        {{publicAddress}}
+        {{publicAddress.toString()}}
       </div>
     </div>
   </ion-content>

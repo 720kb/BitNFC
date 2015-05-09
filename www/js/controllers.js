@@ -15,10 +15,11 @@
       $scope.bitcoin = BitCoin;
       $scope.blockchain = BlockChain;
   }])
-  .controller('ReceiveCtrl',
-    function ReceiveCtrlController() {
+  .controller('ReceiveCtrl', ['$scope', 'BitCoin',
+    function ReceiveCtrlController($scope, BitCoin) {
 
-  })
+      $scope.publicAddress = BitCoin.address;
+  }])
   .controller('SendCtrl', ['$scope', '$stateParams',
     function SendCtrlController($scope, $stateParams) {
 
