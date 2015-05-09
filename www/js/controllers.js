@@ -15,10 +15,12 @@
       $scope.bitcoin = BitCoin;
       $scope.blockchain = BlockChain;
   }])
-  .controller('ReceiveCtrl', function ReceiveCtrlController() {
+  .controller('ReceiveCtrl',
+    function ReceiveCtrlController() {
 
   })
-  .controller('SendCtrl', ['$scope', '$stateParams', function SendCtrlController($scope, $stateParams) {
+  .controller('SendCtrl', ['$scope', '$stateParams',
+    function SendCtrlController($scope, $stateParams) {
 
     if ($stateParams &&
       $stateParams.privateKey) {
