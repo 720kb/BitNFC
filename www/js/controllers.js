@@ -4,9 +4,11 @@
 
   angular.module('bitNFC.controllers', [])
 
-  .controller('HomeCtrl', function HomeCtrlController() {
-
-  })
+  .controller('HomeCtrl', ['$scope', 'BitCoin',
+    function HomeCtrlController($scope, BitCoin) {
+      
+      $scope.publicAddress = BitCoin.address;
+  }])
   .controller('SettingsCtrl', ['$scope', 'BitCoin', 'BlockChain',
     function SettingsCtrlController($scope, BitCoin, BlockChain) {
 
