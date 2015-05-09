@@ -4,6 +4,7 @@
 
   angular.module('bitNFC', [
     'ionic',
+    '720kb.fx',
     'bitNFC.providers',
     'bitNFC.factories',
     'bitNFC.controllers'])
@@ -11,7 +12,7 @@
   .config(['$stateProvider', '$urlRouterProvider',
     function configurationFunction($stateProvider, $urlRouterProvider) {
 
-    $stateProvider
+      $stateProvider
       .state('app', {
         'url': '/app',
         'abstract': true,
@@ -48,11 +49,11 @@
         }
       });
 
-    $urlRouterProvider.otherwise('/app/home');
-  }])
+      $urlRouterProvider.otherwise('/app/home');
+    }])
 
-  .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', 'nfc', 'BitCoin',
-    function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, nfc, BitCoin) {
+.run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', 'nfc', 'BitCoin',
+  function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, nfc, BitCoin) {
 
     $ionicPlatform.ready(function onReady() {
 
@@ -61,15 +62,15 @@
         $window.cordova.plugins.Keyboard) {
 
         $window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      }
+    }
 
-      if ($window.StatusBar) {
+    if ($window.StatusBar) {
 
-        $window.StatusBar.styleLightContent();
-      }
+      $window.StatusBar.styleLightContent();
+    }
 
-      nfc.registerListeners();
-    });
+    nfc.registerListeners();
+  });
 
     $rootScope.$on('nfc:status-ok', function onNfcStatusOk() {
 
@@ -86,8 +87,8 @@
           'title': 'Oh snap!',
           'template': payload.error
         });
-      }
-    });
+    }
+  });
 
     $rootScope.$on('nfc:status-empty', function onEmptyTag() {
 

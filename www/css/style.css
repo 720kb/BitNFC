@@ -42,3 +42,7 @@
 	float:none;
 	width:100%;
 }
+/*Extra*/
+.button-status span{
+	font-size:29px;
+}
