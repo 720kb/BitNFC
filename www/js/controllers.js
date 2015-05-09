@@ -6,7 +6,7 @@
 
   .controller('HomeCtrl', ['$scope', 'BitCoin',
     function HomeCtrlController($scope, BitCoin) {
-      
+
       $scope.publicAddress = BitCoin.address;
   }])
   .controller('SettingsCtrl', ['$scope', 'BitCoin', 'BlockChain',
