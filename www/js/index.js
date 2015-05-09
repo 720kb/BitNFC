@@ -38,9 +38,10 @@
       })
       .state('app.send', {
         'url': '/send',
-        'params': {
-          'privateKey': undefined
-        },
+        // TODO: why this? @wouldgo
+        // 'params': {
+        //   'privateKey': undefined
+        // },
         'views': {
           'appContent': {
             'templateUrl': 'views/send/index.html',
