@@ -95,12 +95,27 @@ angular.element($0).scope().blockchain.unspent("1EQPshDav6oQk9ZKssS3DguPCBwQWA7c
 //
 angular.element($0).scope().blockchain.pushtx
 
-// bitcoin.
+// bitcoin.proto.generatePrivateKey
 //
-angular.element($0).scope().bitcoin
+angular.element($0).scope().bitcoin.generatePrivateKey()
+
+// new bitcoin()
+
+// bitcoin.send
+//
+angular.element($0).scope().bitcoin.send()
+
+// bitcoin.address
+//
+angular.element($0).scope().bitcoin.address()
+
+// bitcoin.balance
+//
+angular.element($0).scope().bitcoin.balance()
 
 // bitcoin.
 //
 angular.element($0).scope().bitcoin
+
 
 ```

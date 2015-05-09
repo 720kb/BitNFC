@@ -29,26 +29,26 @@
         'privateKey': {
           'get': function privateKey() {
 
-            if ($window.localStorage.bitNFC.privateKey) {
+            if ($window.localStorage.bitNfcPrivateKey) {
 
-              return new bitcore.PrivateKey($window.localStorage.bitNFC.privateKey);
+              return new bitcore.PrivateKey($window.localStorage.bitNfcPrivateKey);
             }
 
             var newPrivateKey = new bitcore.PrivateKey();
-            $window.localStorage.bitNFC.privateKey = newPrivateKey.toString();
+            $window.localStorage.bitNfcPrivateKey = newPrivateKey.toString();
             return newPrivateKey;
           }
         },
         'address': {
           'get': function privateKey() {
 
-            if ($window.localStorage.bitNFC.address) {
+            if ($window.localStorage.bitNfcAddress) {
 
-              return $window.localStorage.bitNFC.address;
+              return $window.localStorage.bitNfcAddress;
             }
 
             var address = this.privateKey.publicKey.toAddress();
-            $window.localStorage.bitNFC.address = address;
+            $window.localStorage.bitNfcAddress = address;
             return address;
           }
         }
