@@ -10,7 +10,7 @@
 
       switch (FromToString) {
         case 'mbtcToBtc':
-          new bitcore.Unit.fromMilis(amount).toBTC();
+          return new bitcore.Unit.fromMilis(amount).toBTC();
           break;
         // case 'btcToMbtc':
         //   // TODO
@@ -23,7 +23,7 @@
         // case 'satoshiToBtc':
         //   // TODO
         default:
-          '9999999 [match not found - fix!]';
+          return '9999999 [match not found - fix!] case: '+FromToString;
       }
     };
   }]);
