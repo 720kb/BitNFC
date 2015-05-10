@@ -79,10 +79,18 @@
 
     $scope.sendBtc = function () {
       if (!$scope.sending) {
+        $scope.sending = true;
 
-        BitCoin.send(Number($scope.outputAmount), $scope.toAddress, function(response){
 
-          console.log(response) // => "ok!, sent! - true ... boh"
+        BitCoin.send(Number($scope.outputAmount), $scope.toAddress).then(function(response){
+          console.log("SENT");
+          console.log("response:", response);
+          $scope.sending = false;
+          $scope.sentMessage = 'Payment sent!';
+        }).catch(function(error){
+          console.log("catched error", error.message);
+          $scope.errorMessage = error.message;
+          $scope.sending = false;
         });
       }
     };

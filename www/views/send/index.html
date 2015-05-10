@@ -18,7 +18,7 @@
           <input ng-model="toAddress" type="text" placeholder="1...">
         </label>
         <div class="separator10"></div>
-        <button ng-click="sendBtc()" class="button button-block button-royal" ng-class="{'button-icon icon ion-loading-a': sending}">Send</button>
+        <button ng-click="sendBtc()" class="button button-block button-royal" ng-class="{'button-icon ion-loading-a': sending}">Send</button>
         <div class="separator30"></div>
         <div class="list">
           Amount:
@@ -26,7 +26,9 @@
           <label class="item item-input">
             <input type="text" placeholder="0.0 mBTC" ng-model="outputAmount">
           </label>
-          <button ng-click="sendBtc()" class="button button-block button-royal" ng-class="{'button-icon icon ion-loading-a': sending}">Send</button>
+          <button ng-click="sendBtc()" class="button button-block button-royal" ng-class="{'button-icon ion-loading-a': sending}">Send</button>
+          <div class="assertive">{{errorMessage}}</div>
+          <div class="balanced">{{sentMessage}}</div>
         </div>
       </div>
     </div>

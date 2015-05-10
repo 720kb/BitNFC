@@ -77,7 +77,6 @@
             });
           }
 
-          console.log("address owner of unspent", this.address)
           // get the unspent outputs
           BlockChain.unspent(this.address.toString()).then(function unspent(result) {
             console.log("all unspent", result)
@@ -101,8 +100,6 @@
 
                   var amountBtc = $filter('UnitConvert')(anUnspentOutput.value, 'satoshiToBtc')
 
-                  // ({"address":"12uepmgZN5rULEjTa6N363S3fNYFi5NQs6","txid":"32e64708cebb9c6cd491cddaf2be957ff1501a9562c6822b6aecf3c659383414","vout":0,"scriptPubKey":"76a91414ed5451a524f969316a64d49a95dee1df7962aa88ac","amount":0.005})
-
                   unspentOutputsToUse.push({
                     'address': this.address.toString(),
                     'txid': anUnspentOutput.tx_hash_big_endian,
@@ -115,11 +112,6 @@
 
               if (unspentOutputsToUse.length > 0) {
 
-                console.log("first unspent output - ovvero this tx input - amount:", unspentOutputsToUse[0].amount)
-                console.log("output amount:", amount)
-                console.log("pvt key", this.privateKey.toString())
-
-
                 // build transaction
                 transaction = new bitcore.Transaction()
                   .from(unspentOutputsToUse) // Feed information about what unspent outputs one can use
@@ -127,24 +119,6 @@
                   .change(this.address) // Sets up a change address where the rest of the funds will go
                   .fee(5000)
                   .sign(this.privateKey); // Signs all the inputs it can
-
-                  // 53ae0701c2f57fb454af09491069ad912c989310bf180d0e0961671aefc9f395
-
-                  console.log("utxos to use as inputs", unspentOutputsToUse)
-
-                  // var transaction = new bitcore.Transaction()
-                  //
-
-//                   address: "197GxXSqqSAkhLXyy9XrtEySvssuDcQGMY"
-// amount: 0.00001
-// scriptPubKey: "76a91414ed5451a524f969316a64d49a95dee1df7962aa88ac"
-// txid: "32e64708cebb9c6cd491cddaf2be957ff1501a9562c6822b6aecf3c659383414"
-// vout: 0
-                  //  .from({"address":"12uepmgZN5rULEjTa6N363S3fNYFi5NQs6","txid":"32e64708cebb9c6cd491cddaf2be957ff1501a9562c6822b6aecf3c659383414","vout":0,"scriptPubKey":"76a91414ed5451a524f969316a64d49a95dee1df7962aa88ac","amount":0.005})
-
-
-                  //   .to('197GxXSqqSAkhLXyy9XrtEySvssuDcQGMY', 10000)
-                  //   .sign('53ae0701c2f57fb454af09491069ad912c989310bf180d0e0961671aefc9f395')
 
                   console.log("serialized tx", transaction.serialize())
 
@@ -158,7 +132,7 @@
                 BlockChain.pushTx(txHash).then(function onTransactionFinished() {
 
                   resolve({
-                    'message': 'Transaction done! whohooo!'
+                    'message': 'Transaction done!'
                   });
                 });
               } else {
