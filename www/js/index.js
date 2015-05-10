@@ -36,6 +36,19 @@
           }
         }
       })
+      .state('app.swipe', {
+        'url': '/swipe',
+        // TODO: why this? @wouldgo
+        // 'params': {
+        //   'privateKey': undefined
+        // },
+        'views': {
+          'appContent': {
+            'templateUrl': 'views/swipe/index.html',
+            'controller': 'SwipeCtrl'
+          }
+        }
+      })
       .state('app.send', {
         'url': '/send',
         // TODO: why this? @wouldgo

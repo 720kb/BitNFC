@@ -43,5 +43,10 @@
         'txt': $scope.privateKey
       });
     }
+  }])
+  .controller('SwipeCtrl', ['$scope', '$stateParams',
+    function SwipeCtrlController($scope, $stateParams) {
+
+
   }]);
 }(angular));
