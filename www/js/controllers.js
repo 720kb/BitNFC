@@ -48,14 +48,16 @@
     function SendCtrlController($rootScope, $scope, $stateParams, BitCoin) {
 
     var onBitcoinBalance;
+    $scope.publicAddress = BitCoin.address;
     $scope.sending = false;
     // $scope.toAddress = '1antani';
     $scope.toAddress = '197GxXSqqSAkhLXyy9XrtEySvssuDcQGMY';
-    $scope.amount = '1';
+
+    $scope.outputAmount = Number('1000'); // FIXME - use amount from ng-model
 
     $scope.sendBtc = function () {
       if (!$scope.sending) {
-        BitCoin.send($scope.amount, $scope.toAddress, function(response){
+        BitCoin.send(Number($scope.outputAmount), $scope.toAddress, function(response){
           console.log(response) // => "ok!, sent! - true ... boh"
         });
       }

@@ -5,6 +5,8 @@
       <div class="text-center">
         <div class="separator30"></div>
         <div class="col col-80 col-offset-10">
+          <div>Phone Wallet:</div>
+          <div>{{publicAddress.toString()}}</div>
           <div>Balance:</div>
           <div>{{balance | UnitConvert:'satoshiToMbtc'}} mBTC</div>
         </div>
@@ -22,7 +24,7 @@
           Amount:
           <div class="separator10"></div>
           <label class="item item-input">
-            <input type="text" placeholder="0.0 mBTC" ng-model="amount">
+            <input type="text" placeholder="0.0 mBTC" ng-model="outputAmount">
           </label>
           <button ng-click="sendBtc()" class="button button-block button-royal" ng-class="{'button-icon icon ion-loading-a': sending}">Send</button>
         </div>
