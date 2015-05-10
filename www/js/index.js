@@ -10,6 +10,11 @@
     'bitNFC.factories',
     'bitNFC.controllers'])
 
+  .constant('Config', {
+    'currencies': ['EUR', 'BTC', 'RUB', 'YEN', 'US'],
+    'denominations': ['BTC', 'SATOSHI', 'mBTC']
+  })
+
   .config(['$stateProvider', '$urlRouterProvider',
     function configurationFunction($stateProvider, $urlRouterProvider) {
 
@@ -63,10 +68,10 @@
       });
 
       $urlRouterProvider.otherwise('/app/home');
-    }])
+  }])
 
-.run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', 'nfc', 'BitCoin',
-  function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, nfc, BitCoin) {
+  .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', 'nfc', 'BitCoin',
+    function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, nfc, BitCoin) {
 
     var address
       , privateKey

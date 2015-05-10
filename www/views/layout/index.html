@@ -33,22 +33,18 @@
 				</label>
 				<label class="item item-input item-select">
 					<div class="input-label">Denomination</div>
-					<select>
-						<option selected>mBTC</option>
-						<option>BTC</option>
-						<option>satoshi</option>
+					<select ng-model="settingsDenomination" ng-change="setDenomination()">
+						<option ng-repeat="item in denominations" ng-selected="settingsDenomination === item" ng-value="item">
+							{{item}}
+						</option>
 					</select>
 				</label>
 				<label class="item item-input item-select">
 					<div class="input-label">Currency</div>
-					<select>
-						<option selected>EUR</option>
-						<option>USD</option>
-						<option>GBP</option>
-						<option>CNY</option>
-						<option>JPY</option>
-						<option>RUB</option>
-						<option>TODO</option>
+					<select ng-model="settingsCurrency" ng-change="setCurrency()">
+						<option ng-repeat="item in currencies" ng-if="item" ng-selected="settingsCurrency === item" ng-value="item">
+							{{item}}
+						</option>
 					</select>
 				</label>
 			</div>

@@ -33,11 +33,33 @@
         onBitcoinBalance();
       });
   }])
-  .controller('SettingsCtrl', ['$scope', 'BitCoin', 'BlockChain',
-    function SettingsCtrlController($scope, BitCoin, BlockChain) {
+  .controller('SettingsCtrl', ['$window', '$scope', 'BitCoin', 'BlockChain', 'Config',
+    function SettingsCtrlController($window, $scope, BitCoin, BlockChain, Config) {
 
       $scope.bitcoin = BitCoin;
       $scope.blockchain = BlockChain;
+      $scope.denominations = Config.denominations;
+      $scope.currencies = Config.currencies;
+
+      $scope.setDefaultSettings = function setDefaultSettings() {
+
+        $scope.settingsCurrency = 'BTC';
+        $scope.settingsDenomination = 'mBTC';
+        $window.localStorage.settingsCurrency = $scope.settingsCurrency;
+        $window.localStorage.settingsDenomination = $scope.settingsDenomination;
+      };
+
+      $scope.setCurrency = function setCurrency() {
+
+        $window.localStorage.settingsCurrency = $scope.settingsCurrency;
+      };
+
+      $scope.setDenomination = function setCurrency() {
+
+        $window.localStorage.settingsDenomination = $scope.settingsDenomination;
+      };
+
+      $scope.setDefaultSettings();
   }])
   .controller('ReceiveCtrl', ['$scope', 'BitCoin',
     function ReceiveCtrlController($scope, BitCoin) {
@@ -57,7 +79,9 @@
 
     $scope.sendBtc = function () {
       if (!$scope.sending) {
+
         BitCoin.send(Number($scope.outputAmount), $scope.toAddress, function(response){
+
           console.log(response) // => "ok!, sent! - true ... boh"
         });
       }
