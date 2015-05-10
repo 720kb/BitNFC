@@ -2,25 +2,26 @@
 (function withAngular(angular, require) {
   'use strict';
 
-  angular.module('Unit.filter', [])
+  angular.module('UnitConvert.filter', [])
 
-  .filter('Unit',[ function () {
+  .filter('UnitConvert',[ function () {
 
-    return function convert(amount, unitFrom, unitTo) {
+    return function UnitConvert(amount, FromToString) {
 
-      switch (unitFrom+':'+unitTo) {
-        case 'mbtc:btc':
+      switch (FromToString) {
+        case 'mbtcToBtc':
           new bitcore.Unit.fromMilis(amount).toBTC();
-        case 'btc:mbtc':
-          // TODO
-        case 'satoshi:mbtc':
-          // TODO
-        case 'mbtc:satoshi':
-          // TODO
-        case 'btc:satoshi':
-          // TODO
-        case 'satoshi:btc':
-          // TODO
+          break;
+        // case 'btcToMbtc':
+        //   // TODO
+        // case 'satoshiToMbtc':
+        //   // TODO
+        // case 'mbtcToSatoshi':
+        //   // TODO
+        // case 'btcToSatoshi':
+        //   // TODO
+        // case 'satoshiToBtc':
+        //   // TODO
         default:
           '9999999 [match not found - fix!]';
       }

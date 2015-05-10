@@ -3,5 +3,5 @@
   'use strict';
 
   angular.module('bitNFC.filters', [
-    'Unit.filter']);
+    'UnitConvert.filter']);
 }(angular));
