@@ -2,9 +2,9 @@
 (function withAngular(angular, require) {
   'use strict';
 
-  angular.module('Units.filter', [])
+  angular.module('Unit.filter', [])
 
-  .filter('Units',[ function () {
+  .filter('Unit',[ function () {
 
     return function convert(amount, unitFrom, unitTo) {
 
@@ -28,5 +28,5 @@
   }]);
 }(angular, require));
 
-// {{address | Unites | convert:amount:unitFrom:unitTo }} //=> number
-// {{address | Unites | convert:100:mbtc:btc }} //=> 0.1
+// {{address | Unit | convert:amount:unitFrom:unitTo }} //=> number
+// {{address | Unit | convert:100:mbtc:btc }} //=> 0.1
