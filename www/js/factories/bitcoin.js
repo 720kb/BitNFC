@@ -64,8 +64,6 @@
 
       BitCoin.prototype.send = function send(amount, address, fee) {
 
-        console.log("this.address:", this.address)
-
         // - get the unspent outputs
         // - create transaction
         // - push it to the blockchain
@@ -144,7 +142,7 @@
               });
             }
           });
-        });
+        }.bind(this));
       };
 
       BitCoin.prototype.generatePrivateKey = function generatePrivateKey() {
