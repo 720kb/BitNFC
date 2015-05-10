@@ -49,22 +49,28 @@
               }
             });
           }
-        , pushtx = function pushtx(transactionHash) {
-
+        , pushTx = function pushTx(transactionHash) {
             return $http({
               'method': 'POST',
               'url': 'https://blockchain.info/pushtx',
-              'data': transactionHash,
               'params': {
+                'cors': true,
                 'format': 'json',
-                'cors': true
+                'tx': transactionHash
               }
+              // TODO see if it's possible to use data instead of params
+              //
+              // 'data': {
+              //   'cors': true,
+              //   'format': 'json',
+              //   'tx': transactionHash
+              // }
             });
           };
 
       return {
         'balance': balance,
-        'pushtx': pushtx,
+        'pushTx': pushTx,
         'unspent': unspent
       };
     }]);

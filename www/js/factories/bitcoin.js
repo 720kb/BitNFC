@@ -158,7 +158,7 @@
                 BlockChain.pushTx(txHash).then(function onTransactionFinished() {
 
                   resolve({
-                    'message': 'Transaction done'
+                    'message': 'Transaction done! whohooo!'
                   });
                 });
               } else {
