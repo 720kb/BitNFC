@@ -46,3 +46,10 @@
 .button-status span{
 	font-size:29px;
 }
+.footer-tabs{
+	height:70px;
+}
+.footer-tabs p{
+	margin:0;
+	line-height: 0;
+}
