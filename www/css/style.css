@@ -56,7 +56,10 @@
 	margin:0;
 	line-height: 0;
 }
-.qr:active{
+
+.qr.active{
+	/*FIXME - box-shadow check performances on mobile*/
+	box-shadow:0 0 300px 200px rgba(255,255,255,0.95);
 	-webkit-transition: all .25s ease-in-out;
 	-moz-transition: all .25s ease-in-out;
 	-ms-transition: all .25s ease-in-out;
