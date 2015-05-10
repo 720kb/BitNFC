@@ -55,7 +55,9 @@
 .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', 'nfc', 'BitCoin',
   function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, nfc, BitCoin) {
 
-    var address;
+    var address
+      , privateKey
+      , balance;
 
     $rootScope.debugMode = true; //false
 
@@ -97,17 +99,38 @@
 
     $rootScope.$on('nfc:status-empty', function onEmptyTag() {
 
-      address = BitCoin.address;
+      privateKey = BitCoin.generatePrivateKey();
+      address = privateKey.toAddress();
 
       $ionicPopup.confirm({
         'title': 'NFC Empty Tag Detected',
-        'template': '<h4>NFC Wallet Generated</h4><p>Your empty NFC tag is now a bitcoin wallet<p><p>A Private Key has been loaded into the Tag and this is the corresponding (public) Address: ' + address + ' - 0 mBTC -- you can now send money to the token.</p>'
+        'template': '<h4>NFC Wallet Generated</h4><p>Your empty NFC tag is now a bitcoin wallet<p><p>A Private Key has been loaded into the Tag and this is the corresponding (public) Address: ' + address.toString() + ' - 0 mBTC -- you can now send money to the token.</p>'
       }).then(function onUserTouch(res) {
 
         if (res) {
 
           $state.go('app.send', {
-            'privateKey': BitCoin.generatePrivateKey()
+            'address': address
+          });
+        }
+      });
+    });
+
+    $rootScope.$on('nfc:status-message', function onMessageTag(eventInfo, data) {
+
+      privateKey = '5antani';
+      address = '1antani';
+      balance = 123;
+
+      $ionicPopup.confirm({
+        'title': 'Detected NFC Tag with Wallet',
+        'template': '<p>Private Key: ' + privateKey + '</p><p>Address: ' + address + '</p><p>Containing ' + balance + ' mBTC</p>'
+      }).then(function onUserTouch(res) {
+
+        if (res) {
+
+          $state.go('app.send', {
+            'address': BitCoin.address
           });
         }
       });
