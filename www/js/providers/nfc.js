@@ -90,7 +90,6 @@
             }
           };
 
-
         $rootScope.$on('nfc:write-tag', function onWriteTag(eventsInformations, payload) {
 
           if (payload &&
