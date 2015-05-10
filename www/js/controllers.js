@@ -8,12 +8,12 @@
 
       $scope.nfcEmpty = function TriggerNfcEmpty() {
 
-        $rootScope.$emit('nfc:status-message');
+        $rootScope.$emit('nfc:status-empty');
       };
 
       $scope.nfcMessage = function TriggerNfcMessage() {
 
-        $rootScope.$emit('nfc:status-empty');
+        $rootScope.$emit('nfc:status-message');
       };
   }])
   .controller('HomeCtrl', ['$scope', 'BitCoin',
@@ -44,9 +44,10 @@
       });
     }
   }])
-  .controller('SwipeCtrl', ['$scope', '$stateParams',
-    function SwipeCtrlController($scope, $stateParams) {
+  .controller('SweepCtrl', ['$scope', '$stateParams',
+    function SweepCtrlController($scope, $stateParams) {
 
+      $scope.params = $stateParams;
 
   }]);
 }(angular));

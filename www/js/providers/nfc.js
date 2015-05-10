@@ -11,14 +11,14 @@
       '$get': ['$window', '$rootScope',
         function providerConstructor($window, $rootScope) {
 
-        var onNFCInitSuccess = function onNFCInitSuccess() {
+        var onInitSuccess = function onInitSuccess() {
 
             $rootScope.$apply(function doApply(scope) {
 
               scope.$emit('nfc:status-ok');
             });
           }
-          , onNFCInitError = function onNFCInitError(error) {
+          , onInitError = function onInitError(error) {
 
             $rootScope.$apply(function doApply(scope) {
 
@@ -27,7 +27,12 @@
               });
             });
           }
-          , onNFCEvent = function onNFCEvent(nfcEvent) {
+          , tmpDoWrite
+          , onRemoveError = function onRemoveError(error) {
+
+            $window.console.log('BOOOM', error);
+          }
+          , onListeningEvent = function onListeningEvent(nfcEvent) {
 
             var tag = nfcEvent.tag
               , ndefMessage = tag.ndefMessage
@@ -51,43 +56,46 @@
 
             if ($window.nfc) {
 
-              nfc.addNdefListener(onNFCEvent, onNFCInitSuccess, onNFCInitError);
+              nfc.addNdefListener(onListeningEvent, onInitSuccess, onInitError);
             } else {
 
-              // onNFCInitError('Your are in browser'); // rompe il cazzo 4 debugging, re-enable later?
+              //onInitError('Your are in browser');// rompe il cazzo 4 debugging, re-enable later?
               $window.console.log('Your are in browser');
             }
           }
-          , onNFCWriteSuccess = function onNFCWriteSuccess() {
+          , onWriteSuccess = function onWriteSuccess() {
 
-            $rootScope.$apply(function doApply(scope) {
+            nfc.removeNdefListener(tmpDoWrite, function onSuccess() {
 
-              scope.$emit('nfc:write-ok');
-            });
+              $window.console.log('all ok');
+            }, onRemoveError);
             registerListeners();
           }
-          , onNFCWriteError = function onNFCWriteError() {
-
-            $rootScope.$apply(function doApply(scope) {
-
-              scope.$emit('nfc:write-ko');
-            });
-          }
-          , onNFCCallForRemove = function onNFCCallForRemove(payload) {
+          , doWrite = function doWrite(payload) {
 
             var messageToSend = [
               ndef.textRecord(hammeredValue + payload.txt)
             ];
-            nfc.write(messageToSend, onNFCWriteSuccess, onNFCWriteError);
-          };
+            nfc.write(messageToSend, onWriteSuccess, onRemoveError);
+          }
+          , onRemoveSucess = function onRemoveSucess(payload) {
 
+            if ($window.nfc) {
+
+              tmpDoWrite = doWrite.bind(undefined, payload);
+              nfc.addNdefListener(tmpDoWrite, onInitSuccess, onInitError);
+            } else {
+
+              onInitError('Your are in browser');
+            }
+          };
 
         $rootScope.$on('nfc:write-tag', function onWriteTag(eventsInformations, payload) {
 
           if (payload &&
             payload.txt) {
 
-            nfc.removeNdefListener(onNFCEvent, onNFCCallForRemove.bind(undefined, payload));
+            nfc.removeNdefListener(onListeningEvent, onRemoveSucess.bind(undefined, payload), onRemoveError);
           }
         });
 
