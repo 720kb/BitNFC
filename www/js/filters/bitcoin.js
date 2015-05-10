@@ -4,7 +4,9 @@
 
   angular.module('UnitConvert.filter', [])
 
-  .filter('UnitConvert',[ function () {
+  .filter('UnitConvert',[function () {
+
+    var bitcore = require('bitcore');
 
     return function UnitConvert(amount, FromToString) {
 
