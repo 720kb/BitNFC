@@ -71,26 +71,31 @@
 
     var onBitcoinBalance;
     $scope.publicAddress = BitCoin.address;
-    $scope.sending = false;
     // $scope.toAddress = '1antani';
     $scope.toAddress = '197GxXSqqSAkhLXyy9XrtEySvssuDcQGMY';
 
     $scope.outputAmount = Number('1000'); // FIXME - use amount from ng-model
 
     $scope.sendBtc = function () {
+
       if (!$scope.sending) {
+
         $scope.sending = true;
 
-
         BitCoin.send(Number($scope.outputAmount), $scope.toAddress).then(function(response){
-          console.log("SENT");
-          console.log("response:", response);
-          $scope.sending = false;
-          $scope.sentMessage = 'Payment sent!';
+          console.log('SENT');
+          console.log('response:', response);
+          $scope.$apply(function () {
+            $scope.sending = undefined;
+            $scope.sentMessage = 'Payment sent!';
+          });
         }).catch(function(error){
-          console.log("catched error", error.message);
-          $scope.errorMessage = error.message;
-          $scope.sending = false;
+          console.log('catched error', error.message);
+          $scope.$apply(function () {
+
+            $scope.errorMessage = error.message;
+            $scope.sending = undefined;
+          });
         });
       }
     };
