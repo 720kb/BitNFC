@@ -3,11 +3,33 @@
 
 ### NFC Format SMS (the only one that is copy-pastable)
 
-Record NFC
+This is the format we are using to encode the tag with:
 
 ```
 s:0?body=5privateKey
 ```
+
+It's actually an SMS format:
+
+Does it resemble something?
+
+```
+mailto:user@example.com
+```
+
+
+```
+sms:URL
+```
+
+```
+sms:path/?var=foo
+```
+
+```
+s:path/?var=foo
+```
+
 
 on standard Mifare tags usually there is space for another NFC Record
 
@@ -78,6 +100,34 @@ send payments:
 
 ---
 
+
+#### bitcore - units
+
+```js
+bitcore - units - rats
+var rate = 217.096674; // get('https://bitpay.com/api/rates')
+var unit = new bitcore.Unit.fromFiat(0.001, rate)
+```
+
+
+##### bitcore - units - conversion
+
+```js
+'Units', unit.BTC, unit.atRate(rate)
+bitcore.Unit.fromMilis(1).toBTC()
+bitcore.Unit.fromMilis(1).toSatoshi()
+bitcore.Unit.fromSatoshi(1000).toMilis()
+```
+
+##### alternative (by hand)
+
+```js
+fromBtcToSatoshi = Math.pow(10, 8)
+fromSatoshiToBtc = Math.pow(10, -8)
+
+console.log(valueBtc * fromBtcToSatoshi)
+```
+
 #### Other notes (implementation, apis)
 
 ```js
@@ -97,7 +147,7 @@ angular.element($0).scope().blockchain.pushtx
 
 // bitcoin.proto.generatePrivateKey
 //
-angular.element($0).scope().bitcoin.generatePrivateKey()
+angular.element($0).scope().bitcoin.generatePrivateKey().toString()
 
 // new bitcoin()
 

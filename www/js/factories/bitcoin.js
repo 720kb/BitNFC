@@ -132,7 +132,7 @@
 
       BitCoin.prototype.generatePrivateKey = function generatePrivateKey() {
 
-        return new bitcore.PrivateKey().toString();
+        return new bitcore.PrivateKey();
       };
 
     return new BitCoin();

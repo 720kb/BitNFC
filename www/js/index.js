@@ -143,6 +143,7 @@
         if (res) {
 
           $state.go('app.send', {
+            // 'privateKey': ,
             'address': BitCoin.address
           });
         }
