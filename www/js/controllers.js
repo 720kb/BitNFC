@@ -16,14 +16,22 @@
         $rootScope.$emit('nfc:status-message');
       };
   }])
-  .controller('HomeCtrl', ['$scope', '$rootScope', 'BitCoin',
-    function HomeCtrlController($scope, $rootScope, BitCoin) {
+  .controller('HomeCtrl', ['$rootScope', '$scope', 'BitCoin',
+    function HomeCtrlController($rootScope, $scope, BitCoin) {
+
+      var onBitcoinBalance;
 
       $scope.publicAddress = BitCoin.address;
       BitCoin.balance; // should be a method
 
-      $rootScope.$on('bitcoin:balance', function(eventInfo, balance){
+      onBitcoinBalance = $rootScope.$on('bitcoin:balance', function OnBitcoinBalanceEvent(eventInfo, balance){
+
         $scope.balance = balance;
+      });
+
+      $scope.$on('$destroy', function () {
+
+        onBitcoinBalance();
       });
   }])
   .controller('SettingsCtrl', ['$scope', 'BitCoin', 'BlockChain',

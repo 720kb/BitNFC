@@ -129,7 +129,7 @@
       });
     });
 
-    $rootScope.$on('nfc:status-message', function onMessageTag(eventInfo, data) {
+    $rootScope.$on('nfc:status-message', function onMessageTag() {
 
       privateKey = '5antani';
       address = '1antani';
