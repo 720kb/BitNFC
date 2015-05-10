@@ -49,6 +49,9 @@
 .footer-tabs{
 	height:70px;
 }
+.tabs.footer-tabs .button{
+	border-radius:0 0 0 0;
+}
 .footer-tabs p{
 	margin:0;
 	line-height: 0;

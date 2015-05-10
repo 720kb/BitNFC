@@ -57,6 +57,8 @@
 
     var address;
 
+    $rootScope.debugMode = true; //false
+
     $ionicPlatform.ready(function onReady() {
 
       if ($window.cordova &&
