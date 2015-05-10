@@ -14,15 +14,16 @@
         case 'mbtcToBtc':
           return new bitcore.Unit.fromMilis(amount).toBTC();
           break;
-        // case 'btcToMbtc':
-        //   // TODO
-        // case 'satoshiToMbtc':
-        //   // TODO
+        case 'satoshiToMbtc':
+          return new bitcore.Unit.fromSatoshis(amount).mBTC;
+          break;
         // case 'mbtcToSatoshi':
         //   // TODO
         // case 'btcToSatoshi':
         //   // TODO
         // case 'satoshiToBtc':
+        //   // TODO
+        // case 'btcToMbtc':
         //   // TODO
         default:
           return '9999999 [match not found - fix!] case: ' + FromToString;

@@ -4,10 +4,11 @@
 
   angular.module('BitCoin.factory', [])
 
-  .factory('BitCoin', ['$window', 'BlockChain',
-    function BitCoinFactory($window, BlockChain) {
+  .factory('BitCoin', ['$window', '$rootScope', 'BlockChain',
+    function BitCoinFactory($window, $rootScope, BlockChain) {
 
-    var bitcore = require('bitcore')
+      var bitcore = require('bitcore')
+
       // Bitcoin
       //   bitcoin wallet
       //
@@ -50,6 +51,13 @@
             var address = this.privateKey.publicKey.toAddress();
             $window.localStorage.bitNfcAddress = address;
             return address;
+          }
+        },
+        'balance': {
+          'get': function balance() {
+            BlockChain.balance(this.address, function(result){
+              $rootScope.$emit('bitcoin:balance', result.data);
+            });
           }
         }
       });
