@@ -42,6 +42,10 @@
 	float:none;
 	width:100%;
 }
+/*Reset*/
+.no-border-top{
+	border-top:none;
+}
 /*Extra*/
 .button-status span{
 	font-size:29px;
