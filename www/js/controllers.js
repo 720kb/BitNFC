@@ -44,10 +44,22 @@
 
       $scope.publicAddress = BitCoin.address;
   }])
-  .controller('SendCtrl', ['$scope', '$stateParams',
-    function SendCtrlController($scope, $stateParams) {
+  .controller('SendCtrl', ['$rootScope','$scope', '$stateParams', 'BitCoin',
+    function SendCtrlController($rootScope, $scope, $stateParams, BitCoin) {
 
-    $scope.toAddress = '1antani';
+    var onBitcoinBalance;
+    $scope.sending = false;
+    // $scope.toAddress = '1antani';
+    $scope.toAddress = '197GxXSqqSAkhLXyy9XrtEySvssuDcQGMY';
+    $scope.amount = '1';
+
+    $scope.sendBtc = function () {
+      if (!$scope.sending) {
+        BitCoin.send($scope.amount, $scope.toAddress, function(response){
+          console.log(response) // => "ok!, sent! - true ... boh"
+        });
+      }
+    };
 
     if ($stateParams &&
       $stateParams.privateKey) {

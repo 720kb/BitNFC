@@ -64,6 +64,11 @@
 
       BitCoin.prototype.send = function send(amount, address, fee) {
 
+        console.log("this.address:", this.address)
+
+        // - get the unspent outputs
+        // - create transaction
+        // - push it to the blockchain
         return new Promise(function deferred(resolve, reject) {
 
           if (!amount ||
@@ -74,6 +79,7 @@
             });
           }
 
+          // get the unspent outputs
           BlockChain.unspent(this.address).then(function unspent(result) {
 
             if (result) {
@@ -105,6 +111,7 @@
 
               if (unspentOutputsToUse.length > 0) {
 
+                // build transaction
                 transaction = new bitcore.Transaction()
                   .from(unspentOutputsToUse) // Feed information about what unspent outputs one can use
                   .to(address, amount) // Add an output with the given amount of satoshis
@@ -116,6 +123,8 @@
                   transaction.fee(fee);
                 }
                 txHash = transaction.serialize();
+
+                // push transaction
                 BlockChain.pushTx(txHash).then(function onTransactionFinished() {
 
                   resolve({
