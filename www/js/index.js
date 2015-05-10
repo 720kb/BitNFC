@@ -5,6 +5,7 @@
   angular.module('bitNFC', [
     'ionic',
     '720kb.fx',
+    'bitNFC.filters',
     'bitNFC.providers',
     'bitNFC.factories',
     'bitNFC.controllers'])
