@@ -4,18 +4,19 @@
 
   angular.module('UnitConvert.filter', [])
 
-  .filter('UnitConvert',[function () {
+  .filter('UnitConvert', [function () {
 
-    var bitcore = require('bitcore');
+    var bitcore = require('bitcore')
+      , result;
 
     return function UnitConvert(amount, FromToString) {
-
+      /*eslint-disable new-cap*/
       switch (FromToString) {
         case 'mbtcToBtc':
-          return new bitcore.Unit.fromMilis(amount).toBTC();
+          result = new bitcore.Unit.fromMilis(amount).toBTC();
           break;
         case 'satoshiToMbtc':
-          return new bitcore.Unit.fromSatoshis(amount).mBTC;
+          result = new bitcore.Unit.fromSatoshis(amount).mBTC;
           break;
         // case 'mbtcToSatoshi':
         //   // TODO
@@ -26,8 +27,11 @@
         // case 'btcToMbtc':
         //   // TODO
         default:
-          return '9999999 [match not found - fix!] case: ' + FromToString;
+          result = '9999999 [match not found - fix!] case: ' + FromToString;
       }
+
+      return result;
+      /*eslint-enable new-cap*/
     };
   }]);
 }(angular, require));
