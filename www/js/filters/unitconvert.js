@@ -18,12 +18,14 @@
         case 'satoshiToMbtc':
           result = new bitcore.Unit.fromSatoshis(amount).mBTC;
           break;
+        case 'satoshiToBtc':
+          result = new bitcore.Unit.fromSatoshis(amount).BTC;
+          break;
         // case 'mbtcToSatoshi':
         //   // TODO
         // case 'btcToSatoshi':
         //   // TODO
-        // case 'satoshiToBtc':
-        //   // TODO
+
         // case 'btcToMbtc':
         //   // TODO
         default:
