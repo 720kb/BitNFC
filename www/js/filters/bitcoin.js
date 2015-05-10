@@ -25,7 +25,7 @@
         // case 'satoshiToBtc':
         //   // TODO
         default:
-          return '9999999 [match not found - fix!] case: '+FromToString;
+          return '9999999 [match not found - fix!] case: ' + FromToString;
       }
     };
   }]);
