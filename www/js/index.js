@@ -100,8 +100,8 @@
       address = BitCoin.address;
 
       $ionicPopup.confirm({
-        'title': 'NFC Bitcoin Wallet Generated',
-        'template': '<p>Your empty NFC tag is now a bitcoin wallet<p><p>A Private Key has been loaded into the Tag and this is the corresponding (public) Address: ' + address + ' - 0 mBTC -- you can now send money to the token.</p>'
+        'title': 'NFC Empty Tag Detected',
+        'template': '<h4>NFC Wallet Generated</h4><p>Your empty NFC tag is now a bitcoin wallet<p><p>A Private Key has been loaded into the Tag and this is the corresponding (public) Address: ' + address + ' - 0 mBTC -- you can now send money to the token.</p>'
       }).then(function onUserTouch(res) {
 
         if (res) {
