@@ -57,6 +57,18 @@
 </ion-side-menus>
 <!--footer tabs-->
 <div class="tabs tabs-light tabs-icon-top footer-tabs">
+	<!--debug only-->
+	<div ng-controller="DebugCtrl" class="button-bar" ng-if="debugMode">
+		<a ng-click="nfcEmpty()" class="button button-assertive">
+			NFC
+			<p>empty</p>
+		</a>
+		<a ng-click="nfcMessage()" class="button button-assertive">
+			NFC
+			<p>message</p>
+		</a>
+	</div>
+	<!--debug end-->
 	<div class="button-bar">
 		<a class="button button-royal" ui-sref="app.receive" ui-sref-active="active">
 			<i class="icon ion-arrow-down-a"></i>
