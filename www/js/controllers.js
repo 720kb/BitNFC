@@ -22,8 +22,7 @@
       var onBitcoinBalance;
 
       $scope.publicAddress = BitCoin.address;
-      BitCoin.balance; // should be a method
-
+      BitCoin.balance; // should be a method (used also in sendctrl)
       onBitcoinBalance = $rootScope.$on('bitcoin:balance', function OnBitcoinBalanceEvent(eventInfo, balance){
 
         $scope.balance = balance;
@@ -48,6 +47,8 @@
   .controller('SendCtrl', ['$scope', '$stateParams',
     function SendCtrlController($scope, $stateParams) {
 
+    $scope.toAddress = '1antani';
+
     if ($stateParams &&
       $stateParams.privateKey) {
 
@@ -56,6 +57,18 @@
         'txt': $scope.privateKey
       });
     }
+
+    // balance
+    BitCoin.balance;
+    onBitcoinBalance = $rootScope.$on('bitcoin:balance', function OnBitcoinBalanceEvent(eventInfo, balance){
+
+      $scope.balance = balance;
+    });
+
+    $scope.$on('$destroy', function () {
+
+      onBitcoinBalance();
+    });
   }])
   .controller('SweepCtrl', ['$scope', '$stateParams',
     function SweepCtrlController($scope, $stateParams) {

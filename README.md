@@ -36,6 +36,14 @@ on standard Mifare tags usually there is space for another NFC Record
 you could embed a link
 
 
+## TODO
+
+- integrate clipboard - look at ngcordova docs
+
+<http://ngcordova.com/docs/plugins/clipboard>
+
+
+
 ### Main actions: (v 0.0.1)
 
 
