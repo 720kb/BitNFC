@@ -43,26 +43,26 @@
         'address': {
           'get': function address() {
 
-            var address = this.privateKey.toAddress();;
-            $window.localStorage.bitNfcAddress = address;
+            $window.localStorage.bitNfcAddress = this.privateKey.toAddress();
             return address;
           }
         },
         'balance': {
           'get': function balance() {
-            BlockChain.balance(this.address, function(result){
+            BlockChain.balance(this.address, function balance(result){
               $rootScope.$emit('bitcoin:balance', result.data);
             });
           }
         }
       });
 
-      BitCoin.prototype.sweep = function sweep(privateKey, fee) {
+      BitCoin.prototype.sweep = function sweep(privateKey) {
         // addressFrom == privateKey.toAddress().toString()
         // addressTo == this.address
+        console.log('privateKey', privateKey);
       };
 
-      BitCoin.prototype.send = function send(amount, addressTo, fee) {
+      BitCoin.prototype.send = function send(amount, addressTo) {
 
         // - get the unspent outputs
         // - create transaction
@@ -79,7 +79,7 @@
 
           // get the unspent outputs
           BlockChain.unspent(this.address.toString()).then(function unspent(result) {
-            console.log("all unspent", result)
+            console.log('all unspent', result);
             if (result) {
 
               var unspentOutputsIndex = 0
@@ -88,7 +88,8 @@
                 , partialAmount = 0
                 , unspentOutputsToUse = []
                 , transaction
-                , txHash;
+                , txHash
+                , amountBtc;
               for (; unspentOutputsIndex < unspentOutputsLength; unspentOutputsIndex += 1) {
 
                 anUnspentOutput = result.data.unspent_outputs[unspentOutputsIndex];
@@ -98,7 +99,7 @@
 
                   partialAmount += anUnspentOutput.value;
 
-                  var amountBtc = $filter('UnitConvert')(anUnspentOutput.value, 'satoshiToBtc')
+                  amountBtc = $filter('UnitConvert')(anUnspentOutput.value, 'satoshiToBtc');
 
                   unspentOutputsToUse.push({
                     'address': this.address.toString(),
@@ -120,7 +121,7 @@
                   .fee(5000)
                   .sign(this.privateKey); // Signs all the inputs it can
 
-                  console.log("serialized tx", transaction.serialize())
+                  console.log('serialized tx', transaction.serialize());
 
 
                 // if (fee) {

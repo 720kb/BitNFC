@@ -66,7 +66,7 @@
 
       $scope.publicAddress = BitCoin.address;
   }])
-  .controller('SendCtrl', ['$rootScope','$scope', '$stateParams', 'BitCoin',
+  .controller('SendCtrl', ['$rootScope', '$scope', '$stateParams', 'BitCoin',
     function SendCtrlController($rootScope, $scope, $stateParams, BitCoin) {
 
     var onBitcoinBalance;
