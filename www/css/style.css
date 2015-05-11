@@ -76,3 +76,10 @@
 	-o-transform: scale(1.3);
 	transform: scale(1.3);
 }
+/*ion-spinner*/
+.button ion-spinner svg{
+	max-width:23px;
+	margin-top:-4px;
+	vertical-align:middle;
+
+}

@@ -1,9 +1,7 @@
 <ion-view title="Send">
   <ion-content>
-    <div class="separator50"></div>
     <div class="col col-80 col-offset-10">
       <div class="text-center">
-        <div class="separator30"></div>
         <div class="col col-80 col-offset-10">
           <div>Phone Wallet:</div>
           <div>{{publicAddress.toString()}}</div>
@@ -18,9 +16,10 @@
           <input ng-model="toAddress" type="text" placeholder="1...">
         </label>
         <div class="separator10"></div>
-        <button ng-click="sendBtc()" class="button button-block button-royal">
-          <ion-spinner class="light" ng-show="sending"></ion-spinner>
-          Send
+        <button ng-click="sendBtc()" class="button button-block icon icon-left button-royal">
+          <ion-spinner icon="ripple" class="spinner-light" ng-show="sending"></ion-spinner>
+            <span ng-show="!sending">Send</span>
+            <span ng-show="sending">Sending ...</span>
         </button>
         <div class="assertive">{{errorMessage}}</div>
         <div class="balanced">{{sentMessage}}</div>
@@ -31,9 +30,10 @@
           <label class="item item-input">
             <input type="text" placeholder="0.0 mBTC" ng-model="outputAmount">
           </label>
-          <button ng-click="sendBtc()" class="button button-block button-royal">
-            <ion-spinner class="light" ng-show="sending"></ion-spinner>
-            Send
+          <button ng-click="sendBtc()" class="button button-block icon-left button-royal">
+           <ion-spinner icon="ripple" class="spinner-light" ng-show="sending"></ion-spinner>
+            <span ng-show="!sending">Send</span>
+            <span ng-show="sending">Sending ...</span>
           </button>
           <div class="assertive">{{errorMessage}}</div>
           <div class="balanced">{{sentMessage}}</div>
