@@ -33,10 +33,12 @@
         $scope.resetFlags();
         $scope.sending = true;
 
+        $log.log("amount: " + Number($scope.outputAmount) + ", address: " + $scope.toAddress)
+
         BitCoin.send(Number($scope.outputAmount), $scope.toAddress).then(function onSent(response) {
 
           $log.log('SENT');
-          $log.log('response:', response);
+          $log.log('response: ' + response);
 
           $scope.$apply(function doApply() {
 
@@ -46,7 +48,7 @@
           });
         }).catch(function onError(error){
 
-          $log.log('catched error', error.message);
+          $log.log('catched error: ' + error.message);
 
           $scope.$apply(function doApply() {
 
