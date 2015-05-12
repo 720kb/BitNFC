@@ -1,9 +1,36 @@
-/*global angular*/
+/*global angular Connection navigator*/
 (function withAngular(angular) {
   'use strict';
 
   angular.module('Cordova.factory', [])
+  .factory('CordovaNetworkInterceptor', ['$q', '$window',
+    function CordovaNetworkInterceptor($q, $window) {
+    return {
+      'request': function (config) {
 
+        var networkState;
+
+        try {
+
+          networkState = navigator.connection.type;
+
+          if (networkState === Connection.UNKNOWN || networkState === Connection.NONE) {
+
+            if (confirm('You are OFFLINE, please connect the device.')) {
+
+              $window.location.reload();
+            }
+          }
+        }
+        catch (e) {
+
+          $log.info('Network not available', e);
+        }
+
+        return config || $q.when(config);
+      }
+    };
+  }])
   .factory('CordovaClipboard', ['$q', '$window',
     function CordovaClipboard($q, $window) {
 

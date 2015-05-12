@@ -15,8 +15,8 @@
     'denominations': ['BTC', 'SATOSHI', 'mBTC']
   })
 
-  .config(['$stateProvider', '$urlRouterProvider',
-    function configurationFunction($stateProvider, $urlRouterProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', '$httpProvider',
+    function configurationFunction($stateProvider, $urlRouterProvider, $httpProvider) {
 
       $stateProvider
       .state('app', {
@@ -68,6 +68,7 @@
       });
 
       $urlRouterProvider.otherwise('/app/home');
+      $httpProvider.interceptors.push('CordovaNetworkInterceptor');
   }])
 
   .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', 'nfc', 'BitCoin',
