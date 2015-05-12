@@ -67,7 +67,7 @@
       $scope.publicAddress = BitCoin.address;
   }])
   .controller('SendCtrl', ['$rootScope', '$scope', '$stateParams', 'BitCoin', 'CordovaClipboard',
-    function SendCtrlController($rootScope, $scope, $stateParams, BitCoin, 'CordovaClipboard') {
+    function SendCtrlController($rootScope, $scope, $stateParams, BitCoin, CordovaClipboard) {
 
     var onBitcoinBalance;
     $scope.publicAddress = BitCoin.address;
