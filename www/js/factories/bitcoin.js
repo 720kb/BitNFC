@@ -41,12 +41,6 @@
             $window.localStorage.bitNfcAddress = this.privateKey.toAddress();
             return address;
           }
-        },
-        'balance': {
-          'get': function balance() {
-
-            return BlockChain.balance(this.address);
-          }
         }
       });
 
@@ -149,6 +143,11 @@
       BitCoin.prototype.generatePrivateKey = function generatePrivateKey() {
 
         return new bitcore.PrivateKey();
+      };
+
+      BitCoin.prototype.balance = function balance() {
+
+        return BlockChain.balance(this.address);
       };
 
     return new BitCoin();
