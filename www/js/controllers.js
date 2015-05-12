@@ -66,15 +66,23 @@
 
       $scope.publicAddress = BitCoin.address;
   }])
-  .controller('SendCtrl', ['$rootScope', '$scope', '$stateParams', 'BitCoin', 'CordovaClipboard',
-    function SendCtrlController($rootScope, $scope, $stateParams, BitCoin, CordovaClipboard) {
+  .controller('SendCtrl', ['$rootScope', '$scope', '$window', '$log', '$stateParams', 'BitCoin', 'CordovaClipboard',
+    function SendCtrlController($rootScope, $scope, $window, $log, $stateParams, BitCoin, CordovaClipboard) {
 
     var onBitcoinBalance;
     $scope.publicAddress = BitCoin.address;
     // $scope.toAddress = '1antani';
     $scope.toAddress = '197GxXSqqSAkhLXyy9XrtEySvssuDcQGMY';
-
     $scope.outputAmount = Number('1000'); // FIXME - use amount from ng-model
+
+    if ($stateParams &&
+      $stateParams.privateKey) {
+
+      $scope.privateKey = $stateParams.privateKey;
+      $scope.$emit('nfc:write-tag', {
+        'txt': $scope.privateKey
+      });
+    }
 
     $scope.resetFlags = function resetLayoutFlags() {
 
@@ -90,15 +98,20 @@
         $scope.sending = true;
 
         BitCoin.send(Number($scope.outputAmount), $scope.toAddress).then(function(response){
-          console.log('SENT');
-          console.log('response:', response);
+
+          $log.log('SENT');
+          $log.log('response:', response);
+
           $scope.$apply(function () {
+
             $scope.sending = undefined;
             $scope.successText = 'Payment sent.';
             $scope.errorText = false;
           });
         }).catch(function(error){
-          console.log('catched error', error.message);
+
+          $log.log('catched error', error.message);
+
           $scope.$apply(function () {
 
             $scope.errorText = error.message;
@@ -109,7 +122,7 @@
       }
     };
 
-    $scope.copyToClipboard = function copyToClipboard(what) {
+    $scope.copyToClipboard = function copyToClipboard() {
 
       $scope.resetFlags();
 
@@ -118,7 +131,8 @@
         $scope.copyingClipboard = true;
         $scope.copied = false;
 
-        if ($scope.privateKey.toString().match(/^5[HJK][1-9A-Za-z][^OIl]{49}/)) {
+        if ($scope.privateKey &&
+          $scope.privateKey.toString().match(/^5[HJK][1-9A-Za-z][^OIl]{49}/)) {
 
           CordovaClipboard.copy($scope.privateKey.toString());
           $scope.copyingClipboard = false;
@@ -127,21 +141,16 @@
 
           $scope.copyingClipboard = false;
           $scope.copied = false;
+          $scope.errorText = 'Private key is not present.';
+
+          $log.error('Private key is not present', $scope.privateKey);
         }
       }
     };
 
-    if ($stateParams &&
-      $stateParams.privateKey) {
-
-      $scope.privateKey = $stateParams.privateKey;
-      $scope.$emit('nfc:write-tag', {
-        'txt': $scope.privateKey
-      });
-    }
-
     // balance
     BitCoin.balance;
+
     onBitcoinBalance = $rootScope.$on('bitcoin:balance', function OnBitcoinBalanceEvent(eventInfo, balance){
 
       $scope.balance = balance;

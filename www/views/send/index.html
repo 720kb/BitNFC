@@ -25,9 +25,9 @@
           <div>{{balance | UnitConvert:'satoshiToMbtc'}} mBTC</div>
         </div>
         <div class="separator10"></div>
-        <button class="button b button-block button-royal">Create NFC Wallet</button>
+        <button class="button button-block button-royal">Create NFC Wallet</button>
         <button class="button button-block" ng-click="copyToClipboard()">
-        <ion-spinner icon="ripple" class="spinner-light" ng-show="copyingClipboard"></ion-spinner>
+        <ion-spinner icon="ripple" ng-show="copyingClipboard"></ion-spinner>
             <span ng-show="!copied && !copyingClipboard">Copy to Clipboard</span>
             <span ng-show="!copied && copyingClipboard">Copying ...</span>
             <span ng-show="copied && !copyingClipboard">
