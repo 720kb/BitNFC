@@ -20,7 +20,8 @@
     "org.apache.cordova.console",
     "com.ionic.keyboard",
     "org.apache.cordova.splashscreen",
-    "com.chariotsolutions.nfc.plugin"
+    "com.chariotsolutions.nfc.plugin",
+    "com.verso.cordova.clipboard"
   ],
   "cordovaPlatforms": [
     {
