@@ -4,5 +4,6 @@
 
   angular.module('bitNFC.factories', [
     'BitCoin.factory',
-    'BlockChain.factory']);
+    'BlockChain.factory',
+    'Cordova.factory']);
 }(angular));
