@@ -76,10 +76,17 @@
 
     $scope.outputAmount = Number('1000'); // FIXME - use amount from ng-model
 
+    $scope.resetFlags = function resetLayoutFlags() {
+
+      $scope.errorText = undefined;
+      $scope.successText = undefined;
+    };
+
     $scope.sendBtc = function () {
 
       if (!$scope.sending) {
 
+        $scope.resetFlags();
         $scope.sending = true;
 
         BitCoin.send(Number($scope.outputAmount), $scope.toAddress).then(function(response){
@@ -87,13 +94,15 @@
           console.log('response:', response);
           $scope.$apply(function () {
             $scope.sending = undefined;
-            $scope.sentMessage = 'Payment sent!';
+            $scope.successText = 'Payment sent!';
+            $scope.errorText = false;
           });
         }).catch(function(error){
           console.log('catched error', error.message);
           $scope.$apply(function () {
 
-            $scope.errorMessage = error.message;
+            $scope.errorText = error.message;
+            $scope.successText = false;
             $scope.sending = undefined;
           });
         });

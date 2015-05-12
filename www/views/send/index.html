@@ -1,5 +1,21 @@
 <ion-view title="Send">
   <ion-content>
+<!--all the errors and success messages-->
+    <div ng-if="errorText" class="text-center assertive-bg light">
+      <div class="separator5"></div>
+        <span ngfx-bounce-in="errorText">
+          <i class="icon ion-alert"></i> {{errorText}}
+        </span>
+      <div class="separator5"></div>
+      </div>
+    <div ng-if="successText" class="text-center balanced-bg light">
+      <div class="separator5"></div>
+      <span ngfx-bounce-in="successText">
+        <i class="icon ion-checkmark"></i> {{successText}}
+      </span>
+      <div class="separator5"></div>
+    </div>
+    <!--end all errors and success messages-->
     <div class="col col-80 col-offset-10">
       <div class="text-center">
         <div class="col col-80 col-offset-10">
@@ -21,8 +37,6 @@
             <span ng-show="!sending">Send</span>
             <span ng-show="sending">Sending ...</span>
         </button>
-        <div class="assertive">{{errorMessage}}</div>
-        <div class="balanced">{{sentMessage}}</div>
         <div class="separator30"></div>
         <div class="list">
           Amount:
@@ -35,8 +49,6 @@
             <span ng-show="!sending">Send</span>
             <span ng-show="sending">Sending ...</span>
           </button>
-          <div class="assertive">{{errorMessage}}</div>
-          <div class="balanced">{{sentMessage}}</div>
         </div>
       </div>
     </div>
