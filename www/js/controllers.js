@@ -66,8 +66,8 @@
 
       $scope.publicAddress = BitCoin.address;
   }])
-  .controller('SendCtrl', ['$rootScope', '$scope', '$stateParams', 'BitCoin',
-    function SendCtrlController($rootScope, $scope, $stateParams, BitCoin) {
+  .controller('SendCtrl', ['$rootScope', '$scope', '$stateParams', 'BitCoin', 'CordovaClipboard',
+    function SendCtrlController($rootScope, $scope, $stateParams, BitCoin, 'CordovaClipboard') {
 
     var onBitcoinBalance;
     $scope.publicAddress = BitCoin.address;
@@ -118,8 +118,9 @@
         $scope.copyingClipboard = true;
         $scope.copied = false;
 
-        if ($scope.privateKey /*@makevoid regexp pvk pls*/) {
+        if ($scope.privateKey.toString().match(/^5[HJK][1-9A-Za-z][^OIl]{49}/)) {
 
+          CordovaClipboard.copy($scope.privateKey.toString());
           $scope.copyingClipboard = false;
           $scope.copied = true;
         } else {
