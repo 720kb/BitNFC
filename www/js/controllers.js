@@ -82,7 +82,7 @@
       $scope.successText = undefined;
     };
 
-    $scope.sendBtc = function () {
+    $scope.sendBtc = function sendBtc() {
 
       if (!$scope.sending) {
 
@@ -94,7 +94,7 @@
           console.log('response:', response);
           $scope.$apply(function () {
             $scope.sending = undefined;
-            $scope.successText = 'Payment sent!';
+            $scope.successText = 'Payment sent.';
             $scope.errorText = false;
           });
         }).catch(function(error){
@@ -106,6 +106,27 @@
             $scope.sending = undefined;
           });
         });
+      }
+    };
+
+    $scope.copyToClipboard = function copyToClipboard(what) {
+
+      $scope.resetFlags();
+
+      if (!$scope.copyingClipboard) {
+
+        $scope.copyingClipboard = true;
+        $scope.copied = false;
+
+        if (true /*regexp pvk*/) {
+
+          $scope.copyingClipboard = false;
+          $scope.copied = true;
+        } else {
+
+          $scope.copyingClipboard = false;
+          $scope.copied = false;
+        }
       }
     };
 
