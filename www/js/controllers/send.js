@@ -8,8 +8,8 @@
 
     $scope.publicAddress = BitCoin.address;
     // $scope.toAddress = '1antani';
-    $scope.toAddress = '197GxXSqqSAkhLXyy9XrtEySvssuDcQGMY';
-    $scope.outputAmount = Number('1000'); // FIXME - use amount from ng-model
+    // $scope.toAddress = '197GxXSqqSAkhLXyy9XrtEySvssuDcQGMY';
+    // $scope.outputAmount = Number('1000'); // FIXME - use amount from ng-model
 
     if ($stateParams &&
       $stateParams.privateKey) {
@@ -58,35 +58,29 @@
       }
     };
 
-    $scope.copyToClipboard = function copyToClipboard() {
+    $scope.copyFromClipboard = function copyFromClipboard() {
 
       $scope.resetFlags();
+      $scope.copied = false;
 
-      if (!$scope.copyingClipboard) {
+      CordovaClipboard.copy($scope.publicAddress.toString()).then(function onCopy() {
 
-        $scope.copyingClipboard = true;
-        $scope.copied = false;
+        if ($scope.publicAddress &&
+          $scope.publicAddress.toString().match(/^[13][^O0Il]{25,33}/)) {
 
-        if ($scope.privateKey &&
-          $scope.privateKey.toString().match(/^5[HJK][1-9A-Za-z][^OIl]{49}/)) {
-
-          CordovaClipboard.copy($scope.privateKey.toString()).then(function onCopy() {
-
-            $scope.copyingClipboard = false;
-            $scope.copied = true;
-          }).catch(function onCopyError(error) {
-
-            $log.error('Unable to copy to clipboard', error);
-          });
+          $scope.copied = true;
         } else {
 
-          $scope.copyingClipboard = false;
           $scope.copied = false;
-          $scope.errorText = 'Private key is not present.';
-
-          $log.error('Private key is not present', $scope.privateKey);
+          $scope.errorText = 'Clipboard doesn\'t cointain an address.';
+          $log.error('Clipboard doesn\'t cointain an address.', $scope.publicAddress);
         }
-      }
+
+      }).catch(function onCopyError(error) {
+
+        $log.error('Unable to copy to clipboard', error);
+      });
+
     };
 
     BitCoin.balance().then(function onBalance(balance) {

@@ -36,12 +36,21 @@ on standard Mifare tags usually there is space for another NFC Record
 you could embed a link
 
 
+
 ## TODO
 
 - integrate clipboard - look at ngcordova docs
 
 <http://ngcordova.com/docs/plugins/clipboard>
 
+
+- regex - address
+
+/^[13][^O0Il]{25,33}/
+
+- regex - pvt key
+
+/^5[HJK][1-9A-Za-z][^OIl]{49}/
 
 
 ### Main actions: (v 0.0.1)
