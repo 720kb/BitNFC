@@ -2,6 +2,23 @@
 (function withAngular(angular) {
   'use strict';
 
+  var bootstrapAngular = function bootstrapAngular() {
+
+    var domElement = document.getElementsByTagName('body')[0];
+    angular.bootstrap(domElement, ['bitNFC']);
+  };
+
+  if (window.cordova) {
+
+    document.addEventListener('deviceready', function () {
+
+      bootstrapAngular();
+    }, false);
+  } else {
+
+    bootstrapAngular();
+  }
+
   angular.module('bitNFC', [
     'ionic',
     '720kb.fx',
