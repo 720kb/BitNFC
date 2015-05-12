@@ -3,8 +3,8 @@
   'use strict';
 
   angular.module('Cordova.factory', [])
-  .factory('CordovaNetworkInterceptor', ['$q', '$window',
-    function CordovaNetworkInterceptor($q, $window) {
+  .factory('CordovaNetworkInterceptor', ['$q', '$window', '$log',
+    function CordovaNetworkInterceptor($q, $window, $log) {
     return {
       'request': function (config) {
 
