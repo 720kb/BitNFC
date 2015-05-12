@@ -4,7 +4,8 @@
 
   angular.module('Cordova.factory', [])
 
-  .factory('CordovaClipboard', ['$q', '$window', function ($q, $window) {
+  .factory('CordovaClipboard', ['$q', '$window',
+    function CordovaClipboard($q, $window) {
 
       var q
         , copy = function copyClipboard(text) {
