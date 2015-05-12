@@ -4,20 +4,12 @@
 
   var bootstrapAngular = function bootstrapAngular() {
 
-    var domElement = document.getElementsByTagName('body')[0];
-    angular.bootstrap(domElement, ['bitNFC']);
+    var domElement = document.getElementsByTagName('html')[0];
+    window.setTimeout(function timeOutFired() {
+
+      angular.bootstrap(domElement, ['bitNFC']);
+    }, 0);
   };
-
-  if (window.cordova) {
-
-    document.addEventListener('deviceready', function onDeviceReady() {
-
-      bootstrapAngular();
-    }, false);
-  } else {
-
-    bootstrapAngular();
-  }
 
   angular.module('bitNFC', [
     'ionic',
@@ -173,4 +165,15 @@
       });
     });
   }]);
+
+  if (window.cordova) {
+
+    document.addEventListener('deviceready', function onDeviceReady() {
+
+      bootstrapAngular();
+    }, false);
+  } else {
+
+    bootstrapAngular();
+  }
 }(angular, document, window));
