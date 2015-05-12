@@ -26,14 +26,12 @@
         </div>
         <div class="separator10"></div>
         <button class="button button-block button-royal">Create NFC Wallet</button>
-        <button class="button button-block" ng-click="copyToClipboard()">
-        <ion-spinner icon="ripple" ng-show="copyingClipboard"></ion-spinner>
-            <span ng-show="!copied && !copyingClipboard">Copy to Clipboard</span>
-            <span ng-show="!copied && copyingClipboard">Copying ...</span>
-            <span ng-show="copied && !copyingClipboard">
-              <i class="icon ion-android-share"></i>
-              Copied
-            </span>
+        <button class="button button-block" ng-click="copyFromClipboard()">
+          <span ng-show="!copied">Copy from Clipboard</span>
+          <span ng-show="copied">
+            <i class="icon ion-android-share"></i>
+            Copied
+          </span>
         </button>
         <div class="separator10"></div>
         <label class="item item-input">
