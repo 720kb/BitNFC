@@ -2,7 +2,7 @@
 (function withAngular(angular) {
   'use strict';
 
-  angular.module('Cordova.factory', [])
+  angular.module('System.factory', [])
   .factory('CordovaNetworkInterceptor', ['$q', '$window', '$log',
     function CordovaNetworkInterceptor($q, $window, $log) {
     return {
