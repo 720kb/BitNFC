@@ -4,8 +4,8 @@
 
   angular.module('BitCoin.factory', [])
 
-  .factory('BitCoin', ['$window', '$rootScope', '$log', '$filter', 'BlockChain',
-    function BitCoinFactory($window, $rootScope, $log, $filter, BlockChain) {
+  .factory('BitCoin', ['$window', '$rootScope', '$log', '$q', '$filter', 'BlockChain',
+    function BitCoinFactory($window, $rootScope, $log, $q, $filter, BlockChain) {
 
       var bitcore = require('bitcore')
 
@@ -19,11 +19,6 @@
       //
       // TODO import bitcoin private key
       , BitCoin = function BitCoin() {
-
-        if (!$window.localStorage.bitNFC) {
-
-          $window.localStorage.bitNFC = {};
-        }
       };
 
       Object.defineProperties(BitCoin.prototype, {
@@ -49,9 +44,8 @@
         },
         'balance': {
           'get': function balance() {
-            BlockChain.balance(this.address, function balance(result){
-              $rootScope.$emit('bitcoin:balance', result.data);
-            });
+
+            return BlockChain.balance(this.address);
           }
         }
       });

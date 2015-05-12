@@ -25,6 +25,9 @@
                 response.data) {
 
                 resolve(response);
+              } else {
+
+                reject('Empty response.');
               }
             }).catch(function onError(error) {
 
@@ -32,21 +35,30 @@
             });
           });
         }
-        , balance = function balance(address, handler) {
+        , balance = function balance(address) {
 
-            $http({
-              'method': 'GET',
-              'url': 'https://blockchain.info/q/addressbalance/' + address,
-              'params': {
-                'format': 'json'
-              }
-            }).then(function onSuccess(response) {
+            return $q(function deferred(resolve, reject) {
 
-              if (response &&
-                response.data) {
+              $http({
+                'method': 'GET',
+                'url': 'https://blockchain.info/q/addressbalance/' + address,
+                'params': {
+                  'format': 'json'
+                }
+              }).then(function onSuccess(response) {
 
-                handler(response);
-              }
+                if (response &&
+                  response.data) {
+
+                  resolve(response.data);
+                } else {
+
+                  reject('Empty response.');
+                }
+              }).catch(function onError(error) {
+
+                reject(error);
+              });
             });
           }
         , pushTx = function pushTx(transactionHash) {

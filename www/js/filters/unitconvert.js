@@ -4,7 +4,7 @@
 
   angular.module('UnitConvert.filter', [])
 
-  .filter('UnitConvert', [function () {
+  .filter('UnitConvert', [function UnitConvertFilter() {
 
     var bitcore = require('bitcore')
       , result;
