@@ -21,7 +21,8 @@
     "com.ionic.keyboard",
     "org.apache.cordova.splashscreen",
     "com.chariotsolutions.nfc.plugin",
-    "com.verso.cordova.clipboard"
+    "com.verso.cordova.clipboard",
+    "org.apache.cordova.network-information"
   ],
   "cordovaPlatforms": [
     {
