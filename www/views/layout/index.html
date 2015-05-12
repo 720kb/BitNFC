@@ -22,7 +22,7 @@
 		</ion-header-bar>
 		<ion-content ng-controller="SettingsCtrl">
 			<div class="list">
-				<label class="item item-input item-select">
+				<label class="item item-input item-select no-border-top">
 					<div class="input-label">Denomination</div>
 					<select ng-model="settingsDenomination" ng-change="setDenomination()">
 						<option ng-repeat="item in denominations" ng-selected="settingsDenomination === item" ng-value="item">
