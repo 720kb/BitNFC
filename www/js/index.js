@@ -68,7 +68,6 @@
       });
 
       $urlRouterProvider.otherwise('/app/home');
-      $httpProvider.defaults.withCredentials = true;//XHR Credentials
   }])
 
   .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', 'nfc', 'BitCoin',
