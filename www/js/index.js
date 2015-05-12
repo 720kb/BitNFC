@@ -1,5 +1,5 @@
-/*global angular*/
-(function withAngular(angular) {
+/*global angular document window*/
+(function withAngular(angular, document, window) {
   'use strict';
 
   var bootstrapAngular = function bootstrapAngular() {
@@ -10,7 +10,7 @@
 
   if (window.cordova) {
 
-    document.addEventListener('deviceready', function () {
+    document.addEventListener('deviceready', function onDeviceReady() {
 
       bootstrapAngular();
     }, false);
@@ -173,4 +173,4 @@
       });
     });
   }]);
-}(angular));
+}(angular, document, window));

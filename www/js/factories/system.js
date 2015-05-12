@@ -3,28 +3,42 @@
   'use strict';
 
   angular.module('System.factory', [])
-  .factory('CordovaNetworkInterceptor', ['$q', '$window', '$log',
-    function CordovaNetworkInterceptor($q, $window, $log) {
-    return {
-      'request': function (config) {
+  .factory('Network', [function () {
 
-        var networkState;
+    var isOffline = function isOffline() {
 
-        try {
+      try {
 
-          networkState = navigator.connection.type;
+        var networkState = navigator.connection.type;
+        return networkState === Connection.UNKNOWN || networkState === Connection.NONE;
+      } catch (e) {
 
-          if (networkState === Connection.UNKNOWN || networkState === Connection.NONE) {
+        return false;
+      }
+    };
 
-            if (confirm('You are OFFLINE, please connect the device.')) {
+    /*var whenOffline = function whenOffline() {
 
-              $window.location.reload();
-            }
-          }
+      $timeout(function () {
+
+        if (confirm('You are OFFLINE, please connect the device and click OK')) {
+
+          $window.location.reload();
         }
-        catch (e) {
+      }, 0);*/
 
-          $log.info('Network not available', e);
+    return {
+      'isOffline': isOffline
+    };
+  }])
+  .factory('CordovaNetworkInterceptor', ['$q', 'Network', '$window',
+    function CordovaNetworkInterceptor($q, Network, $window) {
+    return {
+      'request': function onRequest(config) {
+
+        if (Network.isOffline()) {
+
+          $window.alert('you\'re offline');
         }
 
         return config || $q.when(config);
