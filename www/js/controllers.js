@@ -118,7 +118,7 @@
         $scope.copyingClipboard = true;
         $scope.copied = false;
 
-        if (true /*regexp pvk*/) {
+        if ($scope.privateKey /*@makevoid regexp pvk pls*/) {
 
           $scope.copyingClipboard = false;
           $scope.copied = true;
