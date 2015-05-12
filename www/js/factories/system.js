@@ -27,14 +27,15 @@
         }
       }, 0);*/
   }])
-  .factory('CordovaNetworkInterceptor', ['$q', 'Network', '$window',
-    function CordovaNetworkInterceptor($q, Network, $window) {
+
+  .factory('CordovaNetworkInterceptor', ['$q', 'Network', '$window', '$rootScope',
+    function CordovaNetworkInterceptor($q, Network, $window, $rootScope) {
     return {
       'request': function onRequest(config) {
 
         if (Network.isOffline()) {
 
-          $window.alert('you\'re offline');
+          $rootScope.$emit('network:offline');
         }
 
         return config || $q.when(config);

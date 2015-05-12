@@ -164,6 +164,21 @@
         }
       });
     });
+
+    $rootScope.$on('network:offline', function onNetworkOffline() {
+
+      $ionicPopup.confirm({
+        'title': 'NETWORK ERROR',
+        'template': '<p>You are offline, please connect your device</p>'
+      }).then(function onUserTouch(res) {
+
+        if (res) {
+
+          $state.go('app.home');
+        }
+      });
+    });
+
   }]);
 
   if (window.cordova) {
