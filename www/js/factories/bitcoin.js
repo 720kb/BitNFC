@@ -4,8 +4,8 @@
 
   angular.module('BitCoin.factory', [])
 
-  .factory('BitCoin', ['$window', '$rootScope', '$filter', 'BlockChain',
-    function BitCoinFactory($window, $rootScope, $filter, BlockChain) {
+  .factory('BitCoin', ['$window', '$rootScope', '$log', '$filter', 'BlockChain',
+    function BitCoinFactory($window, $rootScope, $log, $filter, BlockChain) {
 
       var bitcore = require('bitcore')
 
@@ -59,7 +59,7 @@
       BitCoin.prototype.sweep = function sweep(privateKey) {
         // addressFrom == privateKey.toAddress().toString()
         // addressTo == this.address
-        console.log('privateKey', privateKey);
+        $log.log('privateKey', privateKey);
       };
 
       BitCoin.prototype.send = function send(amount, addressTo) {
@@ -79,7 +79,7 @@
 
           // get the unspent outputs
           BlockChain.unspent(this.address.toString()).then(function unspent(result) {
-            console.log('all unspent', result);
+            $log.log('all unspent', result);
             if (result) {
 
               var unspentOutputsIndex = 0
@@ -121,7 +121,7 @@
                   .fee(5000)
                   .sign(this.privateKey); // Signs all the inputs it can
 
-                  console.log('serialized tx', transaction.serialize());
+                  $log.log('serialized tx', transaction.serialize());
 
 
                 // if (fee) {
