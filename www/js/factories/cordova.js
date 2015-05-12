@@ -15,9 +15,9 @@
           $window.cordova.plugins.clipboard.copy(text, function copyClipboardSuccess() {
 
             q.resolve();
-          }, function copyClipboardFail() {
+          }, function copyClipboardFail(error) {
 
-            q.reject();
+            q.reject(error);
           });
 
           return q.promise;
@@ -29,9 +29,9 @@
           $window.cordova.plugins.clipboard.paste(function pasteClipboardSuccess(text) {
 
             q.resolve(text);
-          }, function pasteClipboardFail() {
+          }, function pasteClipboardFail(error) {
 
-            q.reject();
+            q.reject(error);
           });
 
           return q.promise;

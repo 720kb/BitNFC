@@ -134,9 +134,14 @@
         if ($scope.privateKey &&
           $scope.privateKey.toString().match(/^5[HJK][1-9A-Za-z][^OIl]{49}/)) {
 
-          CordovaClipboard.copy($scope.privateKey.toString());
-          $scope.copyingClipboard = false;
-          $scope.copied = true;
+          CordovaClipboard.copy($scope.privateKey.toString()).then(function () {
+
+            $scope.copyingClipboard = false;
+            $scope.copied = true;
+          }).catch(function (error) {
+
+            $log.error('Unable to copy to clipboard', error);
+          });
         } else {
 
           $scope.copyingClipboard = false;
