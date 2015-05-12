@@ -15,8 +15,8 @@
     'denominations': ['BTC', 'SATOSHI', 'mBTC']
   })
 
-  .config(['$stateProvider', '$urlRouterProvider', '$httpProvider',
-    function configurationFunction($stateProvider, $urlRouterProvider, $httpProvider) {
+  .config(['$stateProvider', '$urlRouterProvider',
+    function configurationFunction($stateProvider, $urlRouterProvider) {
 
       $stateProvider
       .state('app', {
