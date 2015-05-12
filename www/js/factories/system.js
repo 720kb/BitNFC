@@ -3,9 +3,9 @@
   'use strict';
 
   angular.module('System.factory', [])
-  .factory('Network', [function () {
+  .service('Network', [function () {
 
-    var isOffline = function isOffline() {
+    this.isOffline = function isOffline() {
 
       try {
 
@@ -17,7 +17,7 @@
       }
     };
 
-    /*var whenOffline = function whenOffline() {
+    /*this.whenOffline = function whenOffline() {
 
       $timeout(function () {
 
@@ -26,10 +26,6 @@
           $window.location.reload();
         }
       }, 0);*/
-
-    return {
-      'isOffline': isOffline
-    };
   }])
   .factory('CordovaNetworkInterceptor', ['$q', 'Network', '$window',
     function CordovaNetworkInterceptor($q, Network, $window) {
