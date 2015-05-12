@@ -38,8 +38,7 @@
         'address': {
           'get': function address() {
 
-            $window.localStorage.bitNfcAddress = this.privateKey.toAddress();
-            return address;
+            return this.privateKey.publicKey.toAddress();
           }
         }
       });
