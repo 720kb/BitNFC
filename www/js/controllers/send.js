@@ -63,17 +63,18 @@
       $scope.resetFlags();
       $scope.copied = false;
 
-      CordovaClipboard.copy($scope.publicAddress.toString()).then(function onCopy() {
+      CordovaClipboard.paste().then(function onPaste(clipboardText) {
 
-        if ($scope.publicAddress &&
-          $scope.publicAddress.toString().match(/^[13][^O0Il]{25,33}/)) {
+        if (clipboardText &&
+          clipboardText.match(/^[13][^O0Il]{25,33}/)) {
 
+          $scope.toAddress = clipboardText;
           $scope.copied = true;
         } else {
 
           $scope.copied = false;
           $scope.errorText = 'Clipboard doesn\'t cointain an address.';
-          $log.error('Clipboard doesn\'t cointain an address.', $scope.publicAddress);
+          $log.error('Clipboard doesn\'t cointain an address.');
         }
 
       }).catch(function onCopyError(error) {
