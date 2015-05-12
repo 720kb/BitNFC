@@ -46,18 +46,18 @@
 <div class="tabs tabs-light tabs-icon-top footer-tabs">
 	<!--debug only-->
 	<div ng-controller="DebugCtrl" class="button-bar" ng-if="debugMode">
-		<a ng-click="nfcEmpty()" class="button button-assertive">
+		<a ng-click="nfcEmpty()" class="button button-dark">
 			NFC
 			<p>empty</p>
 		</a>
-		<a ng-click="nfcMessage()" class="button button-assertive">
+		<a ng-click="nfcMessage()" class="button button-dark">
 			NFC
 			<p>message</p>
 		</a>
 	</div>
 	<!--debug end-->
 	<div class="button-bar">
-		<a class="button button-royal" ui-sref="app.receive" ui-sref-active="active">
+		<a class="button button-assertive" ui-sref="app.receive" ui-sref-active="active">
 			<i class="icon ion-arrow-down-a"></i>
 			<p>Receive</p>
 		</a>
