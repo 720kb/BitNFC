@@ -117,7 +117,7 @@
         'title': 'NFC Empty Tag Detected',
         'templateUrl': 'views/popup/empty-tag.html',
         'scope': $rootScope
-      }).then(function onUserTouch(res) {
+      }).then(function onUserTouch() {
 
         /*if (res) {
 
@@ -143,7 +143,7 @@
             'title': 'Detected NFC Tag with Wallet',
             'templateUrl': 'views/popup/nfc-wallet.html',
             'scope': $rootScope
-          }).then(function onUserTouch(res) {
+          }).then(function onUserTouch() {
 
             /*if (res) {
 
