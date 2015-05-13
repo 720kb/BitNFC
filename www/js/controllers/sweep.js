@@ -6,7 +6,13 @@
   .controller('SweepCtrl', ['$scope', '$stateParams',
     function SweepCtrlController($scope, $stateParams) {
 
-      $scope.params = $stateParams;
+    if ($stateParams &&
+      $stateParams.privateKey) {
 
+      $scope.privateKey = $stateParams.privateKey;
+      $scope.$emit('nfc:write-tag', {
+        'txt': $scope.privateKey.toString()
+      });
+    }
   }]);
 }(angular));

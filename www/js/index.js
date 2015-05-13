@@ -5,10 +5,7 @@
   var bootstrapAngular = function bootstrapAngular() {
 
     var domElement = document.getElementsByTagName('html')[0];
-    window.setTimeout(function timeOutFired() {
-
-      angular.bootstrap(domElement, ['bitNFC']);
-    }, 0);
+    angular.bootstrap(domElement, ['bitNFC']);
   };
 
   angular.module('bitNFC', [
@@ -65,9 +62,6 @@
       })
       .state('app.send', {
         'url': '/send',
-        // 'params': {
-        //   'privateKey': undefined
-        // },
         'views': {
           'appContent': {
             'templateUrl': 'views/send/index.html',
@@ -80,12 +74,8 @@
       $httpProvider.interceptors.push('CordovaNetworkInterceptor');
   }])
 
-  .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', 'nfc', 'BitCoin',
-    function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, nfc, BitCoin) {
-
-    var address
-      , privateKey
-      , balance;
+  .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', 'nfc', 'BitCoin', 'BlockChain',
+    function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, nfc, BitCoin, BlockChain) {
 
     $rootScope.debugMode = true; //false
 
@@ -114,7 +104,6 @@
     $rootScope.$on('nfc:status-ko', function onNfcStatusOk(eventsInformations, payload) {
 
       $rootScope.nfcStatus = false;
-
       if (payload &&
         payload.error) {
 
@@ -127,42 +116,51 @@
 
     $rootScope.$on('nfc:status-empty', function onEmptyTag() {
 
-      privateKey = BitCoin.generatePrivateKey();
-      address = privateKey.toAddress();
+      var privateKey = BitCoin.generatePrivateKey();
 
+      $rootScope.tagAddress = privateKey.toAddress();
       $ionicPopup.confirm({
         'title': 'NFC Empty Tag Detected',
-        'template': '<h4>NFC Wallet Generated</h4><p>Your empty NFC tag is now a bitcoin wallet<p><p>A Private Key has been loaded into the Tag and this is the corresponding (public) Address: ' + address.toString() + ' - 0 mBTC -- you can now send money to the token.</p>'
+        'templateUrl': 'views/popup/empty-tag.html',
+        'scope': $rootScope
       }).then(function onUserTouch(res) {
 
-        if (res) {
+        /*if (res) {
 
-          $state.go('app.send', {
-            'address': address
+          $state.go('app.sweep', {
+            'privateKey': privateKey
           });
-        }
+        }*/
       });
     });
 
-    $rootScope.$on('nfc:status-message', function onMessageTag() {
+    $rootScope.$on('nfc:status-message', function onMessageTag(eventsInformations, payload) {
 
-      privateKey = '5antani';
-      address = '1antani';
-      balance = 123;
+      if (payload &&
+        payload.privateKey) {
 
-      $ionicPopup.confirm({
-        'title': 'Detected NFC Tag with Wallet',
-        'template': '<p>Private Key: ' + privateKey + '</p><p>Address: ' + address + '</p><p>Containing ' + balance + ' mBTC</p>'
-      }).then(function onUserTouch(res) {
+        var tagPrivateKey = BitCoin.fromPrivateKey(payload.privateKey);
 
-        if (res) {
+        $rootScope.tagAddress = tagPrivateKey.toAddress();
+        BlockChain.balance($rootScope.tagAddress).then(function onBalance(tagBalance) {
 
-          $state.go('app.send', {
-            // 'privateKey': ,
-            'address': BitCoin.address
+          $rootScope.tagBalance = tagBalance;
+          $ionicPopup.confirm({
+            'title': 'Detected NFC Tag with Wallet',
+            'templateUrl': 'views/popup/nfc-wallet.html',
+            'scope': $rootScope
+          }).then(function onUserTouch(res) {
+
+            /*if (res) {
+
+              $state.go('app.send', {
+                // 'privateKey': ,
+                'address': BitCoin.address
+              });
+            }*/
           });
-        }
-      });
+        });
+      }
     });
 
     $rootScope.$on('network:offline', function onNetworkOffline() {
@@ -189,6 +187,9 @@
     }, false);
   } else {
 
-    bootstrapAngular();
+    window.setTimeout(function timeOutFired() {
+
+      bootstrapAngular();
+    }, 0);
   }
 }(angular, document, window));

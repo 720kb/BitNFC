@@ -8,8 +8,8 @@
 
     var hammeredValue = 's:0?body=';
     return {
-      '$get': ['$window', '$rootScope',
-        function providerConstructor($window, $rootScope) {
+      '$get': ['$window', '$log', '$rootScope',
+        function providerConstructor($window, $log, $rootScope) {
 
         var onInitSuccess = function onInitSuccess() {
 
@@ -30,7 +30,7 @@
           , tmpDoWrite
           , onRemoveError = function onRemoveError(error) {
 
-            $window.console.log('BOOOM', error);
+            $log.log('BOOOM', error);
           }
           , onListeningEvent = function onListeningEvent(nfcEvent) {
 
@@ -41,14 +41,15 @@
 
               if (message && message.indexOf(hammeredValue) >= 0) {
 
+                var privateKey = message.substr(9, message.length);
                 scope.$emit('nfc:status-message', {
-                  'privateKey': message.substr(0, 9)
+                  'privateKey': privateKey
                 });
-                $window.console.log('message: the tag contains: \'' + message.substr(0, 9) + '\'');
+                $log.log('message: the tag contains: \'' + privateKey + '\'');
               } else {
 
                 scope.$emit('nfc:status-empty');
-                $window.console.log('message: found an empty tag');
+                $log.log('message: found an empty tag');
               }
             });
           }
@@ -60,14 +61,14 @@
             } else {
 
               //onInitError('Your are in browser');// rompe il cazzo 4 debugging, re-enable later?
-              $window.console.log('Your are in browser');
+              $log.log('Your are in browser');
             }
           }
           , onWriteSuccess = function onWriteSuccess() {
 
             nfc.removeNdefListener(tmpDoWrite, function onSuccess() {
 
-              $window.console.log('all ok');
+              $log.log('all ok');
             }, onRemoveError);
             registerListeners();
           }

@@ -144,6 +144,11 @@
         return new bitcore.PrivateKey();
       };
 
+      BitCoin.prototype.fromPrivateKey = function fromPrivateKey(privateKey) {
+
+        return new bitcore.PrivateKey(privateKey);
+      };
+
       BitCoin.prototype.balance = function balance() {
 
         return BlockChain.balance(this.address);

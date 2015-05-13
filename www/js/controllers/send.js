@@ -11,15 +11,6 @@
     // $scope.toAddress = '197GxXSqqSAkhLXyy9XrtEySvssuDcQGMY';
     // $scope.outputAmount = Number('1000'); // FIXME - use amount from ng-model
 
-    if ($stateParams &&
-      $stateParams.privateKey) {
-
-      $scope.privateKey = $stateParams.privateKey;
-      $scope.$emit('nfc:write-tag', {
-        'txt': $scope.privateKey
-      });
-    }
-
     $scope.resetFlags = function resetLayoutFlags() {
 
       $scope.errorText = undefined;
@@ -33,7 +24,7 @@
         $scope.resetFlags();
         $scope.sending = true;
 
-        $log.log("amount: " + Number($scope.outputAmount) + ", address: " + $scope.toAddress)
+        $log.log('amount: ' + Number($scope.outputAmount) + ', address: ' + $scope.toAddress);
 
         BitCoin.send(Number($scope.outputAmount), $scope.toAddress).then(function onSent(response) {
 
