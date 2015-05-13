@@ -167,7 +167,7 @@
 
       $ionicPopup.confirm({
         'title': 'NETWORK ERROR',
-        'template': '<p>You are offline, please connect your device</p>'
+        'templateUrl': 'views/popup/network-down.html'
       }).then(function onUserTouch(res) {
 
         if (res) {
