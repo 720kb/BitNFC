@@ -30,10 +30,17 @@
 
   .factory('CordovaNetworkInterceptor', ['$q', 'Network', '$window', '$rootScope',
     function CordovaNetworkInterceptor($q, Network, $window, $rootScope) {
+
+    var isApplicationStarted = false;
+    $rootScope.$on('system:started', function onSystemStarted() {
+
+      isApplicationStarted = true;
+    });
     return {
       'request': function onRequest(config) {
 
-        if (Network.isOffline()) {
+        if (isApplicationStarted &&
+          Network.isOffline()) {
 
           $rootScope.$emit('network:offline');
         }

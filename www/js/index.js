@@ -2,12 +2,6 @@
 (function withAngular(angular, document, window) {
   'use strict';
 
-  var bootstrapAngular = function bootstrapAngular() {
-
-    var domElement = document.getElementsByTagName('html')[0];
-    angular.bootstrap(domElement, ['bitNFC']);
-  };
-
   angular.module('bitNFC', [
     'ionic',
     '720kb.fx',
@@ -93,7 +87,7 @@
         $window.StatusBar.styleLightContent();
       }
 
-      nfc.registerListeners();
+      $rootScope.$emit('system:started');
     });
 
     $rootScope.$on('nfc:status-ok', function onNfcStatusOk() {
@@ -167,7 +161,7 @@
 
       $ionicPopup.confirm({
         'title': 'NETWORK ERROR',
-        'template': '<p>You are offline, please connect your device</p>'
+        'templateUrl': 'views/popup/network-down.html'
       }).then(function onUserTouch(res) {
 
         if (res) {
@@ -178,18 +172,4 @@
     });
 
   }]);
-
-  if (window.cordova) {
-
-    document.addEventListener('deviceready', function onDeviceReady() {
-
-      bootstrapAngular();
-    }, false);
-  } else {
-
-    window.setTimeout(function timeOutFired() {
-
-      bootstrapAngular();
-    }, 0);
-  }
 }(angular, document, window));

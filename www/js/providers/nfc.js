@@ -100,9 +100,10 @@
           }
         });
 
-        return {
-          'registerListeners': registerListeners
-        };
+        $rootScope.$on('system:started', function onSystemStarted() {
+
+          registerListeners();
+        });
       }]
     };
   }]);
