@@ -136,6 +136,9 @@
         BlockChain.balance($rootScope.tagAddress).then(function onBalance(tagBalance) {
 
           $rootScope.tagBalance = tagBalance;
+
+          // TODO if tagBalance == 0 mostra un popup diverso che chiede di caricare il tag!!
+
           $ionicPopup.confirm({
             'title': 'NFC Wallet found!',
             'templateUrl': 'views/popup/nfc-wallet.html',
