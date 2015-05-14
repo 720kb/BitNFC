@@ -42,18 +42,6 @@
           }
         }
       })
-      .state('app.sweep', {
-        'url': '/sweep',
-        'params': {
-          'privateKey': undefined
-        },
-        'views': {
-          'appContent': {
-            'templateUrl': 'views/sweep/index.html',
-            'controller': 'SweepCtrl'
-          }
-        }
-      })
       .state('app.send', {
         'url': '/send',
         'views': {
