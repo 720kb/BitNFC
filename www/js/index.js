@@ -105,7 +105,7 @@
         'txt': $rootScope.tagAddress
       });
       $ionicPopup.alert({
-        'title': 'NFC Empty Tag Detected',
+        'title': 'Empty NFC Tag Detected',
         'templateUrl': 'views/popup/empty-tag.html',
         'scope': $rootScope
       });
@@ -123,7 +123,7 @@
 
           $rootScope.tagBalance = tagBalance;
           $ionicPopup.confirm({
-            'title': 'Detected NFC Tag with Wallet',
+            'title': 'Detected NFC Wallet',
             'templateUrl': 'views/popup/nfc-wallet.html',
             'scope': $rootScope
           }).then(function onUserTouch() {
