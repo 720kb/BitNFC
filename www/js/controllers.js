@@ -7,5 +7,6 @@
     'Home.controller',
     'Settings.controller',
     'Receive.controller',
-    'Send.controller']);
+    'Send.controller',
+    'SendPassive.controller']);
 }(angular));
