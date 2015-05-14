@@ -15,9 +15,10 @@
     'denominations': ['BTC', 'SATOSHI', 'mBTC']
   })
 
-  .config(['$stateProvider', '$urlRouterProvider', '$httpProvider',
-    function configurationFunction($stateProvider, $urlRouterProvider, $httpProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', '$logProvider', '$httpProvider',
+    function configurationFunction($stateProvider, $urlRouterProvider, $logProvider, $httpProvider) {
 
+      $logProvider.debugEnabled(true);
       $stateProvider
       .state('app', {
         'url': '/app',
