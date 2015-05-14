@@ -1,3 +1,4 @@
-<p>Address: '{{ tagAddress.toString() }}'</p>
-<p>Containing {{ tagBalance }} mBTC</p>
-<p>Press OK if you want to fill the wallet with some mBTC<p>
+<p>Address: {{ tagAddress.toString() }}</p>
+<p>Balance: {{ tagBalance | UnitConvert:'satoshisToMbtc' }} mBTC</p>
+<h5>Do you want to sweep the tag?</h5>
+<p>The full amount contained in the tag will be credited into your phone wallet.</p>

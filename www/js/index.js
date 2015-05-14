@@ -137,7 +137,7 @@
 
           $rootScope.tagBalance = tagBalance;
           $ionicPopup.confirm({
-            'title': 'Detected NFC Wallet',
+            'title': 'NFC Wallet found!',
             'templateUrl': 'views/popup/nfc-wallet.html',
             'scope': $rootScope,
             'buttons': [
