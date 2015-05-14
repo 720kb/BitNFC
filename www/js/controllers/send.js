@@ -37,6 +37,8 @@
           $scope.sending = undefined;
           $scope.successText = 'Payment sent.';
           $scope.errorText = false;
+          // TODO: FIX bugs - icona rimane sending... con lo spinner
+          // la view si dovrebbe refreshare cosi' che riaggiorna il balance (deve diminuire dopo aver inviato i btc)
         }).catch(function onError(error){
 
           $log.log('catched error: ' + error.message);
