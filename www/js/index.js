@@ -104,7 +104,7 @@
       nfc.writeTag($rootScope.tagAddress);
 
       $ionicPopup.confirm({
-        'title': 'NFC Empty Tag Detected',
+        'title': 'An empty NFC tag was found',
         'templateUrl': 'views/popup/empty-tag.html',
         'scope': $rootScope,
         'buttons': [
