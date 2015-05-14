@@ -13,8 +13,8 @@
 
       $scope.setDefaultSettings = function setDefaultSettings() {
 
-        $scope.settingsCurrency = 'BTC';
-        $scope.settingsDenomination = 'mBTC';
+        $scope.settingsCurrency = $window.localStorage.settingsCurrency || 'BTC';
+        $scope.settingsDenomination = $window.localStorage.settingsDenomination || 'mBTC';
         $window.localStorage.settingsCurrency = $scope.settingsCurrency;
         $window.localStorage.settingsDenomination = $scope.settingsDenomination;
       };
