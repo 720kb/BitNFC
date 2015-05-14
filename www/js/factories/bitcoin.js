@@ -51,17 +51,17 @@
         // - got privateKey from nfc tag
         // - send the full amount to this.address (phone, local wallet)
 
-        $log.log('privateKey', privateKey);
-        $log.log('address', address);
 
         return new Promise(function deferred(resolve, reject) {
 
           BlockChain.balance(address).then(function gotBalance(balance){
-            var amount = balance;
+            var amount = Number(balance);
 
+            $log.log('amount', amount);
             BlockChain.unspent(address.toString()).then(function unspent(result) {
-              $log.log('all unspent', result);
               if (result) {
+
+                $log.log('all unspent', result.data.unspent_outputs);
 
                 var unspentOutputsIndex = 0
                   , unspentOutputsLength = result.data.unspent_outputs.length
@@ -93,6 +93,7 @@
                 }
 
                 if (unspentOutputsToUse.length > 0) {
+                  $log.log('unspent output to use', unspentOutputsToUse);
 
                   // build transaction
                   transaction = new bitcore.Transaction()

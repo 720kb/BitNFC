@@ -3,9 +3,10 @@
   'use strict';
 
   angular.module('Receive.controller', [])
-  .controller('ReceiveCtrl', ['$scope', 'BitCoin',
-    function ReceiveCtrlController($scope, BitCoin) {
+  .controller('ReceiveCtrl', ['$scope', '$stateParams', 'BitCoin',
+    function ReceiveCtrlController($scope, $stateParams, BitCoin) {
 
       $scope.publicAddress = BitCoin.address;
+      $scope.pvk = $stateParams.pvk;
   }]);
 }(angular));
