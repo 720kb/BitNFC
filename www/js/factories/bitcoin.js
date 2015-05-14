@@ -60,7 +60,7 @@
             !addressTo) {
 
             reject({
-              'message': 'mandatory fileds missing [amount] and/or [addressTo]'
+              'message': 'You need to specify both the address and the amount'
             });
           }
 
