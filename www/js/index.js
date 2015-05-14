@@ -1,5 +1,5 @@
-/*global angular document window*/
-(function withAngular(angular, document, window) {
+/*global angular*/
+(function withAngular(angular) {
   'use strict';
 
   angular.module('bitNFC', [
@@ -35,7 +35,7 @@
         }
       })
       .state('app.receive', {
-        'url': '/receive',
+        'url': '/receive/:pvk',
         'views': {
           'appContent': {
             'templateUrl': 'views/receive/index.html',
@@ -116,7 +116,7 @@
             {
               'text': 'OK',
               'type': 'button-dark',
-              'onTap': function(e) {
+              'onTap': function() {
 
                 $state.go('app.send', {'nfcAddress': $rootScope.tagAddress});
               }
@@ -139,16 +139,20 @@
           $ionicPopup.confirm({
             'title': 'Detected NFC Wallet',
             'templateUrl': 'views/popup/nfc-wallet.html',
-            'scope': $rootScope
-          }).then(function onUserTouch() {
+            'scope': $rootScope,
+            'buttons': [
+              {
+                'text': 'Cancel'
+               },
+              {
+                'text': 'OK',
+                'type': 'button-dark',
+                'onTap': function() {
 
-            /*if (res) {
-
-              $state.go('app.send', {
-                // 'privateKey': ,
-                'address': BitCoin.address
-              });
-            }*/
+                  $state.go('app.receive', {'pvk': tagPrivateKey});
+                }
+              }
+            ]
           });
         });
       }
@@ -169,4 +173,4 @@
     });
 
   }]);
-}(angular, document, window));
+}(angular));

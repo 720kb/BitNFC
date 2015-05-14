@@ -8,7 +8,7 @@
 
     $scope.sendForm = {};
     $scope.publicAddress = BitCoin.address;
-    $scope.sendForm.toAddress = $stateParams.nfcAddress || undefined;
+    $scope.sendForm.toAddress = $stateParams.nfcEmptyAddress || undefined;
     // $scope.sendForm.toAddress = '1antani';
     // $scope.sendForm.toAddress = '197GxXSqqSAkhLXyy9XrtEySvssuDcQGMY';
     // $scope.sendForm.outputAmount = Number('1000'); // FIXME - use amount from ng-model
@@ -23,7 +23,7 @@
 
       if (!$scope.sending) {
 
-        var amountSatoshi = $filter('UnitConvert')(Number($scope.sendForm.outputAmount), 'mbtcToSatoshis');;
+        var amountSatoshi = $filter('UnitConvert')(Number($scope.sendForm.outputAmount), 'mbtcToSatoshis');
 
         $scope.resetFlags();
         $scope.sending = true;
