@@ -108,18 +108,20 @@
         'templateUrl': 'views/popup/empty-tag.html',
         'scope': $rootScope,
         'buttons': [
-            {
-              'text': 'Cancel'
-            },
-            {
-              'text': 'OK',
-              'type': 'button-dark',
-              'onTap': function() {
+          {
+            'text': 'Cancel'
+          },
+          {
+            'text': 'OK',
+            'type': 'button-dark',
+            'onTap': function() {
 
-                $state.go('app.send', {'nfcAddress': $rootScope.tagAddress});
-              }
+              $state.go('app.send', {
+                'nfcAddress': $rootScope.tagAddress
+              });
             }
-          ]
+          }
+        ]
       });
     });
 

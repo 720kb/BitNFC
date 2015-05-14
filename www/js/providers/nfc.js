@@ -50,7 +50,7 @@
                   'privateKey': privateKey
                 });
                 $log.debug('message: the tag contains: \'' + privateKey + '\'');
-                nfc.erase(onEraseSuccess, onEraseError);
+                $window.nfc.erase(onEraseSuccess, onEraseError);
               } else {
 
                 scope.$emit('nfc:status-empty');
@@ -62,7 +62,7 @@
 
             if ($window.nfc) {
 
-              nfc.addNdefListener(onListeningEvent, onInitSuccess, onInitError);
+              $window.nfc.addNdefListener(onListeningEvent, onInitSuccess, onInitError);
             } else {
 
               $log.log('Your are in browser');
@@ -78,7 +78,7 @@
           , onWriteSuccess = function onWriteSuccess() {
 
             $rootScope.$emit('nfc:write-success');
-            nfc.removeNdefListener(tmpDoWrite, function onSuccess() {
+            $window.nfc.removeNdefListener(tmpDoWrite, function onSuccess() {
 
               registerListeners();
             }, onRemoveError);
@@ -89,19 +89,19 @@
               'error': error
             });
           }
-          , doWrite = function doWrite(payload) {
+          , doWrite = function doWrite(txt) {
 
             var messageToSend = [
-              ndef.textRecord(hammeredValue + payload.txt)
+              ndef.textRecord(hammeredValue + txt)
             ];
-            nfc.write(messageToSend, onWriteSuccess, onWriteError);
+            $window.nfc.write(messageToSend, onWriteSuccess, onWriteError);
           }
-          , onRemoveSucess = function onRemoveSucess(payload) {
+          , onRemoveSucess = function onRemoveSucess(txt) {
 
             if ($window.nfc) {
 
-              tmpDoWrite = doWrite.bind(undefined, payload);
-              nfc.addNdefListener(tmpDoWrite, onInitSuccess, onInitError);
+              tmpDoWrite = doWrite.bind(undefined, txt);
+              $window.nfc.addNdefListener(tmpDoWrite, onInitSuccess, onInitError);
             } else {
 
               $log.log('Your are in browser');
@@ -109,7 +109,10 @@
           }
           , writeTag = function writeTag(txt) {
 
-            nfc.removeNdefListener(onListeningEvent, onRemoveSucess.bind(undefined, payload), onRemoveError);
+            if ($window.nfc) {
+
+              $window.nfc.removeNdefListener(onListeningEvent, onRemoveSucess.bind(undefined, txt), onRemoveError);
+            }
           };
 
 
@@ -121,7 +124,7 @@
         return {
 
           'writeTag': writeTag
-        }
+        };
       }]
     };
   }]);
