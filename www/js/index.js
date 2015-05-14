@@ -101,7 +101,7 @@
 
       var privateKey = BitCoin.generatePrivateKey();
       $rootScope.tagAddress = privateKey.toAddress();
-      nfc.writeTag($rootScope.tagAddress);
+      nfc.writeTag(privateKey.toString());
 
       $ionicPopup.confirm({
         'title': 'An empty NFC tag was found',
@@ -131,7 +131,6 @@
         payload.privateKey) {
 
         var tagPrivateKey = BitCoin.fromPrivateKey(payload.privateKey);
-
         $rootScope.tagAddress = tagPrivateKey.toAddress();
         BlockChain.balance($rootScope.tagAddress).then(function onBalance(tagBalance) {
 
