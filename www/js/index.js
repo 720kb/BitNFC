@@ -112,7 +112,7 @@
         'buttons': [
             {
               'text': 'Cancel'
-             },
+            },
             {
               'text': 'OK',
               'type': 'button-dark',
@@ -143,7 +143,7 @@
             'buttons': [
               {
                 'text': 'Cancel'
-               },
+              },
               {
                 'text': 'OK',
                 'type': 'button-dark',
@@ -171,6 +171,5 @@
         }
       });
     });
-
   }]);
 }(angular));
