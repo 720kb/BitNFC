@@ -51,12 +51,6 @@
             'controller': 'SendCtrl'
           }
         }
-      })
-      .state('app.send.passive', {
-        'url': '/passive',
-          'appContent@sendPassive': {
-            'controller': 'SendPassiveCtrl'
-          }
       });
 
       $urlRouterProvider.otherwise('/app/home');
@@ -110,7 +104,12 @@
       $rootScope.$emit('nfc:write-tag', {
         'txt': $rootScope.tagAddress
       });
-      $state.go('app.send.passive');
+
+      $ionicPopup.alert({
+        'title': 'NFC Empty Tag Detected',
+        'templateUrl': 'views/popup/empty-tag.html',
+        'scope': $rootScope
+      });
     });
 
     $rootScope.$on('nfc:status-message', function onMessageTag(eventsInformations, payload) {
