@@ -4,7 +4,8 @@
     <div ng-if="errorText" class="text-center assertive-bg light">
       <div class="separator5"></div>
         <span ngfx-bounce-in="errorText">
-          <i class="icon ion-alert"></i> {{errorText}}
+          {{errorText}}
+          <i class="icon ion-alert"></i>
         </span>
       <div class="separator5"></div>
       </div>
@@ -34,16 +35,12 @@
           </span>
         </button>
         <div class="separator10"></div>
+        To:
+        <div class="separator10"></div>
         <label class="item item-input">
-          <input ng-model="sendForm.toAddress" type="text" placeholder="1...">
+          <input ng-model="sendForm.toAddress" type="text" placeholder="1.............. (bitcoin address)">
         </label>
         <div class="separator10"></div>
-        <button ng-click="sendBtc()" class="button button-block icon icon-left button-royal">
-          <ion-spinner icon="ripple" class="spinner-light" ng-show="sending"></ion-spinner>
-            <span ng-show="!sending">Send</span>
-            <span ng-show="sending">Sending ...</span>
-        </button>
-        <div class="separator30"></div>
         <div class="list">
           Amount:
           <div class="separator10"></div>
