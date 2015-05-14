@@ -116,8 +116,9 @@
             'type': 'button-dark',
             'onTap': function() {
 
+              // FIXME: riempire il valore del field toAddress che attualmente non viene riempito
               $state.go('app.send', {
-                'nfcAddress': $rootScope.tagAddress
+                'toAddress': $rootScope.tagAddress
               });
             }
           }
@@ -149,7 +150,22 @@
                 'type': 'button-dark',
                 'onTap': function() {
 
-                  $state.go('app.receive', {'pvk': tagPrivateKey});
+                  // TODO: BitCoin.sweep(tagPrivateKey).then(function(){
+
+                    $ionicPopup.alert({
+                      'title': 'Tag Swept successfully!',
+                      'template': 'Your balance is now ...',
+                      'buttons': [
+                        {
+                          'text': 'OK',
+                          'type': 'button-dark',
+                        }
+                      ]
+                    });
+                  // });
+
+                  // TODO: transition to home view (to show the updated balance)
+
                 }
               }
             ]
