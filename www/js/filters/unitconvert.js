@@ -15,14 +15,15 @@
         case 'mbtcToBtc':
           result = new bitcore.Unit.fromMilis(amount).toBTC();
           break;
-        case 'satoshiToMbtc':
+        case 'satoshisToMbtc':
           result = new bitcore.Unit.fromSatoshis(amount).mBTC;
           break;
-        case 'satoshiToBtc':
+        case 'satoshisToBtc':
           result = new bitcore.Unit.fromSatoshis(amount).BTC;
           break;
-        // case 'mbtcToSatoshi':
-        //   // TODO
+        case 'mbtcToSatoshis':
+          result = new bitcore.Unit.fromMilis(amount).satoshis;
+          break;
         // case 'btcToSatoshi':
         //   // TODO
 

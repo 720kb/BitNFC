@@ -3,8 +3,8 @@
   'use strict';
 
   angular.module('Send.controller', [])
-  .controller('SendCtrl', ['$rootScope', '$scope', '$window', '$log', '$stateParams', 'BitCoin', 'CordovaClipboard',
-    function SendCtrlController($rootScope, $scope, $window, $log, $stateParams, BitCoin, CordovaClipboard) {
+  .controller('SendCtrl', ['$rootScope', '$scope', '$window', '$log', '$stateParams', '$filter', 'BitCoin', 'CordovaClipboard',
+    function SendCtrlController($rootScope, $scope, $window, $log, $stateParams, $filter, BitCoin, CordovaClipboard) {
 
     $scope.sendForm = {};
     $scope.publicAddress = BitCoin.address;
@@ -22,12 +22,14 @@
 
       if (!$scope.sending) {
 
+        var amountSatoshi = $filter('UnitConvert')(Number($scope.sendForm.outputAmount), 'mbtcToSatoshis');;
+
         $scope.resetFlags();
         $scope.sending = true;
 
         $log.log('amount: ' + Number($scope.sendForm.outputAmount) + ', address: ' + $scope.sendForm.toAddress);
 
-        BitCoin.send(Number($scope.sendForm.outputAmount), $scope.sendForm.toAddress).then(function onSent(response) {
+        BitCoin.send(amountSatoshi, $scope.sendForm.toAddress).then(function onSent(response) {
 
           $log.log('SENT');
           $log.log('response: ' + response);

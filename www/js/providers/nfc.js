@@ -27,11 +27,6 @@
               });
             });
           }
-          , tmpDoWrite
-          , onRemoveError = function onRemoveError(error) {
-
-            $log.log('BOOOM', error);
-          }
           , onListeningEvent = function onListeningEvent(nfcEvent) {
 
             var tag = nfcEvent.tag
@@ -39,17 +34,18 @@
               , message = ndefMessage && $window.nfc.bytesToString(ndefMessage[0].payload).substring(3);
             $rootScope.$apply(function doApply(scope) {
 
-              if (message && message.indexOf(hammeredValue) >= 0) {
+              if (message &&
+                message.indexOf(hammeredValue) >= 0) {
 
                 var privateKey = message.substr(9, message.length);
                 scope.$emit('nfc:status-message', {
                   'privateKey': privateKey
                 });
-                $log.log('message: the tag contains: \'' + privateKey + '\'');
+                $log.debug('message: the tag contains: \'' + privateKey + '\'');
               } else {
 
                 scope.$emit('nfc:status-empty');
-                $log.log('message: found an empty tag');
+                $log.debug('message: found an empty tag');
               }
             });
           }
@@ -63,6 +59,11 @@
               //onInitError('Your are in browser');// rompe il cazzo 4 debugging, re-enable later?
               $log.log('Your are in browser');
             }
+          }
+          , tmpDoWrite
+          , onRemoveError = function onRemoveError(error) {
+
+            $log.log('BOOOM', error);
           }
           , onWriteSuccess = function onWriteSuccess() {
 
@@ -89,21 +90,22 @@
 
               onInitError('Your are in browser');
             }
-          };
-
-        $rootScope.$on('nfc:write-tag', function onWriteTag(eventsInformations, payload) {
-
-          if (payload &&
-            payload.txt) {
+          }
+          , writeTag = function writeTag(txt) {
 
             nfc.removeNdefListener(onListeningEvent, onRemoveSucess.bind(undefined, payload), onRemoveError);
-          }
-        });
+          };
+
 
         $rootScope.$on('system:started', function onSystemStarted() {
 
           registerListeners();
         });
+
+        return {
+
+          'writeTag': writeTag
+        }
       }]
     };
   }]);

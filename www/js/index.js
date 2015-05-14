@@ -15,9 +15,10 @@
     'denominations': ['BTC', 'SATOSHI', 'mBTC']
   })
 
-  .config(['$stateProvider', '$urlRouterProvider', '$httpProvider',
-    function configurationFunction($stateProvider, $urlRouterProvider, $httpProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', '$logProvider', '$httpProvider',
+    function configurationFunction($stateProvider, $urlRouterProvider, $logProvider, $httpProvider) {
 
+      $logProvider.debugEnabled(true);
       $stateProvider
       .state('app', {
         'url': '/app',
@@ -122,7 +123,7 @@
 
           $rootScope.tagBalance = tagBalance;
           $ionicPopup.confirm({
-            'title': 'Detected NFC Tag with Wallet',
+            'title': 'Detected NFC Wallet',
             'templateUrl': 'views/popup/nfc-wallet.html',
             'scope': $rootScope
           }).then(function onUserTouch() {

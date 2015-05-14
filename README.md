@@ -1,5 +1,48 @@
 # BitNFC
 
+[screenshots]
+
+
+### Download
+
+<apk link>
+
+### Install
+
+TODO
+
+enjoy!
+
+## Development
+
+### Prerequisites
+
+You need Android Studio SDK with SDK v.22
+
+### Install
+
+download the project (or git clone it)
+
+enter the dir
+
+```sh
+npm install cordova -g
+
+npm install && bower install && ionic state reset
+
+
+ionic run android # to run it on device (or simulator)
+
+```
+
+or
+
+```sh
+ionic serve # to run it locally on a browser (of course NFC will not work)
+```
+
+npm install && bower install && ionic state reset
+
 
 ### NFC Format SMS (the only one that is copy-pastable)
 
@@ -140,7 +183,7 @@ bitcore.Unit.fromSatoshi(1000).toMilis()
 
 ```js
 fromBtcToSatoshi = Math.pow(10, 8)
-fromSatoshiToBtc = Math.pow(10, -8)
+fromsatoshisToBtc = Math.pow(10, -8)
 
 console.log(valueBtc * fromBtcToSatoshi)
 ```

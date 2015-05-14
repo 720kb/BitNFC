@@ -86,7 +86,7 @@
 
                   partialAmount += anUnspentOutput.value;
 
-                  amountBtc = $filter('UnitConvert')(anUnspentOutput.value, 'satoshiToBtc');
+                  amountBtc = $filter('UnitConvert')(anUnspentOutput.value, 'satoshisToBtc');
 
                   unspentOutputsToUse.push({
                     'address': this.address.toString(),
