@@ -183,7 +183,7 @@ bitcore.Unit.fromSatoshi(1000).toMilis()
 
 ```js
 fromBtcToSatoshi = Math.pow(10, 8)
-fromSatoshiToBtc = Math.pow(10, -8)
+fromsatoshisToBtc = Math.pow(10, -8)
 
 console.log(valueBtc * fromBtcToSatoshi)
 ```
