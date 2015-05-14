@@ -99,20 +99,14 @@
     $rootScope.$on('nfc:status-empty', function onEmptyTag() {
 
       var privateKey = BitCoin.generatePrivateKey();
-
       $rootScope.tagAddress = privateKey.toAddress();
-      $ionicPopup.confirm({
+      $rootScope.$emit('nfc:write-tag', {
+        'txt': $rootScope.tagAddress
+      });
+      $ionicPopup.alert({
         'title': 'NFC Empty Tag Detected',
         'templateUrl': 'views/popup/empty-tag.html',
         'scope': $rootScope
-      }).then(function onUserTouch() {
-
-        /*if (res) {
-
-          $state.go('app.sweep', {
-            'privateKey': privateKey
-          });
-        }*/
       });
     });
 
