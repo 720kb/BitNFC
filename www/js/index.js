@@ -44,7 +44,7 @@
         }
       })
       .state('app.send', {
-        'url': '/send',
+        'url': '/send/:nfcAddress',
         'views': {
           'appContent': {
             'templateUrl': 'views/send/index.html',
@@ -105,10 +105,23 @@
         'txt': $rootScope.tagAddress
       });
 
-      $ionicPopup.alert({
+      $ionicPopup.confirm({
         'title': 'NFC Empty Tag Detected',
         'templateUrl': 'views/popup/empty-tag.html',
-        'scope': $rootScope
+        'scope': $rootScope,
+        'buttons': [
+            {
+              'text': 'Cancel'
+             },
+            {
+              'text': 'OK',
+              'type': 'button-dark',
+              'onTap': function(e) {
+
+                $state.go('app.send', {'nfcAddress': $rootScope.tagAddress});
+              }
+            }
+          ]
       });
     });
 
