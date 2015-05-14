@@ -52,9 +52,13 @@
           }
         }
       })
-      .state('app.send.passive', {
+      .state('app.send-passive', {
         'url': '/send/passive',
-        'controller': 'SendPassiveCtrl'
+        'views': {
+          'appContent': {
+          'controller': 'SendPassiveCtrl',
+          }
+        }
       });
 
       $urlRouterProvider.otherwise('/app/home');
@@ -108,7 +112,7 @@
       $rootScope.$emit('nfc:write-tag', {
         'txt': $rootScope.tagAddress
       });
-      $state.go('app.send.passive');
+      $state.go('app.send-passive');
     });
 
     $rootScope.$on('nfc:status-message', function onMessageTag(eventsInformations, payload) {
