@@ -45,7 +45,7 @@
           Amount:
           <div class="separator10"></div>
           <label class="item item-input">
-            <input type="text" placeholder="0.0 mBTC" ng-model="sendForm.outputAmount">
+            <input type="number" placeholder="0.0 mBTC" ng-model="sendForm.outputAmount">
           </label>
           <button ng-click="sendBtc()" class="button button-block icon-left button-royal">
            <ion-spinner icon="ripple" class="spinner-light" ng-show="sending"></ion-spinner>
