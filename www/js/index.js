@@ -101,9 +101,7 @@
 
       var privateKey = BitCoin.generatePrivateKey();
       $rootScope.tagAddress = privateKey.toAddress();
-      $rootScope.$emit('nfc:write-tag', {
-        'txt': $rootScope.tagAddress
-      });
+      nfc.writeTag($rootScope.tagAddress);
 
       $ionicPopup.confirm({
         'title': 'NFC Empty Tag Detected',

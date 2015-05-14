@@ -11,7 +11,15 @@
       '$get': ['$window', '$log', '$rootScope',
         function providerConstructor($window, $log, $rootScope) {
 
-        var onInitSuccess = function onInitSuccess() {
+        var onEraseSuccess = function onEraseSuccess() {
+
+            $log.info('Tag erased');
+          }
+          , onEraseError = function onEraseError(error) {
+
+            $log.error('Tag erasing with error', error);
+          }
+          , onInitSuccess = function onInitSuccess() {
 
             $rootScope.$apply(function doApply(scope) {
 
@@ -42,6 +50,7 @@
                   'privateKey': privateKey
                 });
                 $log.debug('message: the tag contains: \'' + privateKey + '\'');
+                nfc.erase(onEraseSuccess, onEraseError);
               } else {
 
                 scope.$emit('nfc:status-empty');
@@ -56,29 +65,36 @@
               nfc.addNdefListener(onListeningEvent, onInitSuccess, onInitError);
             } else {
 
-              //onInitError('Your are in browser');// rompe il cazzo 4 debugging, re-enable later?
               $log.log('Your are in browser');
             }
           }
           , tmpDoWrite
           , onRemoveError = function onRemoveError(error) {
 
-            $log.log('BOOOM', error);
+            $rootScope.$emit('nfc:removal-error', {
+              'error': error
+            });
           }
           , onWriteSuccess = function onWriteSuccess() {
 
+            $rootScope.$emit('nfc:write-success');
             nfc.removeNdefListener(tmpDoWrite, function onSuccess() {
 
-              $log.log('all ok');
+              registerListeners();
             }, onRemoveError);
-            registerListeners();
+          }
+          , onWriteError = function onWriteError(error) {
+
+            $rootScope.$emit('nfc:write-error', {
+              'error': error
+            });
           }
           , doWrite = function doWrite(payload) {
 
             var messageToSend = [
               ndef.textRecord(hammeredValue + payload.txt)
             ];
-            nfc.write(messageToSend, onWriteSuccess, onRemoveError);
+            nfc.write(messageToSend, onWriteSuccess, onWriteError);
           }
           , onRemoveSucess = function onRemoveSucess(payload) {
 
@@ -88,7 +104,7 @@
               nfc.addNdefListener(tmpDoWrite, onInitSuccess, onInitError);
             } else {
 
-              onInitError('Your are in browser');
+              $log.log('Your are in browser');
             }
           }
           , writeTag = function writeTag(txt) {
