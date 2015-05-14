@@ -38,6 +38,3 @@
     };
   }]);
 }(angular, require));
-
-// {{address | Unit | convert:amount:unitFrom:unitTo }} //=> number
-// {{address | Unit | convert:100:mbtc:btc }} //=> 0.1
