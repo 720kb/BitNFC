@@ -43,10 +43,90 @@
         }
       });
 
-      BitCoin.prototype.sweep = function sweep(privateKey) {
-        // addressFrom == privateKey.toAddress().toString()
-        // addressTo == this.address
+      BitCoin.prototype.sweep = function sweep(privateKeyString) {
+
+        var privateKey = new bitcore.PrivateKey(privateKeyString),
+          address = privateKey.toAddress();
+
+        // - got privateKey from nfc tag
+        // - send the full amount to this.address (phone, local wallet)
+
         $log.log('privateKey', privateKey);
+        $log.log('address', address);
+
+        return new Promise(function deferred(resolve, reject) {
+
+          BlockChain.balance(address).then(function gotBalance(balance){
+            var amount = balance;
+
+            BlockChain.unspent(address.toString()).then(function unspent(result) {
+              $log.log('all unspent', result);
+              if (result) {
+
+                var unspentOutputsIndex = 0
+                  , unspentOutputsLength = result.data.unspent_outputs.length
+                  , anUnspentOutput
+                  , partialAmount = 0
+                  , unspentOutputsToUse = []
+                  , transaction
+                  , txHash
+                  , amountBtc;
+                for (; unspentOutputsIndex < unspentOutputsLength; unspentOutputsIndex += 1) {
+
+                  anUnspentOutput = result.data.unspent_outputs[unspentOutputsIndex];
+                  if (anUnspentOutput &&
+                    anUnspentOutput.value &&
+                    partialAmount <= amount) {
+
+                    partialAmount += anUnspentOutput.value;
+
+                    amountBtc = $filter('UnitConvert')(anUnspentOutput.value, 'satoshisToBtc');
+
+                    unspentOutputsToUse.push({
+                      'address': address.toString(),
+                      'txid': anUnspentOutput.tx_hash_big_endian,
+                      'scriptPubKey': anUnspentOutput.script,
+                      'amount': amountBtc,
+                      'vout': anUnspentOutput.tx_output_n
+                    });
+                  }
+                }
+
+                if (unspentOutputsToUse.length > 0) {
+
+                  // build transaction
+                  transaction = new bitcore.Transaction()
+                    .from(unspentOutputsToUse)
+                    .to(this.address, amount)
+                    .change(this.address)
+                    .fee(5000)             // 5000 satoshis is a good fee nowadays
+                    .sign(privateKey);
+
+                  txHash = transaction.serialize();
+
+                  // push transaction
+                  BlockChain.pushTx(txHash).then(function onTransactionFinished() {
+
+                    resolve({
+                      'message': 'Sweep done, check your balance!'
+                    });
+                  });
+                } else {
+
+                  reject({
+                    'message': 'Not enough unspent outputs'
+                  });
+                }
+              } else {
+
+                reject({
+                  'message': 'No unspent output for address'
+                });
+              }
+            }.bind(this));
+          }.bind(this));
+        }.bind(this));
+
       };
 
       BitCoin.prototype.send = function send(amount, addressTo) {
@@ -102,27 +182,22 @@
 
                 // build transaction
                 transaction = new bitcore.Transaction()
-                  .from(unspentOutputsToUse) // Feed information about what unspent outputs one can use
-                  .to(addressTo, amount) // Add an output with the given amount of satoshis
-                  .change(this.address) // Sets up a change address where the rest of the funds will go
-                  .fee(5000)
-                  .sign(this.privateKey); // Signs all the inputs it can
+                  .from(unspentOutputsToUse)
+                  .to(addressTo, amount)
+                  .change(this.address)
+                  .fee(5000)             // 5000 satoshis is a good fee nowadays
+                  .sign(this.privateKey);
 
-                  $log.log('serialized tx', transaction.serialize());
-
-
-                // if (fee) {
-                //   transaction.fee(fee);
-                // }
                 txHash = transaction.serialize();
 
                 // push transaction
                 BlockChain.pushTx(txHash).then(function onTransactionFinished() {
+                  var amountMbtc = $filter('UnitConvert')(amount, 'satoshisToMbtc');
 
                   resolve({
-                    'message': 'Transaction done!'
+                    'message': 'You\'ve sent '+amountMbtc+' mBTC to '+addressTo+' !'
                   });
-                });
+                }.bind(this));
               } else {
 
                 reject({
