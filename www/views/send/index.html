@@ -20,10 +20,14 @@
     <!--end all errors and success messages-->
     <div class="col col-80 col-offset-10">
       <div class="text-center">
-        <div class="col col-80 col-offset-10">
-          <div>Phone Wallet:</div>
+        <div>
+          <div>
+          <h5>Phone Wallet</h5>
+        </div>
           <div>{{publicAddress.toString()}}</div>
-          <div>Balance:</div>
+          <div>
+            <h5>Balance</h5>
+          </div>
           <div>{{balance | UnitConvert:'satoshisToMbtc'}} mBTC</div>
         </div>
         <div class="separator10"></div>
@@ -36,14 +40,14 @@
           </span>
         </button>
         <div class="separator10"></div>
-        To:
+        <h5>To</h5>
         <div class="separator10"></div>
         <label class="item item-input">
           <input ng-model="sendForm.toAddress" type="text" placeholder="1.............. (bitcoin address)">
         </label>
         <div class="separator10"></div>
         <div class="list">
-          Amount:
+          <h5>Amount</h5>
           <div class="separator10"></div>
           <label class="item item-input">
             <input type="number" placeholder="0.0 mBTC" ng-model="sendForm.outputAmount">
