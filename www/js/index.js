@@ -165,7 +165,7 @@
                     });
                   // });
 
-                  // TODO: transition to home view (to show the updated balance)
+                  $scope.go('app.home');
 
                 }
               }
