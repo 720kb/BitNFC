@@ -119,6 +119,7 @@
               $state.go('app.send', {
                 'nfcAddress': $rootScope.tagAddress
               });
+              // TODO: focus sul field di amount - http://stackoverflow.com/a/22751353/160699 ?
             }
           }
         ]
