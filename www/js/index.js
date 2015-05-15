@@ -116,9 +116,8 @@
             'type': 'button-dark',
             'onTap': function() {
 
-              // FIXME: riempire il valore del field toAddress che attualmente non viene riempito
               $state.go('app.send', {
-                'toAddress': $rootScope.tagAddress
+                'nfcAddress': $rootScope.tagAddress
               });
             }
           }
