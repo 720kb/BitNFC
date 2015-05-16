@@ -105,7 +105,7 @@
                     .sign(privateKey);
 
                   $log.log('transaction:');
-                  $log.log(transaction);
+                  $log.log(JSON.serialize(transaction));
 
                   txHash = transaction.serialize();
 

@@ -120,7 +120,7 @@
               $state.go('app.send', {
                 'nfcAddress': $rootScope.tagAddress
               });
-              // TODO: focus sul field di amount - http://stackoverflow.com/a/22751353/160699 ?
+              // TODO: focus on amount field - http://stackoverflow.com/a/22751353/160699 ?
             }
           }
         ]
@@ -156,13 +156,14 @@
                   $log.log("sweeping tag with private key: "+tagPrivateKey)
 
                   BitCoin.sweep(tagPrivateKey).then(function onSweep() {
-                    $log.log("sweeping?")
+                    $log.log("swept!")
 
-                    BlockChain.balance($rootScope.tagAddress).then(function newOnBalance(newTagBalance) {
+                    BitCoin.balance().then(function onBalance(newBalance) {
+                      var newBalanceMbtc = $filter('UnitConvert')(newBalance, 'satoshisToMbtc');
 
                       $ionicPopup.alert({
                       'title': 'Tag Swept successfully!',
-                      'template': '<p>Your balance is now</p><p>' + newTagBalance + '</p>',
+                      'template': '<p>Your balance is now:</p><p>' + newBalanceMbtc + ' mBTC</p>',
                       'buttons': [
                         {
                           'text': 'OK',
@@ -170,6 +171,7 @@
                           'onTap': function() {
 
                             $state.go('app.home');
+                            // TODO $state.refreshBalance
                           }
                         }
                       ]
@@ -178,8 +180,8 @@
                   }).catch(function () {
 
                     $ionicPopup.alert({
-                      'title': 'OPSS',
-                      'template': '<p>An error occurred</p><p>NFC Wallet Sweep action was not possible at this time </p><p>hint: It\'s possible that you have to wait for at least one confirmation to do this action.</p>',
+                      'title': 'An error occurred',
+                      'template': '<p>NFC Wallet Sweep action was not possible at this time.</p><p>hint: It\'s possible that you have to wait for at least one confirmation to do this action.</p>',
                       'buttons': [
                         {
                           'text': 'OK',
