@@ -174,15 +174,12 @@
                   }).catch(function () {
 
                     $ionicPopup.alert({
-                      'title': 'Opss',
-                      'template': 'DANGER DANGER',
+                      'title': 'OPSS',
+                      'template': '<p>An error occurred</p><p>NFC Wallet Sweep action was not possible at this time </p><p>hint: It\'s possible that you have to wait for at least one confirmation to do this action.</p>',
                       'buttons': [
                         {
                           'text': 'OK',
-                          'type': 'button-dark',
-                          'onTap': function() {
-                            //fail callback
-                          }
+                          'type': 'button-dark'
                         }
                       ]
                     });
