@@ -94,14 +94,18 @@
 
                 if (unspentOutputsToUse.length > 0) {
                   $log.log('unspent output to use', unspentOutputsToUse);
+                  var fee = 5500;
 
                   // build transaction
                   transaction = new bitcore.Transaction()
                     .from(unspentOutputsToUse)
-                    .to(this.address, amount)
-                    .change(this.address)
-                    .fee(5000)             // 5000 satoshis is a good fee nowadays
+                    .to(this.address, amount-fee)
+                    .change(this.address)  // not needed
+                    .fee(fee)             // 5000 satoshis is a good fee nowadays
                     .sign(privateKey);
+
+                  $log.log('transaction:');
+                  $log.log(transaction);
 
                   txHash = transaction.serialize();
 
@@ -111,6 +115,9 @@
                     resolve({
                       'message': 'Sweep done, check your balance!'
                     });
+                  }).catch(function onError(error){
+                    $log.log('pushtx error: ' + error.data);
+
                   });
                 } else {
 
@@ -186,7 +193,7 @@
                   .from(unspentOutputsToUse)
                   .to(addressTo, amount)
                   .change(this.address)
-                  .fee(5000)             // 5000 satoshis is a good fee nowadays
+                  .fee(5500)             // 5000 satoshis is a good fee nowadays
                   .sign(this.privateKey);
 
                 txHash = transaction.serialize();
