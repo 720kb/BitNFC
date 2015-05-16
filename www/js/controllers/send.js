@@ -11,9 +11,7 @@
     $scope.sendForm = {};
     $scope.publicAddress = BitCoin.address;
     $scope.sendForm.toAddress = $stateParams.nfcAddress || undefined;
-    // $scope.sendForm.toAddress = '1antani';
-    // $scope.sendForm.toAddress = '197GxXSqqSAkhLXyy9XrtEySvssuDcQGMY';
-    // $scope.sendForm.outputAmount = Number('1000'); // FIXME - use amount from ng-model
+
     if ($scope.sendForm.toAddress) {
 
       inputToAddressElement.focus();
@@ -46,16 +44,15 @@
           $log.log('SENT');
           $log.log('response: ' + JSON.stringify(response));
 
+          $scope.$apply(function(){
+            $scope.sending = false;
+            $scope.successText = 'Payment sent.';
+            $scope.errorText = false;
+          })
 
-          // FIXME : never reaches here vvvv
-
-
-          $scope.sending = undefined;
-          $scope.successText = 'Payment sent.';
-          $scope.errorText = false;
           // TODO: FIX bugs - icona rimane sending... con lo spinner
           // la view si dovrebbe refreshare cosi' che riaggiorna il balance (deve diminuire dopo aver inviato i btc)
-        }).catch(function onError(error){
+        }.bind(this)).catch(function onError(error){
 
           $log.log('catched error: ' + error.message);
 
