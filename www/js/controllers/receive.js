@@ -6,6 +6,12 @@
   .controller('ReceiveCtrl', ['$rootScope', '$scope', '$stateParams', 'BitCoin',
     function ReceiveCtrlController($rootScope, $scope, $stateParams, BitCoin) {
 
+      $scope.publicAddress = BitCoin.address.toString();
+      BitCoin.balance().then(function onBalance(balance) {
+
+        $scope.balance = balance;
+      });
+
       var onNFCTag;
       $scope.publicAddress = BitCoin.address;
       $scope.pvk = $stateParams.pvk;
