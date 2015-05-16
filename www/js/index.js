@@ -152,20 +152,24 @@
                 'type': 'button-dark',
                 'onTap': function() {
 
-                  BitCoin.sweep(tagPrivateKey).then(function(){
+                  BitCoin.sweep(tagPrivateKey).then(function onSweep() {
 
-                    $ionicPopup.alert({
+                    BlockChain.balance($rootScope.tagAddress).then(function newOnBalance(newTagBalance) {
+
+                      $ionicPopup.alert({
                       'title': 'Tag Swept successfully!',
-                      'template': 'Your balance is now ...',
+                      'template': '<p>Your balance is now</p><p>' + newTagBalance + '</p>',
                       'buttons': [
                         {
                           'text': 'OK',
                           'type': 'button-dark',
                           'onTap': function() {
-                            //success callback
+
+                            $state.go('app.home');
                           }
                         }
                       ]
+                    });
                     });
                   }).catch(function () {
 
