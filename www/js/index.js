@@ -177,7 +177,8 @@
                       ]
                     });
                     });
-                  }).catch(function () {
+                  }).catch(function (info) {
+                    $log.log("Sweep - an error occurred: "+ JSON.stringify(info))
 
                     $ionicPopup.alert({
                       'title': 'An error occurred',
