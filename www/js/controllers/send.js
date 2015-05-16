@@ -93,7 +93,7 @@
       $scope.balance = balance;
     });
 
-    onNFCTag = $rootScope.$on('nfc:status-message', function () {
+    onNFCTag = $rootScope.$on('nfc:status-message', function onNFCTag() {
 
       $scope.waitingNFC = undefined;
     });
