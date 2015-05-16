@@ -14,8 +14,9 @@
       </div>
       <div class="separator15"></div>
       <balance-refresh
-        balance="{{balance | UnitConvert:'satoshisToMbtc'}}"
-        ng-click="refreshBalance()"/>
+        balance="{{balance}}"
+        ng-click="refreshBalance()"
+      />
     </div>
   </ion-content>
 </ion-view>

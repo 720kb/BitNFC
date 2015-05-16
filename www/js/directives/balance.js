@@ -9,7 +9,7 @@
       'templateUrl': 'views/module/balanceRefresh.html',
       'link': function (scope, element, attr) {
 
-        scope.balance = attr.balance;
+        scope.balance = $filter('UnitConvert')(attr.balance, 'satoshisToMbtc');
 
         scope.refreshBalance = function () {
 
@@ -18,11 +18,12 @@
             scope.refreshingBalance = true;
             BitCoin.balance().then(function onBalance(balance) {
 
-              scope.balance = balance;
+              scope.balance = $filter('UnitConvert')(balance, 'satoshisToMbtc');
               scope.refreshingBalance = false;
             });
           }
         };
+        scope.refreshBalance();
       }
     };
   }]);

@@ -12,8 +12,9 @@
       </div>
       <div class="separator15"></div>
       <balance-refresh
-        balance="{{balance | UnitConvert:'satoshisToMbtc'}}"
-        ng-click="refreshBalance()"/>
+        balance="{{balance}}"
+        ng-click="refreshBalance()"
+      />
       <div class="col col-80 col-offset-10">
         <button class="button button-block button-royal" ng-click="waitNFCTag()">
             <ion-spinner icon="ripple" class="spinner-light" ng-show="waitingNFC"></ion-spinner>
