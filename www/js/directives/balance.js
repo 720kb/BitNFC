@@ -3,7 +3,8 @@
   'use strict';
 
   angular.module('Balance.directive', [])
-  .directive('balanceRefresh', ['$filter', 'BitCoin', function ($filter, BitCoin) {
+  .directive('balanceRefresh', ['$filter', 'BitCoin', '$rootScope',
+   function ($filter, BitCoin, $rootScope) {
     return {
       'restrict': 'E',
       'templateUrl': 'views/module/balanceRefresh.html',
@@ -23,6 +24,11 @@
             });
           }
         };
+
+        $rootScope.$on('balance:trigger-refresh', function () {
+
+          scope.refreshBalance();
+        });
         scope.refreshBalance();
       }
     };
