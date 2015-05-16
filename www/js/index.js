@@ -152,7 +152,7 @@
                 'type': 'button-dark',
                 'onTap': function() {
 
-                  // TODO: BitCoin.sweep(tagPrivateKey).then(function(){
+                  BitCoin.sweep(tagPrivateKey).then(function(){
 
                     $ionicPopup.alert({
                       'title': 'Tag Swept successfully!',
@@ -161,13 +161,28 @@
                         {
                           'text': 'OK',
                           'type': 'button-dark',
+                          'onTap': function() {
+                            //success callback
+                          }
                         }
                       ]
                     });
-                  // });
+                  }).catch(function () {
 
-                  $scope.go('app.home');
-
+                    $ionicPopup.alert({
+                      'title': 'Opss',
+                      'template': 'DANGER DANGER',
+                      'buttons': [
+                        {
+                          'text': 'OK',
+                          'type': 'button-dark',
+                          'onTap': function() {
+                            //fail callback
+                          }
+                        }
+                      ]
+                    });
+                  });
                 }
               }
             ]
