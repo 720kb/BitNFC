@@ -6,12 +6,17 @@
   .controller('SendCtrl', ['$rootScope', '$scope', '$window', '$log', '$stateParams', '$filter', 'BitCoin', 'CordovaClipboard',
     function SendCtrlController($rootScope, $scope, $window, $log, $stateParams, $filter, BitCoin, CordovaClipboard) {
 
+    var inputToAddressElement = $window.document.getElementById('toAddress');
     $scope.sendForm = {};
     $scope.publicAddress = BitCoin.address;
     $scope.sendForm.toAddress = $stateParams.nfcAddress || undefined;
     // $scope.sendForm.toAddress = '1antani';
     // $scope.sendForm.toAddress = '197GxXSqqSAkhLXyy9XrtEySvssuDcQGMY';
     // $scope.sendForm.outputAmount = Number('1000'); // FIXME - use amount from ng-model
+    if ($scope.sendForm.toAddress) {
+
+      inputToAddressElement.focus();
+    }
 
     $scope.resetFlags = function resetLayoutFlags() {
 
