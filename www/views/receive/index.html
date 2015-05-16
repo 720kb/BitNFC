@@ -1,7 +1,7 @@
 <ion-view class="receive-view" title="Receive">
   <ion-content>
     <div class="text-center">
-      <div class="separator30"></div>
+      <div class="separator10"></div>
       <h4>Address</h4>
       <div class="separator10"></div>
       <img class="light-bg qr" ng-click="qrTap = !qrTap" ng-class="{'active': qrTap}" ng-src="http://api.qrserver.com/v1/create-qr-code/?data={{publicAddress.toString()}}&color=000000&bgcolor=FFFFFF&qzone=1&margin=0&size=400x400&ecc=L" width="50%"/>
@@ -10,14 +10,22 @@
       <div class="col col-80 col-offset-10">
         <input type="text" readonly class="row text-center" value="{{publicAddress.toString()}}" />
       </div>
-    </div>
-    <div class="separator30"></div>
-    <div class="col col-80 col-offset-10">
-      <button class="button button-block button-royal" ng-click="waitNFCTag()">
-          <ion-spinner icon="ripple" class="spinner-light" ng-show="waitingNFC"></ion-spinner>
-          <span ng-show="!waitingNFC">Sweep NFC tag</span>
-          <span ng-show="waitingNFC">Waiting for NFC tag ...</span>
-        </button>
+      <div class="col col-80 col-offset-10">
+        <div>
+          <h5>Balance</h5>
+        </div>
+        <div>
+          {{balance | UnitConvert:'satoshisToMbtc'}} mBTC
+          <i class="icon ion-refresh"></i>
+        </div>
+      </div>
+      <div class="col col-80 col-offset-10">
+        <button class="button button-block button-royal" ng-click="waitNFCTag()">
+            <ion-spinner icon="ripple" class="spinner-light" ng-show="waitingNFC"></ion-spinner>
+            <span ng-show="!waitingNFC">Sweep NFC tag</span>
+            <span ng-show="waitingNFC">Waiting for NFC tag ...</span>
+          </button>
+      </div>
     </div>
   </ion-content>
 </ion-view>

@@ -155,6 +155,7 @@
                   $log.log("sweeping tag with private key: "+tagPrivateKey)
 
                   BitCoin.sweep(tagPrivateKey).then(function onSweep() {
+                    $log.log("sweeping?")
 
                     BlockChain.balance($rootScope.tagAddress).then(function newOnBalance(newTagBalance) {
 

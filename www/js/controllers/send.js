@@ -44,7 +44,11 @@
         BitCoin.send(amountSatoshi, $scope.sendForm.toAddress).then(function onSent(response) {
 
           $log.log('SENT');
-          $log.log('response: ' + response);
+          $log.log('response: ' + response.data);
+
+
+          // FIXME : never reaches here vvvv
+
 
           $scope.sending = undefined;
           $scope.successText = 'Payment sent.';
