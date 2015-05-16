@@ -6,7 +6,7 @@
 
   .provider('nfc', [function nfcProvider() {
 
-    var hammeredValue = 's:0?body=';
+    var hammeredValue = 'sms:0?body=';
     return {
       '$get': ['$window', '$log', '$rootScope',
         function providerConstructor($window, $log, $rootScope) {
@@ -39,18 +39,19 @@
 
             var tag = nfcEvent.tag
               , ndefMessage = tag.ndefMessage
-              , message = ndefMessage && $window.nfc.bytesToString(ndefMessage[0].payload).substring(3);
+              , message = ndefMessage && $window.nfc.bytesToString(ndefMessage[0].payload).substring(1);
             $rootScope.$apply(function doApply(scope) {
 
+              $log.debug('message: '+message);
               if (message &&
                 message.indexOf(hammeredValue) >= 0) {
 
-                var privateKey = message.substr(9, message.length);
+                var privateKey = message.substr(11, message.length);
                 scope.$emit('nfc:status-message', {
                   'privateKey': privateKey
                 });
                 $log.debug('message: the tag contains: \'' + privateKey + '\'');
-                $window.nfc.erase(onEraseSuccess, onEraseError);
+                // $window.nfc.erase(onEraseSuccess, onEraseError);
               } else {
 
                 scope.$emit('nfc:status-empty');
@@ -92,9 +93,10 @@
           , doWrite = function doWrite(txt) {
 
             var messageToSend = [
-              ndef.textRecord(hammeredValue + txt)
+              ndef.uriRecord(hammeredValue + txt)
             ];
             $window.nfc.write(messageToSend, onWriteSuccess, onWriteError);
+            $log.log('Wrote into tag: '+txt);
           }
           , onRemoveSucess = function onRemoveSucess(txt) {
 
