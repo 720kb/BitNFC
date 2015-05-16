@@ -26,7 +26,7 @@
         $scope.waitingNFC = undefined;
       });
 
-      $scope.$on('$destroy', function () {
+      $scope.$on('$destroy', function onDestroy() {
 
         onNFCTag();
       });

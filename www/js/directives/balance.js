@@ -4,15 +4,15 @@
 
   angular.module('Balance.directive', [])
   .directive('balanceRefresh', ['$filter', 'BitCoin', '$rootScope',
-   function ($filter, BitCoin, $rootScope) {
+   function onBalanceRefresh($filter, BitCoin, $rootScope) {
     return {
       'restrict': 'E',
       'templateUrl': 'views/module/balanceRefresh.html',
-      'link': function (scope, element, attr) {
+      'link': function onLink(scope, element, attr) {
 
         scope.balance = $filter('UnitConvert')(attr.balance, 'satoshisToMbtc');
 
-        scope.refreshBalance = function () {
+        scope.refreshBalance = function onRefreshBalance() {
 
           if (!scope.refreshingBalance) {
 
@@ -25,7 +25,7 @@
           }
         };
 
-        $rootScope.$on('balance:trigger-refresh', function () {
+        $rootScope.$on('balance:trigger-refresh', function onTriggerRefresh() {
 
           scope.refreshBalance();
         });

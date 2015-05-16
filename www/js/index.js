@@ -115,7 +115,7 @@
           {
             'text': 'OK',
             'type': 'button-dark',
-            'onTap': function() {
+            'onTap': function onTap() {
 
               $state.go('app.send', {
                 'nfcAddress': $rootScope.tagAddress
@@ -151,12 +151,12 @@
               {
                 'text': 'OK',
                 'type': 'button-dark',
-                'onTap': function() {
+                'onTap': function onTap() {
 
-                  $log.log("sweeping tag with private key: "+tagPrivateKey)
+                  $log.log('sweeping tag with private key: ' + tagPrivateKey);
 
                   BitCoin.sweep(tagPrivateKey).then(function onSweep() {
-                    $log.log("swept!")
+                    $log.log('swept!');
 
                     BitCoin.balance().then(function onBalance(newBalance) {
                       var newBalanceMbtc = $filter('UnitConvert')(newBalance, 'satoshisToMbtc');
@@ -168,7 +168,7 @@
                         {
                           'text': 'OK',
                           'type': 'button-dark',
-                          'onTap': function() {
+                          'onTap': function onTap() {
 
                             $state.go('app.home');
                             $rootScope.$emit('balance:trigger-refresh');
@@ -177,8 +177,8 @@
                       ]
                     });
                     });
-                  }).catch(function (info) {
-                    $log.log("Sweep - an error occurred: "+ JSON.stringify(info))
+                  }).catch(function onSweepError(info) {
+                    $log.log('Sweep - an error occurred: ' + JSON.stringify(info));
 
                     $ionicPopup.alert({
                       'title': 'An error occurred',

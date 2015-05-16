@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('System.factory', [])
-  .service('Network', [function () {
+  .service('Network', [function network() {
 
     this.isOffline = function isOffline() {
 

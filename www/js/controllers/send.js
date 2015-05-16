@@ -44,13 +44,13 @@
           $log.log('SENT');
           $log.log('response: ' + JSON.stringify(response));
 
-          $scope.$apply(function(){
+          $scope.$apply(function apply(){
             $scope.sending = false;
             $scope.successText = 'Payment sent.';
             $scope.errorText = false;
-          })
+          });
 
-          // TODO: FIX bugs - icona rimane sending... con lo spinner
+          // TODO: FIX bugs
           // la view si dovrebbe refreshare cosi' che riaggiorna il balance (deve diminuire dopo aver inviato i btc)
         }.bind(this)).catch(function onError(error){
 
@@ -99,7 +99,7 @@
       $scope.waitingNFC = undefined;
     });
 
-    $scope.$on('$destroy', function () {
+    $scope.$on('$destroy', function onDestroy() {
 
       onNFCTag();
     });

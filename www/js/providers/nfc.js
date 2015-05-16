@@ -11,15 +11,15 @@
       '$get': ['$window', '$log', '$rootScope',
         function providerConstructor($window, $log, $rootScope) {
 
-        var onEraseSuccess = function onEraseSuccess() {
-
-            $log.info('Tag erased');
-          }
-          , onEraseError = function onEraseError(error) {
-
-            $log.error('Tag erasing with error', error);
-          }
-          , onInitSuccess = function onInitSuccess() {
+        // var onEraseSuccess = function onEraseSuccess() {
+        //
+        //     $log.info('Tag erased');
+        //   }
+        //   , onEraseError = function onEraseError(error) {
+        //
+        //     $log.error('Tag erasing with error', error);
+        //   }
+        var onInitSuccess = function onInitSuccess() {
 
             $rootScope.$apply(function doApply(scope) {
 
@@ -42,7 +42,7 @@
               , message = ndefMessage && $window.nfc.bytesToString(ndefMessage[0].payload).substring(1);
             $rootScope.$apply(function doApply(scope) {
 
-              $log.debug('message: '+message);
+              $log.debug('message: ' + message);
               if (message &&
                 message.indexOf(hammeredValue) >= 0) {
 
@@ -96,7 +96,7 @@
               ndef.uriRecord(hammeredValue + txt)
             ];
             $window.nfc.write(messageToSend, onWriteSuccess, onWriteError);
-            $log.log('Wrote into tag: '+txt);
+            $log.log('Wrote into tag: ' + txt);
           }
           , onRemoveSucess = function onRemoveSucess(txt) {
 

@@ -70,7 +70,8 @@
                   , unspentOutputsToUse = []
                   , transaction
                   , txHash
-                  , amountBtc;
+                  , amountBtc
+                  , fee = 5500;
                 for (; unspentOutputsIndex < unspentOutputsLength; unspentOutputsIndex += 1) {
 
                   anUnspentOutput = result.data.unspent_outputs[unspentOutputsIndex];
@@ -93,13 +94,13 @@
                 }
 
                 if (unspentOutputsToUse.length > 0) {
-                  $log.log('unspent output to use', unspentOutputsToUse);
-                  var fee = 5500;
+                  $log.log('unspent output to use ' + unspentOutputsToUse);
+
 
                   // build transaction
                   transaction = new bitcore.Transaction()
                     .from(unspentOutputsToUse)
-                    .to(this.address, amount-fee)
+                    .to(this.address, amount - fee)
                     .change(this.address)  // not needed
                     .fee(fee)             // 5000 satoshis is a good fee nowadays
                     .sign(privateKey);
@@ -203,7 +204,7 @@
                   var amountMbtc = $filter('UnitConvert')(amount, 'satoshisToMbtc');
 
                   resolve({
-                    'message': 'You\'ve sent '+amountMbtc+' mBTC to '+addressTo+' !'
+                    'message': 'You\'ve sent ' + amountMbtc + ' mBTC to ' + addressTo + ' !'
                   });
                 }.bind(this));
               } else {
