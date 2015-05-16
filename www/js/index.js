@@ -8,7 +8,8 @@
     'bitNFC.filters',
     'bitNFC.providers',
     'bitNFC.factories',
-    'bitNFC.controllers'])
+    'bitNFC.controllers',
+    'bitNFC.directives'])
 
   .constant('Config', {
     'currencies': ['EUR', 'BTC', 'RUB', 'YEN', 'US'],
