@@ -9,7 +9,7 @@
       'templateUrl': 'views/module/balanceRefresh.html',
       'link': function (scope, element, attr) {
 
-        var oldBalance = attr.balance || 0;
+        scope.balance = attr.balance;
 
         scope.refreshBalance = function () {
 
@@ -25,5 +25,5 @@
         };
       }
     };
-  }])
+  }]);
 }(angular));
