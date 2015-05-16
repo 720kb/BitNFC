@@ -1,7 +1,13 @@
+<div class="stable-bg">
+	<div class="separator5"></div>
+	<h5 class="dark">Balance </h5>
+	<h4 ng-show="!refreshingBalance">
+		{{balance}} mBTC
+		<div class="separator2"></div>
+	</h4>
+	<ion-spinner icon="ripple" class="spinner-dark" ng-show="refreshingBalance"></ion-spinner>
 <div>
-<h5>Balance</h5>
+	<small class="dark">Tap the refresh</small>
 </div>
-<div>
-{{balance | UnitConvert:'satoshisToMbtc'}} mBTC
-<i class="icon ion-refresh"></i>
+	<div class="separator10"></div>
 </div>

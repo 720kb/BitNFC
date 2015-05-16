@@ -1,5 +1,17 @@
 /* Empty. Add your own CSS if you like */
 /*vertical spacing*/
+.separator1 {
+	min-height:1px;
+	clear:both;
+	float:none;
+	width:100%;
+}
+.separator2 {
+	min-height:2px;
+	clear:both;
+	float:none;
+	width:100%;
+}
 .separator3 {
 	min-height:3px;
 	clear:both;

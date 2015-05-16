@@ -10,15 +10,10 @@
       <div class="col col-80 col-offset-10">
         <input type="text" readonly class="row text-center" value="{{publicAddress.toString()}}" />
       </div>
-      <div class="col col-80 col-offset-10">
-        <div>
-          <h5>Balance</h5>
-        </div>
-        <div>
-          {{balance | UnitConvert:'satoshisToMbtc'}} mBTC
-          <i class="icon ion-refresh"></i>
-        </div>
-      </div>
+      <div class="separator15"></div>
+      <balance-refresh
+        balance="{{balance | UnitConvert:'satoshisToMbtc'}}"
+        ng-click="refreshBalance()"/>
       <div class="col col-80 col-offset-10">
         <button class="button button-block button-royal" ng-click="waitNFCTag()">
             <ion-spinner icon="ripple" class="spinner-light" ng-show="waitingNFC"></ion-spinner>
