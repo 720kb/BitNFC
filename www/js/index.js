@@ -58,8 +58,8 @@
       $httpProvider.interceptors.push('CordovaNetworkInterceptor');
   }])
 
-  .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', '$log', 'nfc', 'BitCoin', 'BlockChain',
-    function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, $log, nfc, BitCoin, BlockChain) {
+  .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', '$log', '$filter', 'nfc', 'BitCoin', 'BlockChain',
+    function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, $log, $filter, nfc, BitCoin, BlockChain) {
 
     $rootScope.debugMode = true; //false
 
