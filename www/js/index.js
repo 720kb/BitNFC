@@ -171,7 +171,7 @@
                           'onTap': function() {
 
                             $state.go('app.home');
-                            // TODO $state.refreshBalance
+                            $rootScope.$emit('balance:trigger-refresh');
                           }
                         }
                       ]
