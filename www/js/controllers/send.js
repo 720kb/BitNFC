@@ -6,7 +6,8 @@
   .controller('SendCtrl', ['$rootScope', '$scope', '$window', '$log', '$stateParams', '$filter', 'BitCoin', 'CordovaClipboard',
     function SendCtrlController($rootScope, $scope, $window, $log, $stateParams, $filter, BitCoin, CordovaClipboard) {
 
-    var inputToAddressElement = $window.document.getElementById('toAddress');
+    var onNFCTag
+      , inputToAddressElement = $window.document.getElementById('toAddress');
     $scope.sendForm = {};
     $scope.publicAddress = BitCoin.address;
     $scope.sendForm.toAddress = $stateParams.nfcAddress || undefined;
@@ -22,6 +23,11 @@
 
       $scope.errorText = undefined;
       $scope.successText = undefined;
+    };
+
+    $scope.waitNFCTag = function waitNFCTag() {
+
+      $scope.waitingNFC = true;
     };
 
     $scope.sendBtc = function sendBtc() {
@@ -85,6 +91,16 @@
     BitCoin.balance().then(function onBalance(balance) {
 
       $scope.balance = balance;
+    });
+
+    onNFCTag = $rootScope.$on('nfc:status-message', function () {
+
+      $scope.waitingNFC = undefined;
+    });
+
+    $scope.$on('$destroy', function () {
+
+      onNFCTag();
     });
   }]);
 }(angular));

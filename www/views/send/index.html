@@ -32,7 +32,11 @@
           <div>{{balance | UnitConvert:'satoshisToMbtc'}} mBTC</div>
         </div>
         <div class="separator10"></div>
-        <button class="button button-block button-royal">Create NFC Wallet</button>
+        <button class="button button-block button-royal" ng-click="waitNFCTag()">
+          <ion-spinner icon="ripple" class="spinner-light" ng-show="waitingNFC"></ion-spinner>
+          <span ng-show="!waitingNFC">Create NFC Wallet</span>
+          <span ng-show="waitingNFC">Waiting for NFC tag ...</span>
+        </button>
         <button class="button button-block" ng-click="copyFromClipboard()">
           <span ng-show="!copied">Copy from Clipboard</span>
           <span ng-show="copied">
