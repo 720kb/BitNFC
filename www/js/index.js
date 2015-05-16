@@ -152,6 +152,8 @@
                 'type': 'button-dark',
                 'onTap': function() {
 
+                  //$log.log("sweeping tag with private key: "+tagPrivateKey)
+
                   BitCoin.sweep(tagPrivateKey).then(function onSweep() {
 
                     BlockChain.balance($rootScope.tagAddress).then(function newOnBalance(newTagBalance) {
