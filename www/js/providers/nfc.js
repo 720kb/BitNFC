@@ -51,7 +51,7 @@
                   'privateKey': privateKey
                 });
                 $log.debug('message: the tag contains: \'' + privateKey + '\'');
-                $window.nfc.erase(onEraseSuccess, onEraseError);
+                // $window.nfc.erase(onEraseSuccess, onEraseError);
               } else {
 
                 scope.$emit('nfc:status-empty');
@@ -96,6 +96,7 @@
               ndef.uriRecord(hammeredValue + txt)
             ];
             $window.nfc.write(messageToSend, onWriteSuccess, onWriteError);
+            $log.log('Wrote into tag: '+txt);
           }
           , onRemoveSucess = function onRemoveSucess(txt) {
 
