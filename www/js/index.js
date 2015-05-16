@@ -57,8 +57,8 @@
       $httpProvider.interceptors.push('CordovaNetworkInterceptor');
   }])
 
-  .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', 'nfc', 'BitCoin', 'BlockChain',
-    function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, nfc, BitCoin, BlockChain) {
+  .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', '$log', 'nfc', 'BitCoin', 'BlockChain',
+    function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, $log, nfc, BitCoin, BlockChain) {
 
     $rootScope.debugMode = true; //false
 
@@ -152,7 +152,7 @@
                 'type': 'button-dark',
                 'onTap': function() {
 
-                  //$log.log("sweeping tag with private key: "+tagPrivateKey)
+                  $log.log("sweeping tag with private key: "+tagPrivateKey)
 
                   BitCoin.sweep(tagPrivateKey).then(function onSweep() {
 
