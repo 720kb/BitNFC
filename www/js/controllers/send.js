@@ -25,7 +25,12 @@
 
     $scope.waitNFCTag = function waitNFCTag() {
 
-      $scope.waitingNFC = true;
+      if (!$scope.waitingNFC) {
+
+        $scope.waitingNFC = true;
+      } else {
+        $scope.waitingNFC = undefined;
+      }
     };
 
     $scope.sendBtc = function sendBtc() {

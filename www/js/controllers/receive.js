@@ -18,7 +18,12 @@
 
       $scope.waitNFCTag = function waitNFCTag() {
 
-        $scope.waitingNFC = true;
+        if (!$scope.waitingNFC) {
+
+          $scope.waitingNFC = true;
+        } else {
+          $scope.waitingNFC = undefined;
+        }
       };
 
       onNFCTag = $rootScope.$on('nfc:status-message', function onNFCTag() {
