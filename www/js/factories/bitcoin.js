@@ -96,7 +96,7 @@
                   $log.log('transaction:');
                   $log.log(JSON.stringify(transaction));
 
-                  try{
+                  try {
 
                     txHash = transaction.serialize();
                   } catch(error) {
@@ -190,7 +190,7 @@
                   .fee(5500)             // 5000 satoshis is a good fee nowadays
                   .sign(this.privateKey);
 
-                try{
+                try {
 
                   txHash = transaction.serialize();
                 } catch(error) {
