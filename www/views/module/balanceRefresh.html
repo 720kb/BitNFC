@@ -4,6 +4,7 @@
 	<h4 ng-show="!refreshingBalance">
 		{{balance}} mBTC
 		<div class="separator2"></div>
+		<small>{{balance}} {{balanceCurrency}}</small>
 	</h4>
 	<ion-spinner icon="ripple" class="spinner-dark" ng-show="refreshingBalance"></ion-spinner>
 <div>

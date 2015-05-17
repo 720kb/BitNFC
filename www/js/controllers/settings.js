@@ -3,8 +3,8 @@
   'use strict';
 
   angular.module('Settings.controller', [])
-  .controller('SettingsCtrl', ['$window', '$scope', 'BitCoin', 'BlockChain', 'Config',
-    function SettingsCtrlController($window, $scope, BitCoin, BlockChain, Config) {
+  .controller('SettingsCtrl', ['$rootScope', '$window', '$scope', 'BitCoin', 'BlockChain', 'Config',
+    function SettingsCtrlController($rootScope, $window, $scope, BitCoin, BlockChain, Config) {
 
       $scope.bitcoin = BitCoin;
       $scope.blockchain = BlockChain;
@@ -22,6 +22,7 @@
       $scope.setCurrency = function setCurrency() {
 
         $window.localStorage.settingsCurrency = $scope.settingsCurrency;
+        $rootScope.$emit('balance:trigger-refresh');
       };
 
       $scope.setDenomination = function setCurrency() {
