@@ -156,6 +156,7 @@
 
                   BitCoin.balance().then(function onBalance(newBalance) {
                     var newBalanceMbtc = $filter('UnitConvert')(newBalance, 'satoshisToMbtc');
+                    $log.log('DEBUG!?');
 
                     $ionicPopup.alert({
                     'title': 'Tag Swept successfully!',

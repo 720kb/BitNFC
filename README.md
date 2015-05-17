@@ -13,6 +13,13 @@ TODO
 
 enjoy!
 
+### Moar Features
+
+- Better errors > show confirmation count (e.g. in sweep)
+- Ability to Copy (Clone the tag) (Backup)
+- Settings > Denominations (other than millibits: BTCs, bits)
+- Settings > Export private key
+
 ## Development
 
 ### Prerequisites
