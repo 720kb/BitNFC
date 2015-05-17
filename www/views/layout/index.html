@@ -22,14 +22,6 @@
 		</ion-header-bar>
 		<ion-content ng-controller="SettingsCtrl">
 			<div class="list">
-				<label class="item item-input item-select no-border-top">
-					<div class="input-label">Denomination</div>
-					<select ng-model="settingsDenomination" ng-change="setDenomination()">
-						<option ng-repeat="item in denominations" ng-selected="settingsDenomination === item" ng-value="item">
-							{{item}}
-						</option>
-					</select>
-				</label>
 				<label class="item item-input item-select">
 					<div class="input-label">Currency</div>
 					<select ng-model="settingsCurrency" ng-change="setCurrency()">
@@ -45,7 +37,7 @@
 <!--footer tabs-->
 <div class="tabs tabs-light tabs-icon-top footer-tabs">
 	<!--debug only-->
-	<div ng-controller="DebugCtrl" class="button-bar" ng-if="debugMode">
+	<!-- <div ng-controller="DebugCtrl" class="button-bar" ng-if="debugMode">
 		<a ng-click="nfcEmpty()" class="button button-dark">
 			NFC
 			<p>empty</p>
@@ -54,7 +46,7 @@
 			NFC
 			<p>message</p>
 		</a>
-	</div>
+	</div> -->
 	<!--debug end-->
 	<div class="button-bar">
 		<a class="button button-royal" ui-sref="app.receive" ui-sref-active="active">
