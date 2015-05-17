@@ -1,6 +1,9 @@
 body{
 	font-family:Roboto;
 }
+small, small *{
+	font-size: 12px;
+}
 a,a:active{
 	color:#7516B1;
 }
@@ -20,4 +23,18 @@ iframe{
 	right:0;
 	z-index:999;
 	max-width:40%;
+}
+/*tablet*/
+@media screen and (max-width:800px){
+	/*put in here all tablet rules*/
+	.tablet-centered-content {
+		text-align: center;
+	}
+}
+/*mobile*/
+@media screen and (max-width:400px){
+	/*put in here all mobile rules*/
+	.mobile-centered-content {
+		text-align: center;
+	}
 }
