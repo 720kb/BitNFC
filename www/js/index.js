@@ -176,6 +176,11 @@
                 }).catch(function onSweepError(info) {
                   $log.log('Sweep - an error occurred: ' + JSON.stringify(info));
 
+                  // TODO: mostra il tempo dell'ultima conferma - dice:
+                  // 'X minutes elapsed from the latest block'
+                  // <small>usually it takes about 10 minutes for a new block to be found</small>
+                  // use: https://blockchain.info/latestblock
+
                   $ionicPopup.alert({
                     'title': 'An error occurred',
                     'template': '<p>NFC Wallet Sweep action was not possible at this time.</p><p>hint: It\'s possible that you have to wait for at least one confirmation to do this action.</p>',
