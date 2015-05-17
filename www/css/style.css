@@ -54,6 +54,9 @@
 	float:none;
 	width:100%;
 }
+.radius{
+	border-radius:2px;
+}
 /*Reset*/
 .no-border-top{
 	border-top:none;
