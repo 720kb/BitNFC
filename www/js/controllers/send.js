@@ -61,9 +61,14 @@
 
           $log.log('catched error: ' + error.message);
 
-          $scope.errorText = error.message;
-          $scope.successText = false;
-          $scope.sending = undefined;
+          // TODO: catch transaction#serialize - amountError (if it's trying to send more than what's in the phone wallet)
+
+          $scope.$apply(function apply(){
+            $scope.errorText = error.message;
+            $scope.successText = false;
+            $scope.sending = undefined;
+            // TODO: scrollTop 0
+          });
         });
       }
     };

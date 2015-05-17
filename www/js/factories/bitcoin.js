@@ -96,21 +96,32 @@
                   $log.log('transaction:');
                   $log.log(JSON.stringify(transaction));
 
-                  txHash = transaction.serialize();
+                  try{
 
-                  // push transaction
-                  BlockChain.pushTx(txHash).then(function onTransactionFinished() {
-
-                    resolve({
-                      'message': 'Sweep done, check your balance!'
-                    });
-                  }).catch(function onError(error){
-                    $log.log('pushtx error: ' + error.data);
+                    txHash = transaction.serialize();
+                  } catch(error) {
 
                     reject({
-                      'message': 'Error pushing the transaction: '+ error.data
+                      'message': 'Error serializing the transaction: ' + error.message
                     });
-                  });
+                  }
+
+                  if (txHash) {
+
+                    // push transaction
+                    BlockChain.pushTx(txHash).then(function onTransactionFinished() {
+
+                      resolve({
+                        'message': 'Sweep done, check your balance!'
+                      });
+                    }).catch(function onError(error){
+                      $log.log('pushtx error: ' + error.data);
+
+                      reject({
+                        'message': 'Error pushing the transaction: ' + error.data
+                      });
+                    });
+                  }
                 } else {
 
                   reject({
@@ -179,16 +190,32 @@
                   .fee(5500)             // 5000 satoshis is a good fee nowadays
                   .sign(this.privateKey);
 
-                txHash = transaction.serialize();
+                try{
 
-                // push transaction
-                BlockChain.pushTx(txHash).then(function onTransactionFinished() {
-                  var amountMbtc = $filter('UnitConvert')(amount, 'satoshisToMbtc');
+                  txHash = transaction.serialize();
+                } catch(error) {
 
-                  resolve({
-                    'message': 'You\'ve sent ' + amountMbtc + ' mBTC to ' + addressTo + ' !'
+                  reject({
+                    'message': 'Error serializing the transaction: ' + error.message
                   });
-                });
+                }
+
+                if (txHash) {
+
+                  // push transaction
+                  BlockChain.pushTx(txHash).then(function onTransactionFinished() {
+                    var amountMbtc = $filter('UnitConvert')(amount, 'satoshisToMbtc');
+
+                    resolve({
+                      'message': 'You\'ve sent ' + amountMbtc + ' mBTC to ' + addressTo + ' !'
+                    });
+                  }).catch(function onError(error){
+
+                    reject({
+                      'message': 'Error pushing the transaction: ' + error.data
+                    });
+                  });
+                }
               } else {
 
                 reject({
