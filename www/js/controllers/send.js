@@ -57,7 +57,7 @@
 
           // TODO: FIX bugs
           // la view si dovrebbe refreshare cosi' che riaggiorna il balance (deve diminuire dopo aver inviato i btc)
-        }.bind(this)).catch(function onError(error){
+        }).catch(function onError(error){
 
           $log.log('catched error: ' + error.message);
 

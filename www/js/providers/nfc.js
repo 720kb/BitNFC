@@ -1,5 +1,5 @@
-/*global angular nfc ndef*/
-(function withAngular(angular) {
+/*global angular require*/
+(function withAngular(angular, require) {
   'use strict';
 
   angular.module('nfc.provider', [])
@@ -11,8 +11,6 @@
       '$get': ['$window', '$log', '$rootScope', 'BlockChain',
         function providerConstructor($window, $log, $rootScope, BlockChain) {
 
-
-
         // var onEraseSuccess = function onEraseSuccess() {
         //
         //     $log.info('Tag erased');
@@ -22,7 +20,7 @@
         //     $log.error('Tag erasing with error', error);
         //   }
         var bitcore = require('bitcore')
-        , onInitSuccess = function onInitSuccess() {
+          , onInitSuccess = function onInitSuccess() {
 
             $rootScope.$apply(function doApply(scope) {
 
@@ -109,7 +107,7 @@
           , doWrite = function doWrite(txt) {
 
             var messageToSend = [
-              ndef.uriRecord(hammeredValue + txt)
+              $window.ndef.uriRecord(hammeredValue + txt)
             ];
             $window.nfc.write(messageToSend, onWriteSuccess, onWriteError);
             $log.log('Wrote into tag: ' + txt);
@@ -133,7 +131,6 @@
             }
           };
 
-
         $rootScope.$on('system:started', function onSystemStarted() {
 
           registerListeners();
@@ -146,4 +143,4 @@
       }]
     };
   }]);
-}(angular));
+}(angular, require));

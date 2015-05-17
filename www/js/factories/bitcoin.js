@@ -185,7 +185,7 @@
                   resolve({
                     'message': 'You\'ve sent ' + amountMbtc + ' mBTC to ' + addressTo + ' !'
                   });
-                }.bind(this));
+                });
               } else {
 
                 reject({
