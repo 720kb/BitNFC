@@ -8,8 +8,10 @@
 
     var hammeredValue = 'sms:0?body=';
     return {
-      '$get': ['$window', '$log', '$rootScope',
-        function providerConstructor($window, $log, $rootScope) {
+      '$get': ['$window', '$log', '$rootScope', 'BlockChain',
+        function providerConstructor($window, $log, $rootScope, BlockChain) {
+
+
 
         // var onEraseSuccess = function onEraseSuccess() {
         //
@@ -19,7 +21,8 @@
         //
         //     $log.error('Tag erasing with error', error);
         //   }
-        var onInitSuccess = function onInitSuccess() {
+        var bitcore = require('bitcore')
+        , onInitSuccess = function onInitSuccess() {
 
             $rootScope.$apply(function doApply(scope) {
 
@@ -46,12 +49,25 @@
               if (message &&
                 message.indexOf(hammeredValue) >= 0) {
 
-                var privateKey = message.substr(11, message.length);
-                scope.$emit('nfc:status-message', {
-                  'privateKey': privateKey
+                var privateKeyString = message.substr(11, message.length)
+                , privateKey = new bitcore.PrivateKey(privateKeyString)
+                , address = privateKey.toAddress();
+
+                BlockChain.balance(address.toString() ).then(function onBalance(tagBalance) {
+
+                  if (Number(tagBalance) > 0) {
+                    scope.$emit('nfc:status-message', {
+                      'privateKey': privateKey,
+                      'balance': tagBalance,
+                      'address': address
+                    });
+                    $log.debug('message: the tag contains: \'' + privateKey + '\'');
+                    // $window.nfc.erase(onEraseSuccess, onEraseError);
+                  } else {
+                    scope.$emit('nfc:status-empty');
+                    $log.debug('message: found a tag with balance 0 - regenerating');
+                  }
                 });
-                $log.debug('message: the tag contains: \'' + privateKey + '\'');
-                // $window.nfc.erase(onEraseSuccess, onEraseError);
               } else {
 
                 scope.$emit('nfc:status-empty');

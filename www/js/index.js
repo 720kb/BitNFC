@@ -58,8 +58,8 @@
       $httpProvider.interceptors.push('CordovaNetworkInterceptor');
   }])
 
-  .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', '$log', '$filter', 'nfc', 'BitCoin', 'BlockChain',
-    function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, $log, $filter, nfc, BitCoin, BlockChain) {
+  .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', '$log', '$filter', 'nfc', 'BitCoin',
+    function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, $log, $filter, nfc, BitCoin) {
 
     $rootScope.debugMode = true; //false
 
@@ -132,69 +132,64 @@
       if (payload &&
         payload.privateKey) {
 
-        var tagPrivateKey = BitCoin.fromPrivateKey(payload.privateKey);
-        $rootScope.tagAddress = tagPrivateKey.toAddress();
-        BlockChain.balance($rootScope.tagAddress).then(function onBalance(tagBalance) {
+        var tagPrivateKey = payload.privateKey;
+        $rootScope.tagAddress = payload.address;
+        $rootScope.tagBalance = payload.balance;
 
-          $rootScope.tagBalance = tagBalance;
+        $ionicPopup.confirm({
+          'title': 'NFC Wallet found!',
+          'templateUrl': 'views/popup/nfc-wallet.html',
+          'scope': $rootScope,
+          'buttons': [
+            {
+              'text': 'Cancel'
+            },
+            {
+              'text': 'OK',
+              'type': 'button-dark',
+              'onTap': function onTap() {
 
-          // TODO if tagBalance == 0 mostra un popup diverso che chiede di caricare il tag!!
+                $log.log('sweeping tag with private key: ' + tagPrivateKey);
 
-          $ionicPopup.confirm({
-            'title': 'NFC Wallet found!',
-            'templateUrl': 'views/popup/nfc-wallet.html',
-            'scope': $rootScope,
-            'buttons': [
-              {
-                'text': 'Cancel'
-              },
-              {
-                'text': 'OK',
-                'type': 'button-dark',
-                'onTap': function onTap() {
+                BitCoin.sweep(tagPrivateKey).then(function onSweep() {
+                  $log.log('swept!');
 
-                  $log.log('sweeping tag with private key: ' + tagPrivateKey);
-
-                  BitCoin.sweep(tagPrivateKey).then(function onSweep() {
-                    $log.log('swept!');
-
-                    BitCoin.balance().then(function onBalance(newBalance) {
-                      var newBalanceMbtc = $filter('UnitConvert')(newBalance, 'satoshisToMbtc');
-
-                      $ionicPopup.alert({
-                      'title': 'Tag Swept successfully!',
-                      'template': '<p>Your balance is now:</p><p>' + newBalanceMbtc + ' mBTC</p>',
-                      'buttons': [
-                        {
-                          'text': 'OK',
-                          'type': 'button-dark',
-                          'onTap': function onTap() {
-
-                            $state.go('app.home');
-                            $rootScope.$emit('balance:trigger-refresh');
-                          }
-                        }
-                      ]
-                    });
-                    });
-                  }).catch(function onSweepError(info) {
-                    $log.log('Sweep - an error occurred: ' + JSON.stringify(info));
+                  BitCoin.balance().then(function onBalance(newBalance) {
+                    var newBalanceMbtc = $filter('UnitConvert')(newBalance, 'satoshisToMbtc');
 
                     $ionicPopup.alert({
-                      'title': 'An error occurred',
-                      'template': '<p>NFC Wallet Sweep action was not possible at this time.</p><p>hint: It\'s possible that you have to wait for at least one confirmation to do this action.</p>',
-                      'buttons': [
-                        {
-                          'text': 'OK',
-                          'type': 'button-dark'
+                    'title': 'Tag Swept successfully!',
+                    'template': '<p>Your balance is now:</p><p>' + newBalanceMbtc + ' mBTC</p>',
+                    'buttons': [
+                      {
+                        'text': 'OK',
+                        'type': 'button-dark',
+                        'onTap': function onTap() {
+
+                          $state.go('app.home');
+                          $rootScope.$emit('balance:trigger-refresh');
                         }
-                      ]
-                    });
+                      }
+                    ]
                   });
-                }
+                  });
+                }).catch(function onSweepError(info) {
+                  $log.log('Sweep - an error occurred: ' + JSON.stringify(info));
+
+                  $ionicPopup.alert({
+                    'title': 'An error occurred',
+                    'template': '<p>NFC Wallet Sweep action was not possible at this time.</p><p>hint: It\'s possible that you have to wait for at least one confirmation to do this action.</p>',
+                    'buttons': [
+                      {
+                        'text': 'OK',
+                        'type': 'button-dark'
+                      }
+                    ]
+                  });
+                });
               }
-            ]
-          });
+            }
+          ]
         });
       }
     });
