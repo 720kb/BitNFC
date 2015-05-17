@@ -81,9 +81,9 @@
                 ];
                 $window.nfc.write(messageToSend, onWriteSuccess, onWriteError);
                 scope.$emit('nfc:status-empty', {
-                  'payload': theNewPrivateKey
+                  'privateKey': theNewPrivateKey
                 });
-                $log.debug('wrote down on tag', theNewPrivateKey.toString());
+                $log.debug('wrote down on tag' + theNewPrivateKey.toString());
               }
             });
           }
