@@ -3,12 +3,14 @@
   'use strict';
 
   angular.module('Balance.directive', [])
-  .directive('balanceRefresh', ['$filter', 'BitCoin', '$rootScope',
-   function onBalanceRefresh($filter, BitCoin, $rootScope) {
+  .directive('balanceRefresh', ['$rootScope', '$filter', '$window', 'BitCoin',
+   function onBalanceRefresh($rootScope, $filter, $window, BitCoin) {
     return {
       'restrict': 'E',
       'templateUrl': 'views/module/balanceRefresh.html',
       'link': function onLink(scope, element, attr) {
+
+        scope.balanceCurrency = $window.localStorage.settingsCurrency;
 
         scope.balance = $filter('UnitConvert')(attr.balance, 'satoshisToMbtc');
 
