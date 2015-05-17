@@ -61,41 +61,29 @@
             BlockChain.unspent(address.toString()).then(function unspent(result) {
               if (result) {
 
-                $log.log('all unspent', result.data.unspent_outputs);
-
                 var unspentOutputsIndex = 0
                   , unspentOutputsLength = result.data.unspent_outputs.length
                   , anUnspentOutput
-                  , partialAmount = 0
                   , unspentOutputsToUse = []
                   , transaction
                   , txHash
                   , amountBtc
                   , fee = 5500;
                 for (; unspentOutputsIndex < unspentOutputsLength; unspentOutputsIndex += 1) {
-
                   anUnspentOutput = result.data.unspent_outputs[unspentOutputsIndex];
-                  if (anUnspentOutput &&
-                    anUnspentOutput.value &&
-                    partialAmount <= amount) {
+                  amountBtc = $filter('UnitConvert')(anUnspentOutput.value, 'satoshisToBtc');
 
-                    partialAmount += anUnspentOutput.value;
-
-                    amountBtc = $filter('UnitConvert')(anUnspentOutput.value, 'satoshisToBtc');
-
-                    unspentOutputsToUse.push({
-                      'address': address.toString(),
-                      'txid': anUnspentOutput.tx_hash_big_endian,
-                      'scriptPubKey': anUnspentOutput.script,
-                      'amount': amountBtc,
-                      'vout': anUnspentOutput.tx_output_n
-                    });
-                  }
+                  unspentOutputsToUse.push({
+                    'address': address.toString(),
+                    'txid': anUnspentOutput.tx_hash_big_endian,
+                    'scriptPubKey': anUnspentOutput.script,
+                    'amount': amountBtc,
+                    'vout': anUnspentOutput.tx_output_n
+                  });
                 }
 
                 if (unspentOutputsToUse.length > 0) {
                   $log.log('unspent output to use ' + unspentOutputsToUse);
-
 
                   // build transaction
                   transaction = new bitcore.Transaction()
@@ -161,30 +149,21 @@
               var unspentOutputsIndex = 0
                 , unspentOutputsLength = result.data.unspent_outputs.length
                 , anUnspentOutput
-                , partialAmount = 0
                 , unspentOutputsToUse = []
                 , transaction
                 , txHash
                 , amountBtc;
               for (; unspentOutputsIndex < unspentOutputsLength; unspentOutputsIndex += 1) {
-
                 anUnspentOutput = result.data.unspent_outputs[unspentOutputsIndex];
-                if (anUnspentOutput &&
-                  anUnspentOutput.value &&
-                  partialAmount <= amount) {
+                amountBtc = $filter('UnitConvert')(anUnspentOutput.value, 'satoshisToBtc');
 
-                  partialAmount += anUnspentOutput.value;
-
-                  amountBtc = $filter('UnitConvert')(anUnspentOutput.value, 'satoshisToBtc');
-
-                  unspentOutputsToUse.push({
-                    'address': this.address.toString(),
-                    'txid': anUnspentOutput.tx_hash_big_endian,
-                    'scriptPubKey': anUnspentOutput.script,
-                    'amount': amountBtc,
-                    'vout': anUnspentOutput.tx_output_n
-                  });
-                }
+                unspentOutputsToUse.push({
+                  'address': this.address.toString(),
+                  'txid': anUnspentOutput.tx_hash_big_endian,
+                  'scriptPubKey': anUnspentOutput.script,
+                  'amount': amountBtc,
+                  'vout': anUnspentOutput.tx_output_n
+                });
               }
 
               if (unspentOutputsToUse.length > 0) {
