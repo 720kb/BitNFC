@@ -218,7 +218,12 @@
                 'message': 'No unspent output for address'
               });
             }
-          }.bind(this));
+          }.bind(this)).catch(function onError(error){
+            
+            reject({
+              'message': 'Unspent output request failed - address or amount are malformed'
+            });
+          });
         }.bind(this));
       };
 
