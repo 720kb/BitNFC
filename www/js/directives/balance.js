@@ -28,7 +28,7 @@
         };
 
         $rootScope.$on('balance:trigger-refresh', function onTriggerRefresh() {
-
+          scope.balanceCurrency = $window.localStorage.settingsCurrency;
           scope.refreshBalance();
         });
         scope.refreshBalance();
