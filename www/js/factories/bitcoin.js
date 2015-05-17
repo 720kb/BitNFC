@@ -219,7 +219,7 @@
               });
             }
           }.bind(this)).catch(function onError(error){
-            
+
             reject({
               'message': 'Unspent output request failed - address or amount are malformed'
             });
@@ -269,7 +269,7 @@
                 }
               }
 
-              resolve(bitcore.Unit.fromMilis(amount).atRate(theActualRate));
+              resolve(bitcore.Unit.fromSatoshis(amount).atRate(theActualRate));
             }
           }, function onFailure(failure) {
 
