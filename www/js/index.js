@@ -219,8 +219,6 @@
   .run(['$ionicPlatform', '$rootScope', '$window', '$state', '$ionicPopup', '$log', '$filter', 'nfc', 'BitCoin',
     function onApplicationStart($ionicPlatform, $rootScope, $window, $state, $ionicPopup, $log, $filter, nfc, BitCoin) {
 
-    $rootScope.debugMode = true; //false
-
     $ionicPlatform.ready(function onReady() {
 
       if ($window.cordova &&
