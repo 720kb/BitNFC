@@ -22,7 +22,7 @@
 		</ion-header-bar>
 		<ion-content ng-controller="SettingsCtrl">
 			<div class="list">
-				<label class="item item-input item-select">
+				<label class="item item-input item-select no-border-top">
 					<div class="input-label">Currency</div>
 					<select ng-model="settingsCurrency" ng-change="setCurrency()">
 						<option ng-repeat="item in currencies" ng-if="item" ng-selected="settingsCurrency === item" ng-value="item">
