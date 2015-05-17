@@ -10,10 +10,14 @@
       'templateUrl': 'views/module/balanceRefresh.html',
       'link': function onLink(scope, element, attr) {
 
+        var unregisterSettingsTrigger = $rootScope.$on('balance:trigger-refresh', function onTriggerRefresh() {
+
+          scope.balanceCurrency = $window.localStorage.settingsCurrency;
+          scope.refreshBalance();
+        });
+
         scope.balanceCurrency = $window.localStorage.settingsCurrency;
-
         scope.balance = $filter('UnitConvert')(attr.balance, 'satoshisToMbtc');
-
         scope.refreshBalance = function onRefreshBalance() {
 
           if (!scope.refreshingBalance) {
@@ -22,16 +26,17 @@
             BitCoin.balance().then(function onBalance(balance) {
 
               scope.balance = $filter('UnitConvert')(balance, 'satoshisToMbtc');
+              scope.convertedBalance = BitCoin.toCurrency(balance, scope.balanceCurrency);
               scope.refreshingBalance = false;
             });
           }
         };
 
-        $rootScope.$on('balance:trigger-refresh', function onTriggerRefresh() {
-          scope.balanceCurrency = $window.localStorage.settingsCurrency;
-          scope.refreshBalance();
-        });
         scope.refreshBalance();
+        scope.$on('$destroy', function unregisterListeners() {
+
+          unregisterSettingsTrigger();
+        });
       }
     };
   }]);

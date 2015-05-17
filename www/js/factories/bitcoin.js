@@ -4,22 +4,12 @@
 
   angular.module('BitCoin.factory', [])
 
-  .factory('BitCoin', ['$window', '$rootScope', '$log', '$q', '$filter', 'BlockChain',
-    function BitCoinFactory($window, $rootScope, $log, $q, $filter, BlockChain) {
+  .factory('BitCoin', ['$window', '$rootScope', '$log', '$q', '$http', '$filter', 'BlockChain',
+    function BitCoinFactory($window, $rootScope, $log, $q, $http, $filter, BlockChain) {
 
       var bitcore = require('bitcore')
-
-      // Bitcoin
-      //   bitcoin wallet
-      //
-      // - based on bitcore
-      // - localstorage (saves keys locally in the browser)
-      // - reveal private key
-      // - one-to-many transaction TODO one input, many outputs
-      //
-      // TODO import bitcoin private key
       , BitCoin = function BitCoin() {
-      };
+        };
 
       Object.defineProperties(BitCoin.prototype, {
         'privateKey': {
@@ -215,6 +205,42 @@
       BitCoin.prototype.balance = function balance() {
 
         return BlockChain.balance(this.address);
+      };
+
+      BitCoin.prototype.toCurrency = function toCurrency(amount, currentCurrency) {
+
+        return $q(function deferred(resolve, reject) {
+
+          $http({
+            'method': 'GET',
+            'url': 'https://bitpay.com/api/rates'
+          }).then(function onSuccess(response) {
+
+            if (response &&
+              response.data) {
+
+              var conversions = response.data
+                , conversionsLength = conversions.length
+                , conversionsIndex = 0
+                , aConversion
+                , theActualRate;
+              for (; conversionsIndex < conversionsLength; conversionsIndex += 1) {
+
+                aConversion = conversions[conversionsIndex];
+                if (aConversion &&
+                  aConversion.code === currentCurrency) {
+
+                  theActualRate = aConversion.rate;
+                }
+              }
+
+              resolve(bitcore.Unit.fromMilis(amount).atRate(theActualRate));
+            }
+          }, function onFailure(failure) {
+
+            reject(failure);
+          });
+        });
       };
 
     return new BitCoin();
