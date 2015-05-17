@@ -1,3 +1,9 @@
+textarea{
+	resize: none;
+	width:96%;
+	padding:2%;
+	white-space:no-wrap;
+}
 /* Empty. Add your own CSS if you like */
 /*vertical spacing*/
 .separator1 {
