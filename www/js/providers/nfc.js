@@ -37,12 +37,23 @@
               'error': error
             });
           }
+          , newPrivateKey = function newPrivateKey(scope) { //Empty tag writing down a private key
+
+              var theNewPrivateKey = BitCoin.generatePrivateKey()
+                , theNewPrivateKeyToString = theNewPrivateKey.toString()
+                , messageToSend = [
+                  $window.ndef.uriRecord(hammeredValue + theNewPrivateKeyToString)
+                ];
+
+              $window.nfc.write(messageToSend, onWriteSuccess, onWriteError);
+              scope.$emit('nfc:status-empty', {
+                'privateKey': theNewPrivateKey
+              });
+              $log.debug('wrote down on tag' + theNewPrivateKey.toString());
+            }
           , onListeningEvent = function onListeningEvent(nfcEvent) {
 
-            var messageToSend
-              , theNewPrivateKey
-              , theNewPrivateKeyToString
-              , tag = nfcEvent.tag
+            var tag = nfcEvent.tag
               , ndefMessage = tag.ndefMessage
               , message = ndefMessage && $window.nfc.bytesToString(ndefMessage[0].payload).substring(1);
             $rootScope.$apply(function doApply(scope) {
@@ -67,24 +78,12 @@
                     $log.debug('The tag contains: \'' + privateKey + '\'');
                   } else {
 
-                    scope.$emit('nfc:status-empty', {
-                      'privateKey': privateKey
-                    });
-                    $log.debug('The tag contains: \'' + privateKey + '\' with no balance');
+                    newPrivateKey(scope);
                   }
                 });
               } else { //Empty tag writing down a private key
 
-                theNewPrivateKey = BitCoin.generatePrivateKey();
-                theNewPrivateKeyToString = theNewPrivateKey.toString();
-                messageToSend = [
-                  $window.ndef.uriRecord(hammeredValue + theNewPrivateKeyToString)
-                ];
-                $window.nfc.write(messageToSend, onWriteSuccess, onWriteError);
-                scope.$emit('nfc:status-empty', {
-                  'privateKey': theNewPrivateKey
-                });
-                $log.debug('wrote down on tag' + theNewPrivateKey.toString());
+                newPrivateKey(scope);
               }
             });
           }

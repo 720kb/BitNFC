@@ -218,8 +218,8 @@
                 'message': 'No unspent output for address'
               });
             }
-          }.bind(this)).catch(function onError(error){
-            
+          }.bind(this)).catch(function onError(/*error*/){
+
             reject({
               'message': 'Unspent output request failed - address or amount are malformed'
             });
