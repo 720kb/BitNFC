@@ -20,6 +20,7 @@
         //     $log.error('Tag erasing with error', error);
         //   }
         var bitcore = require('bitcore')
+          , whatToWrite
           , onInitSuccess = function onInitSuccess() {
 
             $rootScope.$apply(function doApply(scope) {
@@ -36,42 +37,68 @@
               });
             });
           }
+          , onWriteSuccess = function onWriteSuccess() {
+
+            $rootScope.$emit('nfc:write-success');
+          }
+          , onWriteError = function onWriteError(error) {
+
+            $rootScope.$emit('nfc:write-error', {
+              'error': error
+            });
+          }
+          , writeTag = function writeTag(txt) {
+
+            whatToWrite = txt;
+          }
           , onListeningEvent = function onListeningEvent(nfcEvent) {
 
-            var tag = nfcEvent.tag
+            var messageToSend
+              , tag = nfcEvent.tag
               , ndefMessage = tag.ndefMessage
               , message = ndefMessage && $window.nfc.bytesToString(ndefMessage[0].payload).substring(1);
-            $rootScope.$apply(function doApply(scope) {
+            if (!whatToWrite) {
 
-              $log.debug('message: ' + message);
-              if (message &&
-                message.indexOf(hammeredValue) >= 0) {
+              $rootScope.$apply(function doApply(scope) {
 
-                var privateKeyString = message.substr(11, message.length)
-                , privateKey = new bitcore.PrivateKey(privateKeyString)
-                , address = privateKey.toAddress();
+                $log.debug('message: ' + message);
+                if (message &&
+                  message.indexOf(hammeredValue) >= 0) {
 
-                BlockChain.balance(address.toString() ).then(function onBalance(tagBalance) {
+                  var privateKeyString = message.substr(11, message.length)
+                  , privateKey = new bitcore.PrivateKey(privateKeyString)
+                  , address = privateKey.toAddress();
 
-                  if (Number(tagBalance) > 0) {
-                    scope.$emit('nfc:status-message', {
-                      'privateKey': privateKey,
-                      'balance': tagBalance,
-                      'address': address
-                    });
-                    $log.debug('message: the tag contains: \'' + privateKey + '\'');
-                    // $window.nfc.erase(onEraseSuccess, onEraseError);
-                  } else {
-                    scope.$emit('nfc:status-empty');
-                    $log.debug('message: found a tag with balance 0 - regenerating');
-                  }
-                });
-              } else {
+                  BlockChain.balance(address.toString() ).then(function onBalance(tagBalance) {
 
-                scope.$emit('nfc:status-empty');
-                $log.debug('message: found an empty tag');
-              }
-            });
+                    if (Number(tagBalance) > 0) {
+                      scope.$emit('nfc:status-message', {
+                        'privateKey': privateKey,
+                        'balance': tagBalance,
+                        'address': address
+                      });
+                      $log.debug('message: the tag contains: \'' + privateKey + '\'');
+                      // $window.nfc.erase(onEraseSuccess, onEraseError);
+                    } else {
+                      scope.$emit('nfc:status-empty');
+                      $log.debug('message: found a tag with balance 0 - regenerating');
+                    }
+                  });
+                } else {
+
+                  scope.$emit('nfc:status-empty');
+                  $log.debug('message: found an empty tag');
+                }
+              });
+            } else {
+
+              messageToSend = [
+                $window.ndef.uriRecord(hammeredValue + whatToWrite)
+              ];
+              $window.nfc.write(messageToSend, onWriteSuccess, onWriteError);
+              $log.log('Wrote into tag: ' + whatToWrite);
+              whatToWrite = undefined;
+            }
           }
           , registerListeners = function registerListeners() {
 
@@ -81,53 +108,6 @@
             } else {
 
               $log.log('Your are in browser');
-            }
-          }
-          , tmpDoWrite
-          , onRemoveError = function onRemoveError(error) {
-
-            $rootScope.$emit('nfc:removal-error', {
-              'error': error
-            });
-          }
-          , onWriteSuccess = function onWriteSuccess() {
-
-            $rootScope.$emit('nfc:write-success');
-            $window.nfc.removeNdefListener(tmpDoWrite, function onSuccess() {
-
-              registerListeners();
-            }, onRemoveError);
-          }
-          , onWriteError = function onWriteError(error) {
-
-            $rootScope.$emit('nfc:write-error', {
-              'error': error
-            });
-          }
-          , doWrite = function doWrite(txt) {
-
-            var messageToSend = [
-              $window.ndef.uriRecord(hammeredValue + txt)
-            ];
-            $window.nfc.write(messageToSend, onWriteSuccess, onWriteError);
-            $log.log('Wrote into tag: ' + txt);
-          }
-          , onRemoveSucess = function onRemoveSucess(txt) {
-
-            if ($window.nfc) {
-
-              tmpDoWrite = doWrite.bind(undefined, txt);
-              $window.nfc.addNdefListener(tmpDoWrite, onInitSuccess, onInitError);
-            } else {
-
-              $log.log('Your are in browser');
-            }
-          }
-          , writeTag = function writeTag(txt) {
-
-            if ($window.nfc) {
-
-              $window.nfc.removeNdefListener(onListeningEvent, onRemoveSucess.bind(undefined, txt), onRemoveError);
             }
           };
 
