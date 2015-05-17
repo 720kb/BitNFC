@@ -107,6 +107,9 @@
                   }).catch(function onError(error){
                     $log.log('pushtx error: ' + error.data);
 
+                    reject({
+                      'message': 'Error pushing the transaction: '+ error.data
+                    });
                   });
                 } else {
 
