@@ -96,33 +96,35 @@
       }
     });
 
-    $rootScope.$on('nfc:status-empty', function onEmptyTag() {
+    $rootScope.$on('nfc:status-empty', function onEmptyTag(eventsInformations, payload) {
 
-      var privateKey = BitCoin.generatePrivateKey();
-      $rootScope.tagAddress = privateKey.toAddress();
-      nfc.writeTag(privateKey.toString());
+      if (payload &&
+        payload.privateKey) {
 
-      $ionicPopup.confirm({
-        'title': 'An empty NFC tag was found',
-        'templateUrl': 'views/popup/empty-tag.html',
-        'scope': $rootScope,
-        'buttons': [
-          {
-            'text': 'Cancel'
-          },
-          {
-            'text': 'OK',
-            'type': 'button-dark',
-            'onTap': function onTap() {
+        var privateKey = payload.privateKey;
+        $rootScope.tagAddress = privateKey.toAddress();
+        $ionicPopup.confirm({
+          'title': 'An empty NFC tag was found',
+          'templateUrl': 'views/popup/empty-tag.html',
+          'scope': $rootScope,
+          'buttons': [
+            {
+              'text': 'Cancel'
+            },
+            {
+              'text': 'OK',
+              'type': 'button-dark',
+              'onTap': function onTap() {
 
-              $state.go('app.send', {
-                'nfcAddress': $rootScope.tagAddress
-              });
-              // TODO: focus on amount field - http://stackoverflow.com/a/22751353/160699 ?
+                $state.go('app.send', {
+                  'nfcAddress': $rootScope.tagAddress
+                });
+                // TODO: focus on amount field - http://stackoverflow.com/a/22751353/160699 ?
+              }
             }
-          }
-        ]
-      });
+          ]
+        });
+      }
     });
 
     $rootScope.$on('nfc:status-message', function onMessageTag(eventsInformations, payload) {
