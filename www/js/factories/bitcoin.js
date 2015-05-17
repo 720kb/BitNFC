@@ -147,7 +147,7 @@
 
           // get the unspent outputs
           BlockChain.unspent(this.address.toString()).then(function unspent(result) {
-            $log.log('all unspent', result);
+            $log.log('all unspent' + JSON.stringify(result.data.unspent_outputs));
             if (result) {
 
               var unspentOutputsIndex = 0
