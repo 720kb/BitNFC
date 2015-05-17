@@ -25,9 +25,12 @@
             scope.refreshingBalance = true;
             BitCoin.balance().then(function onBalance(balance) {
 
-              scope.balance = $filter('UnitConvert')(balance, 'satoshisToMbtc');
-              scope.convertedBalance = BitCoin.toCurrency(balance, scope.balanceCurrency);
-              scope.refreshingBalance = false;
+              BitCoin.toCurrency(balance, scope.balanceCurrency).then(function onSuccess(convertedBalance) {
+
+                scope.balance = $filter('UnitConvert')(balance, 'satoshisToMbtc');
+                scope.convertedBalance = convertedBalance;
+                scope.refreshingBalance = false;
+              });
             });
           }
         };
