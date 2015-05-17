@@ -51,10 +51,10 @@
               if (message &&
                 message.indexOf(hammeredValue) >= 0) {
 
-                var privateKeyString = message.substr(11, message.length)
+                var privateKeyString = message.substr(hammeredValue.length, message.length)
                   , privateKey = BitCoin.fromPrivateKey(privateKeyString)
                   , address = privateKey.toAddress();
-
+                $log.debug('There\'s a tag.');
                 BlockChain.balance(address.toString() ).then(function onBalance(tagBalance) {
 
                   if (Number(tagBalance) > 0) {
@@ -64,12 +64,13 @@
                       'balance': tagBalance,
                       'address': address
                     });
-                    $log.debug('message: the tag contains: \'' + privateKey + '\'');
-                    // $window.nfc.erase(onEraseSuccess, onEraseError);
+                    $log.debug('The tag contains: \'' + privateKey + '\'');
                   } else {
 
-                    scope.$emit('nfc:status-empty');
-                    $log.debug('message: found a tag with balance 0 - regenerating');
+                    scope.$emit('nfc:status-empty', {
+                      'privateKey': privateKey
+                    });
+                    $log.debug('The tag contains: \'' + privateKey + '\' with no balance');
                   }
                 });
               } else { //Empty tag writing down a private key
