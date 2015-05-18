@@ -51,12 +51,22 @@ ionic serve # to run it locally on a browser (of course NFC will not work)
 npm install && bower install && ionic state reset
 
 
+### Release
+
+    cordova plugin rm org.apache.cordova.console
+
+    cordova build --release android
+
+
+
 ### NFC Format SMS (the only one that is copy-pastable)
 
 This is the format we are using to encode the tag with:
 
+(we chose sms url)
+
 ```
-s:0?body=5privateKey
+sms:0?body=5privateKey
 ```
 
 It's actually an SMS format:
@@ -67,32 +77,26 @@ Does it resemble something?
 mailto:user@example.com
 ```
 
+it's:
 
 ```
 sms:URL
 ```
 
+that like an url has variables
+
 ```
 sms:path/?var=foo
 ```
-
-```
-s:path/?var=foo
-```
-
 
 on standard Mifare tags usually there is space for another NFC Record
 
 you could embed a link
 
 
+---
 
-## TODO
-
-- integrate clipboard - look at ngcordova docs
-
-<http://ngcordova.com/docs/plugins/clipboard>
-
+notes:
 
 - regex - address
 
@@ -129,73 +133,23 @@ you could embed a link
 
 ```
 
-
-
-### Main wallet actions (required)
-
-- generate own address
-- send payments
-- nfc tags handling
-
-
-### Extras - stage 1 (good to have)
-
-- settings: export own private key
-- generate qr code to receive payment  
-
-
-### Extras - stage 2 (eventually)
+### Extras - TODO
 
 - embed link to url as other NFC record or dedicated url like bitnfc:// or bitcoin://import/pvtkey
+- integrate qr.js library
 - scan qr code to send payment
 - export private key via SMS
 - use password protected nfc tokens
 - use BIP38 password protected private keys
+- embed the link for the app
+- copy tag (clone tag)
 
 
----
-
-### Notes
 
 
-```
-send payments:
-- get utxo
-- create transaction (utxo)
-- push transaction
-```
 
----
+#### Other notes (implementation, debug apis)
 
-
-#### bitcore - units
-
-```js
-bitcore - units - rats
-var rate = 217.096674; // get('https://bitpay.com/api/rates')
-var unit = new bitcore.Unit.fromFiat(0.001, rate)
-```
-
-
-##### bitcore - units - conversion
-
-```js
-'Units', unit.BTC, unit.atRate(rate)
-bitcore.Unit.fromMilis(1).toBTC()
-bitcore.Unit.fromMilis(1).toSatoshi()
-bitcore.Unit.fromSatoshi(1000).toMilis()
-```
-
-##### alternative (by hand)
-
-```js
-fromBtcToSatoshi = Math.pow(10, 8)
-fromsatoshisToBtc = Math.pow(10, -8)
-
-console.log(valueBtc * fromBtcToSatoshi)
-```
-
-#### Other notes (implementation, apis)
 
 ```js
 
@@ -236,3 +190,16 @@ angular.element($0).scope().bitcoin
 
 
 ```
+
+
+----
+
+
+screencast
+
+
+adb shell screenrecord --bit-rate 8000000 /sdcard/test/sr1.mp4
+adb shell screenrecord --bit-rate 8000000 /sdcard/test/sr2.mp4
+adb shell screenrecord --bit-rate 8000000 /sdcard/test/sr3.mp4
+adb shell screenrecord --bit-rate 8000000 /sdcard/test/sr4.mp4
+adb shell screenrecord --bit-rate 8000000 /sdcard/test/sr5.mp4

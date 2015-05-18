@@ -54,6 +54,9 @@
 	float:none;
 	width:100%;
 }
+.radius{
+	border-radius:2px;
+}
 /*Reset*/
 .no-border-top{
 	border-top:none;
@@ -78,24 +81,20 @@
 	-ms-transition: all .25s ease-in-out;
 	-o-transition: all .25s ease-in-out;
 	transition: all .25s ease-in-out;
+	-webkit-transform: 	scale(1) translate3d(0, 0, 0);
+	-moz-transform: 		scale(1) translate3d(0, 0, 0);
+	-ms-transform: 			scale(1) translate3d(0, 0, 0);
+	-o-transform: 			scale(1) translate3d(0, 0, 0);
+	transform: 					scale(1) translate3d(0, 0, 0);
 }
 .qr.active{
 	/*FIXME - box-shadow check performances on mobile*/
 	box-shadow:0 0 300px 200px rgba(255,255,255,0.95);
-}
-.home-view .qr.active{
-	-webkit-transform: 	scale(2.0);
-	-moz-transform: 		scale(2.0);
-	-ms-transform: 			scale(2.0);
-	-o-transform: 			scale(2.0);
-	transform: 					scale(2.0);
-}
-.receive-view .qr.active{
-	-webkit-transform: 	scale(1.7);
-	-moz-transform: 		scale(1.7);
-	-ms-transform: 			scale(1.7);
-	-o-transform: 			scale(1.7);
-	transform: 					scale(1.7);
+	-webkit-transform: 	scale(1.7) translate3d(0, 35px, 0);
+	-moz-transform: 		scale(1.7) translate3d(0, 35px, 0);
+	-ms-transform: 			scale(1.7) translate3d(0, 35px, 0);
+	-o-transform: 			scale(1.7) translate3d(0, 35px, 0);
+	transform: 					scale(1.7) translate3d(0, 35px, 0);
 }
 /*ion-spinner*/
 .button ion-spinner svg{
