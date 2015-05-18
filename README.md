@@ -190,3 +190,16 @@ angular.element($0).scope().bitcoin
 
 
 ```
+
+
+----
+
+
+screencast
+
+
+adb shell screenrecord --bit-rate 8000000 /sdcard/test/sr1.mp4
+adb shell screenrecord --bit-rate 8000000 /sdcard/test/sr2.mp4
+adb shell screenrecord --bit-rate 8000000 /sdcard/test/sr3.mp4
+adb shell screenrecord --bit-rate 8000000 /sdcard/test/sr4.mp4
+adb shell screenrecord --bit-rate 8000000 /sdcard/test/sr5.mp4
