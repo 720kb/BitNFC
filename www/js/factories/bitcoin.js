@@ -48,7 +48,7 @@
           BlockChain.balance(address).then(function gotBalance(balance){
             var amount = Number(balance);
 
-            $log.log('amount', amount);
+            $log.debug('amount', amount);
             BlockChain.unspent(address.toString()).then(function unspent(result) {
               if (result) {
 
@@ -74,7 +74,7 @@
                 }
 
                 if (unspentOutputsToUse.length > 0) {
-                  $log.log('unspent output to use ' + unspentOutputsToUse);
+                  $log.debug('unspent output to use ' + unspentOutputsToUse);
 
                   // build transaction
                   transaction = new bitcore.Transaction()
@@ -84,8 +84,8 @@
                     .fee(fee)             // 5000 satoshis is a good fee nowadays
                     .sign(privateKey);
 
-                  $log.log('transaction:');
-                  $log.log(JSON.stringify(transaction));
+                  $log.debug('transaction:');
+                  $log.debug(JSON.stringify(transaction));
 
                   try {
 
@@ -106,7 +106,7 @@
                         'message': 'Sweep done, check your balance!'
                       });
                     }).catch(function onError(error){
-                      $log.log('pushtx error: ' + error.data);
+                      $log.debug('pushtx error: ' + error.data);
 
                       reject({
                         'message': 'Error pushing the transaction: ' + error.data
@@ -148,7 +148,7 @@
 
           // get the unspent outputs
           BlockChain.unspent(this.address.toString()).then(function unspent(result) {
-            $log.log('all unspent' + JSON.stringify(result.data.unspent_outputs));
+            $log.debug('all unspent' + JSON.stringify(result.data.unspent_outputs));
             if (result) {
 
               var unspentOutputsIndex = 0

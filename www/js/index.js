@@ -19,7 +19,7 @@
   .config(['$stateProvider', '$urlRouterProvider', '$logProvider', '$httpProvider',
     function configurationFunction($stateProvider, $urlRouterProvider, $logProvider, $httpProvider) {
 
-      $logProvider.debugEnabled(true);
+      $logProvider.debugEnabled(false);
       $stateProvider
       .state('app', {
         'url': '/app',
@@ -76,7 +76,7 @@
       }
 
       $rootScope.$emit('system:started');
-      $log.log('Started - phone private key: ' + BitCoin.privateKey.toString());
+      $log.debug('Started - phone private key: ' + BitCoin.privateKey.toString());
     });
 
     $rootScope.$on('nfc:status-ok', function onNfcStatusOk() {
@@ -150,14 +150,14 @@
               'type': 'button-dark',
               'onTap': function onTap() {
 
-                $log.log('sweeping tag with private key: ' + tagPrivateKey);
+                $log.debug('sweeping tag with private key: ' + tagPrivateKey);
 
                 BitCoin.sweep(tagPrivateKey).then(function onSweep() {
-                  $log.log('swept!');
+                  $log.debug('swept!');
 
                   BitCoin.balance().then(function onBalance(newBalance) {
                     var newBalanceMbtc = $filter('UnitConvert')(newBalance, 'satoshisToMbtc');
-                    $log.log('DEBUG!?');
+                    $log.debug('DEBUG!?');
 
                     $ionicPopup.alert({
                     'title': 'Tag Swept successfully!',
@@ -176,7 +176,7 @@
                   });
                   });
                 }).catch(function onSweepError(info) {
-                  $log.log('Sweep - an error occurred: ' + JSON.stringify(info));
+                  $log.debug('Sweep - an error occurred: ' + JSON.stringify(info));
 
                   // TODO: mostra il tempo dell'ultima conferma - dice:
                   // 'X minutes elapsed from the latest block'

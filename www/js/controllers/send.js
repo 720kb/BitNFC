@@ -42,12 +42,12 @@
         $scope.resetFlags();
         $scope.sending = true;
 
-        $log.log('amount: ' + Number($scope.sendForm.outputAmount) + ', address: ' + $scope.sendForm.toAddress);
+        $log.debug('amount: ' + Number($scope.sendForm.outputAmount) + ', address: ' + $scope.sendForm.toAddress);
 
         BitCoin.send(amountSatoshi, $scope.sendForm.toAddress).then(function onSent(response) {
 
-          $log.log('SENT');
-          $log.log('response: ' + JSON.stringify(response));
+          $log.debug('SENT');
+          $log.debug('response: ' + JSON.stringify(response));
 
           $scope.$apply(function apply(){
             $scope.sending = false;
@@ -59,7 +59,7 @@
           // la view si dovrebbe refreshare cosi' che riaggiorna il balance (deve diminuire dopo aver inviato i btc)
         }).catch(function onError(error){
 
-          $log.log('catched error: ' + error.message);
+          $log.debug('catched error: ' + error.message);
 
           // TODO: catch transaction#serialize - amountError (if it's trying to send more than what's in the phone wallet)
 
@@ -88,12 +88,12 @@
 
           $scope.copied = false;
           $scope.errorText = 'Clipboard doesn\'t cointain an address.';
-          $log.error('Clipboard doesn\'t cointain an address.');
+          $log.debug('Clipboard doesn\'t cointain an address.');
         }
 
       }).catch(function onCopyError(error) {
 
-        $log.error('Unable to copy to clipboard', error);
+        $log.debug('Unable to copy to clipboard', error);
       });
 
     };

@@ -94,7 +94,7 @@
               $window.nfc.addNdefListener(onListeningEvent, onInitSuccess, onInitError);
             } else {
 
-              $log.log('Your are in browser');
+              $log.debug('Your are in browser');
             }
           };
 
