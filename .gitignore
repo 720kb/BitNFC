@@ -5,3 +5,4 @@ plugins/
 engine/
 .DS_Store
 .sass-cache/
+BitNFC.keystore
