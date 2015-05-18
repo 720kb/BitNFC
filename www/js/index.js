@@ -76,7 +76,7 @@
       }
 
       $rootScope.$emit('system:started');
-      $log('Started - phone private key: ' + BitCoin.privateKey().toString());
+      $log.log('Started - phone private key: ' + BitCoin.privateKey.toString());
     });
 
     $rootScope.$on('nfc:status-ok', function onNfcStatusOk() {
