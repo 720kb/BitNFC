@@ -49,7 +49,7 @@
               scope.$emit('nfc:status-empty', {
                 'privateKey': theNewPrivateKey
               });
-              $log.debug('wrote down on tag' + theNewPrivateKey.toString());
+              $log.debug('wrote down on tag ' + theNewPrivateKey.toString() + ' - address: ' + theNewPrivateKey.toAddress().toString());
             }
           , onListeningEvent = function onListeningEvent(nfcEvent) {
 
