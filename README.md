@@ -58,6 +58,16 @@ npm install && bower install && ionic state reset
     cordova build --release android
 
 
+### Release (onetime)
+
+create a keystore
+
+    cd ~/.android
+    keytool -genkey -v -keystore bitnfc-release.keystore -alias bitnfc -keyalg RSA -keysize 2048 -validity 10000
+
+
+
+
 
 ### NFC Format SMS (the only one that is copy-pastable)
 
