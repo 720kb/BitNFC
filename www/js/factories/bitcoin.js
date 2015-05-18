@@ -246,35 +246,59 @@
 
         return $q(function deferred(resolve, reject) {
 
-          $http({
-            'method': 'GET',
-            'url': 'https://bitpay.com/api/rates'
-          }).then(function onSuccess(response) {
+          var ratesCache = $cacheFactory.get('bitcoin-rates');
+          if (!ratesCache) {
 
-            if (response &&
-              response.data) {
+            ratesCache = $cacheFactory('cacheId');
+            $http({
+              'method': 'GET',
+              'url': 'https://bitpay.com/api/rates'
+            }).then(function onSuccess(response) {
 
-              var conversions = response.data
-                , conversionsLength = conversions.length
-                , conversionsIndex = 0
-                , aConversion
-                , theActualRate;
-              for (; conversionsIndex < conversionsLength; conversionsIndex += 1) {
+              if (response &&
+                response.data) {
 
-                aConversion = conversions[conversionsIndex];
-                if (aConversion &&
-                  aConversion.code === currentCurrency) {
+                var conversions = response.data
+                  , conversionsLength = conversions.length
+                  , conversionsIndex = 0
+                  , aConversion
+                  , theActualRate;
+                ratesCache.put('conversions', conversions);
+                for (; conversionsIndex < conversionsLength; conversionsIndex += 1) {
 
-                  theActualRate = aConversion.rate;
+                  aConversion = conversions[conversionsIndex];
+                  if (aConversion &&
+                    aConversion.code === currentCurrency) {
+
+                    theActualRate = aConversion.rate;
+                  }
                 }
+
+                resolve(bitcore.Unit.fromSatoshis(amount).atRate(theActualRate));
               }
+            }, function onFailure(failure) {
 
-              resolve(bitcore.Unit.fromSatoshis(amount).atRate(theActualRate));
+              reject(failure);
+            });
+          } else {
+
+            var conversions = ratesCache.get('conversions')
+              , conversionsLength = conversions.length
+              , conversionsIndex = 0
+              , aConversion
+              , theActualRate;
+            for (; conversionsIndex < conversionsLength; conversionsIndex += 1) {
+
+              aConversion = conversions[conversionsIndex];
+              if (aConversion &&
+                aConversion.code === currentCurrency) {
+
+                theActualRate = aConversion.rate;
+              }
             }
-          }, function onFailure(failure) {
 
-            reject(failure);
-          });
+            resolve(bitcore.Unit.fromSatoshis(amount).atRate(theActualRate));
+          }
         });
       };
 
