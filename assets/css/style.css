@@ -61,3 +61,13 @@ a:hover{
     text-align: center;
   }
 }
+
+.card.article img {
+ width: 62%;
+ border-radius: 19px;
+}
+
+.art-bd-img {
+  width: 62%;
+  border-radius: 19px;
+}
