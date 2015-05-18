@@ -8,8 +8,9 @@
     function BitCoinFactory($window, $rootScope, $log, $q, $http, $filter, $cacheFactory, BlockChain) {
 
       var bitcore = require('bitcore')
-      , BitCoin = function BitCoin() {
-        };
+        , ratesCache = $cacheFactory('cacheId');
+        , BitCoin = function BitCoin() {
+          };
 
       Object.defineProperties(BitCoin.prototype, {
         'privateKey': {
@@ -254,7 +255,6 @@
             , theActualRate;
           if (!ratesCache) {
 
-            ratesCache = $cacheFactory('cacheId');
             $http({
               'method': 'GET',
               'url': 'https://bitpay.com/api/rates'
