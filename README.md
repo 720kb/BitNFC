@@ -11,8 +11,6 @@
 
 TODO
 
-enjoy!
-
 ### Moar Features
 
 - Better errors > show confirmation count (e.g. in sweep)
@@ -33,10 +31,9 @@ download the project (or git clone it)
 enter the dir
 
 ```sh
-npm install cordova -g
+npm install cordova ionic -g
 
 npm install && bower install && ionic state reset
-
 
 ionic run android # to run it on device (or simulator)
 
@@ -48,26 +45,12 @@ or
 ionic serve # to run it locally on a browser (of course NFC will not work)
 ```
 
-npm install && bower install && ionic state reset
+## Release
 
-
-### Release
-
-    cordova plugin rm org.apache.cordova.console
-
-    cordova build --release android
-
-
-### Release (onetime)
-
-create a keystore
-
-    cd ~/.android
-    keytool -genkey -v -keystore bitnfc-release.keystore -alias bitnfc -keyalg RSA -keysize 2048 -validity 10000
-
-
-
-
+1. create a keystore (only the first time): ```keytool -genkey -v -keystore BitNFC.keystore -alias BitNFC -keyalg RSA -keysize 2048 -validity 10000```;
+2. build the project in release mode: ```cordova plugin rm org.apache.cordova.console && cordova build --release android```;
+3. sign the two apk generated: ```jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore BitNFC.keystore platforms/android/build/outputs/apk/android-x86-release-unsigned.apk BitNFC && jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore BitNFC.keystore platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk BitNFC```;
+4. use zipaling to slim the apks: ```zipalign -v 4 platforms/android/build/outputs/apk/android-x86-release-unsigned.apk BitNFC-x86.apk && zipalign -v 4 platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk BitNFC-armv7.apk```.
 
 ### NFC Format SMS (the only one that is copy-pastable)
 
@@ -76,7 +59,7 @@ This is the format we are using to encode the tag with:
 (we chose sms url)
 
 ```
-sms:0?body=5privateKey
+sms:0?body=privateKey
 ```
 
 It's actually an SMS format:
