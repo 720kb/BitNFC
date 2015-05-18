@@ -9,23 +9,14 @@
 
       try {
 
-        var networkState = navigator.connection.type;
-        return networkState === Connection.UNKNOWN || networkState === Connection.NONE;
+        var networkState = navigator.connection.type
+          , isOfflineTest = networkState === Connection.UNKNOWN || networkState === Connection.NONE;
+        return isOfflineTest;
       } catch (e) {
 
         return false;
       }
     };
-
-    /*this.whenOffline = function whenOffline() {
-
-      $timeout(function () {
-
-        if (confirm('You are OFFLINE, please connect the device and click OK')) {
-
-          $window.location.reload();
-        }
-      }, 0);*/
   }])
 
   .factory('CordovaNetworkInterceptor', ['$q', 'Network', '$window', '$rootScope',
@@ -40,7 +31,10 @@
       'request': function onRequest(config) {
 
         if (isApplicationStarted &&
-          Network.isOffline()) {
+          Network.isOffline() &&
+          config &&
+          config.url &&
+          config.url.indexOf('http') >= 0) {
 
           $rootScope.$emit('network:offline');
         }
