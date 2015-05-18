@@ -8,7 +8,7 @@
     function BitCoinFactory($window, $rootScope, $log, $q, $http, $filter, $cacheFactory, BlockChain) {
 
       var bitcore = require('bitcore')
-        , ratesCache = $cacheFactory('cacheId');
+        , ratesCache = $cacheFactory('cacheId')
         , BitCoin = function BitCoin() {
           };
 
@@ -247,13 +247,12 @@
 
         return $q(function deferred(resolve, reject) {
 
-          var ratesCache = $cacheFactory.get('bitcoin-rates')
-            , conversions
+          var conversions
             , conversionsLength
             , conversionsIndex = 0
             , aConversion
             , theActualRate;
-          if (!ratesCache) {
+          if (!ratesCache.get('conversions')) {
 
             $http({
               'method': 'GET',
