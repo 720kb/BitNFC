@@ -4,8 +4,8 @@
 
   angular.module('BitCoin.factory', [])
 
-  .factory('BitCoin', ['$window', '$rootScope', '$log', '$q', '$http', '$filter', 'BlockChain',
-    function BitCoinFactory($window, $rootScope, $log, $q, $http, $filter, BlockChain) {
+  .factory('BitCoin', ['$window', '$rootScope', '$log', '$q', '$http', '$filter', '$cacheFactory', 'BlockChain',
+    function BitCoinFactory($window, $rootScope, $log, $q, $http, $filter, $cacheFactory, BlockChain) {
 
       var bitcore = require('bitcore')
       , BitCoin = function BitCoin() {
@@ -246,7 +246,12 @@
 
         return $q(function deferred(resolve, reject) {
 
-          var ratesCache = $cacheFactory.get('bitcoin-rates');
+          var ratesCache = $cacheFactory.get('bitcoin-rates')
+            , conversions
+            , conversionsLength
+            , conversionsIndex = 0
+            , aConversion
+            , theActualRate;
           if (!ratesCache) {
 
             ratesCache = $cacheFactory('cacheId');
@@ -258,11 +263,8 @@
               if (response &&
                 response.data) {
 
-                var conversions = response.data
-                  , conversionsLength = conversions.length
-                  , conversionsIndex = 0
-                  , aConversion
-                  , theActualRate;
+                conversions = response.data;
+                conversionsLength = conversions.length;
                 ratesCache.put('conversions', conversions);
                 for (; conversionsIndex < conversionsLength; conversionsIndex += 1) {
 
@@ -282,11 +284,8 @@
             });
           } else {
 
-            var conversions = ratesCache.get('conversions')
-              , conversionsLength = conversions.length
-              , conversionsIndex = 0
-              , aConversion
-              , theActualRate;
+            conversions = ratesCache.get('conversions');
+            conversionsLength = conversions.length;
             for (; conversionsIndex < conversionsLength; conversionsIndex += 1) {
 
               aConversion = conversions[conversionsIndex];
