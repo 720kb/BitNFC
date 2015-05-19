@@ -66,29 +66,24 @@ a:hover {
   .mobile-centered-content {
     text-align: center;
   }
-}
-.gallery-wrapper{
-  overflow: hidden;
-  max-height:380px;
-  margin-top:-5px;
+  .gallery img{
+    width:30%;
+    float:none;
+  }
 }
 .gallery {
   background:#1B1B1B;
-  overflow-y:hidden;
-  white-space:nowrap;
   max-width:90%;
-  height:500px;
   margin:0 auto;
-  float:none;
+  margin-left:5%;
   margin-top:-5px;
+  float:left;
 }
 .gallery img {
-  width:200px;
+  width:23%;
   margin:1%;
-  display:inline-block;
-}
-.gallery img{
-  min-width: 100px;
+  display:inline;
+  float:left;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -ms-transition: all .2s ease-in-out;
