@@ -2,11 +2,10 @@
 
 
 
-![](http://mkvphoto.s3.amazonaws.com/BitNFC/screen_home2.png)
-![](http://mkvphoto.s3.amazonaws.com/BitNFC/screen_receive2.png)
-![](http://mkvphoto.s3.amazonaws.com/BitNFC/screen_send.png)
-![](http://mkvphoto.s3.amazonaws.com/BitNFC/screen_home2.png)
-![](http://mkvphoto.s3.amazonaws.com/BitNFC/screen_wallet_found.png)
+![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_home2.png)
+![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_receive2.png)
+![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_send.png)
+![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_wallet_found.png)
 
 
 
@@ -83,8 +82,8 @@ that like an url has variables
 sms:path/?var=foo
 ```
 
-![](http://mkvphoto.s3.amazonaws.com/BitNFC/sms_copy1.jpg)
-![](http://mkvphoto.s3.amazonaws.com/BitNFC/sms_copy2.jpg)
+![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/sms_copy1.jpg)
+![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/sms_copy2.jpg)
 
 on standard Mifare tags usually there is space for another NFC Record
 
