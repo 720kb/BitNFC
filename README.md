@@ -1,6 +1,6 @@
 # BitNFC
 
-<div style="width:50%">
+
 
 ![](http://mkvphoto.s3.amazonaws.com/BitNFC/screen_home2.png)
 ![](http://mkvphoto.s3.amazonaws.com/BitNFC/screen_receive2.png)
@@ -8,7 +8,6 @@
 ![](http://mkvphoto.s3.amazonaws.com/BitNFC/screen_home2.png)
 ![](http://mkvphoto.s3.amazonaws.com/BitNFC/screen_wallet_found.png)
 
-</div>
 
 
 
