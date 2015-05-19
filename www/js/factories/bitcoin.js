@@ -59,7 +59,7 @@
                   , transaction
                   , txHash
                   , amountBtc
-                  , fee = 5500;
+                  , fee = 10000;
                 for (; unspentOutputsIndex < unspentOutputsLength; unspentOutputsIndex += 1) {
                   anUnspentOutput = result.data.unspent_outputs[unspentOutputsIndex];
                   amountBtc = $filter('UnitConvert')(anUnspentOutput.value, 'satoshisToBtc');
@@ -178,7 +178,7 @@
                   .from(unspentOutputsToUse)
                   .to(addressTo, amount)
                   .change(this.address)
-                  .fee(5500)             // 5000 satoshis is a good fee nowadays
+                  .fee(10000)             // 5500 satoshis is near the minimum fee
                   .sign(this.privateKey);
 
                 try {
