@@ -3,8 +3,6 @@
 [screenshots]
 
 
-notes moved in Notes.md
-
 ### Download
 
 <apk link>
@@ -79,5 +77,41 @@ sms:path/?var=foo
 
 on standard Mifare tags usually there is space for another NFC Record
 
-you could embed a link
+we can also embed a link to the app's google play store page so an user can just scan the nfc tag, click & download :) 
+
+-## Release
+
+Create a keystore (only the first time): 
+
+```keytool -genkey -v -keystore BitNFC.keystore -alias BitNFC -keyalg RSA -keysize 2048 -validity 10000```;
+ 
+build the project in release mode: 
+
+```cordova plugin rm org.apache.cordova.console && cordova build --release android```
+
+sign the two apk generated: 
+
+```jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore BitNFC.keystore platforms/android/build/outputs/apk/android-x86-release-unsigned.apk BitNFC && jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore BitNFC.keystore platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk BitNFC```
+
+use zipaling to slim the apks: 
+
+```zipalign -v 4 platforms/android/build/outputs/apk/android-x86-release-unsigned.apk BitNFC-x86.apk && zipalign -v 4 platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk BitNFC-armv7.apk```
+
+
+---
+
+other notes
+
+enjoy!
+
+#### Extras
+
+- embed link to url as other NFC record or dedicated url like bitnfc:// or bitcoin://import/pvtkey
+- integrate qr.js library
+- scan qr code to send payment
+- export private key via SMS
+- use password protected nfc tokens
+- use BIP38 password protected private keys
+- embed the link for the app
+- copy tag (clone tag)
 
