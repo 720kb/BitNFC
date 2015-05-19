@@ -111,9 +111,6 @@ use zipaling to slim the apks:
 ```zipalign -v 4 platforms/android/build/outputs/apk/android-x86-release-unsigned.apk BitNFC-x86.apk && zipalign -v 4 platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk BitNFC-armv7.apk```
 
 
----
-
-enjoy!
 
 #### Extras
 
@@ -126,3 +123,9 @@ enjoy!
 - embed the link for the app
 - copy tag (clone tag)
 
+
+
+enjoy!
+
+
+<http://bitfc.org>
