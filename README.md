@@ -2,7 +2,7 @@
 ### BitNFC project page
 
 
-### Prerequisites
+### (squisite) Prerequisites
 
 guard:
 
