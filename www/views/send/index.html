@@ -36,7 +36,7 @@
           <h5>Amount</h5>
           <div class="separator5"></div>
           <label class="item item-input">
-            <input type="text" id="test" placeholder="0.0 mBTC" ng-model="sendForm.outputAmount">
+            <input type="number" placeholder="0.0 mBTC" ng-focus="sendFocus" ng-model="sendForm.outputAmount">
           </label>
              <!--all the errors and success messages-->
           <div ng-if="errorText || successText">
