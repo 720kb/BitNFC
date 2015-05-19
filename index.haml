@@ -39,59 +39,40 @@
           .separator10
     .line-compress.center-content.bg-dark
       .separator50
-      %iframe{:allowfullscreen => "", :frameborder => "0", :height => "620", :src => "https://www.youtube.com/embed/6HcOK2pGJ0c", :width => "90%"}
+      %iframe{:allowfullscreen => "", :frameborder => "0", :height => "620", :src => "https://www.youtube.com/embed/srE1fDB-dTY", :width => "90%"}
       .separator50
     .line-compress.center-content.bg-dark
       / # link - http://www.thingiverse.com/thing:706011
-      / # embed iframe
       .card.article
         .hdr
           .provider.provider-gt-35
             %img.provider-favicon{:height => "16", :src => "http://www.thingiverse.com/img/favicons/favicon-32x32.png", :width => "16"}/
             %a.provider-name{:href => "http://www.thingiverse.com", :target => "_blank"} Thingiverse
-            %span.author  
-          .action-mod
-            %a.send-trigger{:href => "#", :ontouchstart => "", :title => "Send"} Send
-            %a.analytics-trigger.hide{:href => "#", :ontouchstart => "", :title => "Analytics"} Analytics
-        .bd{:style => "border-left-color: rgb(11, 142, 253);"}
+        .bd
           .pair-bd
             .art-bd
-              %a{:href => "http://www.thingiverse.com/thing:706011", :style => "padding-bottom: 31.1320754716981%; background-color: rgb(255, 255, 255);", :target => "_blank"}
-                %img.art-bd-img{:src => "http://i-cdn.embed.ly/1/display/crop?height=200&key=fd92ebbc52fc43fb98f69e50e7893c13&url=https%3A%2F%2Fthingiverse-production-new.s3.amazonaws.com%2Frenders%2Fad%2F6d%2F53%2F98%2Faa%2Fbtc4_preview_featured.jpg&width=636", :style => "opacity: 1;"}/
+              %a{:href => "http://www.thingiverse.com/thing:706011", :target => "_blank"}
+                %img.art-bd-img{:src => "http://i-cdn.embed.ly/1/display/crop?height=200&key=fd92ebbc52fc43fb98f69e50e7893c13&url=https%3A%2F%2Fthingiverse-production-new.s3.amazonaws.com%2Frenders%2Fad%2F6d%2F53%2F98%2Faa%2Fbtc4_preview_featured.jpg&width=636"}/
             .txt-bd
               %h1.title
                 %a{:href => "http://www.thingiverse.com/thing:706011", :target => "_blank"} Bitcoin NFC Coin / Tag by Makevoid
               %p.description Bitcoin NFC 3D printed tag! Print your own NFC Tag, many usecases! (see below) Watch the demo Youtube video: https://www.youtube.com/watch?v=XvkjrJfUNgQ NFC Tags programmable with (examples): - Private Key (5....) - BTC Address (1...)
               %a.action{:href => "http://www.thingiverse.com/thing:706011", :target => "_blank"} Read this on thingiverse.com &gt;
 
-      <h1> A Coin can become worth any value you transfer to it</h1>
 
+      :markdown
+        # A Coin can become worth any value you transfer to it
 
-      / # original code
-      /
-        <div style="iframe a { color: #FFF !important; }">
-        <a class="embedly-card" href="http://www.thingiverse.com/thing:706011">Bitcoin NFC Coin / Tag by Makevoid</a>
-        <script async src="https://cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
-        </div>
-      %div{"antani-style-clear" => "", :style => ""}
-      /
-        <div class="">
-        https://www.3dhubs.com/talk/thread/nfc-enabled-3d-printed-bitcoins-are-getting-useful
-        </div>
       .card.article.editable
         .hdr
           .provider.provider-gt-35
             %img.provider-favicon{:height => "16", :src => "https://www.3dhubs.com/sites/all/themes/hubs3d/images/favicons/favicon.ico?v=gAvMqzQ3nv", :width => "16"}/
             %a.provider-name{:href => "https://www.3dhubs.com", :target => "_blank"} 3D Hubs
-            %span.author  
-          .action-mod
-            %a.send-trigger{:href => "#", :ontouchstart => "", :title => "Send"} Send
-            %a.analytics-trigger.hide{:href => "#", :ontouchstart => "", :title => "Analytics"} Analytics
-        .bd{:style => "border-left-color: rgb(197, 82, 85);"}
+        .bd
           .pair-bd
             .art-bd
-              %a{:href => "https://www.3dhubs.com/talk/thread/nfc-enabled-3d-printed-bitcoins-are-getting-useful", :style => "padding-bottom: 31.1320754716981%; background-color: rgb(255, 255, 255);", :target => "_blank"}
-                %img.art-bd-img{:src => "http://i-cdn.embed.ly/1/display/crop?height=200&key=fd92ebbc52fc43fb98f69e50e7893c13&url=https%3A%2F%2F3dhubs.s3-eu-west-1.amazonaws.com%2Fs3fs-public%2Ftalk%2Fattachments%2F400576_661647540552137_318402657_n_0.jpg&width=636", :style => "opacity: 1;"}/
+              %a{:href => "https://www.3dhubs.com/talk/thread/nfc-enabled-3d-printed-bitcoins-are-getting-useful", :target => "_blank"}
+                %img.art-bd-img{:src => "http://i-cdn.embed.ly/1/display/crop?height=200&key=fd92ebbc52fc43fb98f69e50e7893c13&url=https%3A%2F%2F3dhubs.s3-eu-west-1.amazonaws.com%2Fs3fs-public%2Ftalk%2Fattachments%2F400576_661647540552137_318402657_n_0.jpg&width=636"}/
               %a.is-editable-delete{:href => "#"}
               %a.is-editable-expand-contract{:href => "#"}
             .txt-bd
@@ -101,16 +82,42 @@
                 When I first started embedding NFC (Near Field Communication) inside 3D printed objects mid-print, a Bitcoin "coin" seemed to be the coolest application. However at that time the only use I could find was simply displaying the long wallet address when prompted. Video of 1st Test.
                 %a.is-editable-delete{:href => "#"}
               %a.action{:href => "https://www.3dhubs.com/talk/thread/nfc-enabled-3d-printed-bitcoins-are-getting-useful", :target => "_blank"} Read the article on 3dhubs.com &gt;
-      /
-        <a class="embedly-card" data-card-theme="dark" href="https://www.3dhubs.com/talk/thread/nfc-enabled-3d-printed-bitcoins-are-getting-useful">NFC Enabled 3D Printed Bitcoins are getting useful</a>
-        <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
 
-      %h1 Future features
-        %ul
-          %li Better errors > show confirmation count (e.g. in sweep)
-          %li Ability to Copy (Clone the tag) (Backup)
-          %li Settings > Denominations (other than millibits: BTCs, bits)
-          %li Settings > Export private key
+
+      .gallery
+        :markdown
+          qua ci sono un po di screenshot messi alla cazzo - fai un po come vuoi :D
+
+          ![](http://mkvphoto.s3.amazonaws.com/BitNFC/sms_copy1.jpg)
+          ![](http://mkvphoto.s3.amazonaws.com/BitNFC/sms_copy2.jpg)
+          ![](http://mkvphoto.s3.amazonaws.com/BitNFC/nfc_tags_3d_printed.jpg)
+          ![](http://mkvphoto.s3.amazonaws.com/BitNFC/screen_qrcode.png)
+          ![](http://mkvphoto.s3.amazonaws.com/BitNFC/screen_send.png)
+          ![](http://mkvphoto.s3.amazonaws.com/BitNFC/screen_settings1.png)
+          ![](http://mkvphoto.s3.amazonaws.com/BitNFC/screen_settings2.png)
+          ![](http://mkvphoto.s3.amazonaws.com/BitNFC/screen_home2.png)
+          ![](http://mkvphoto.s3.amazonaws.com/BitNFC/screen_receive2.png)
+          ![](http://mkvphoto.s3.amazonaws.com/BitNFC/screen_wallet_found.png)
+
+
+      .biancone.marcone
+        %h1 NFC Format
+        :markdown
+
+
+          sms:0?body=privateKey
+
+          some **markdown** here from the readme
+
+          ## Future features
+
+          - Better errors > show confirmation count (e.g. in sweep)
+          - Ability to Copy (Clone the tag) (Backup)
+          - Settings > Denominations (other than millibits: BTCs, bits)
+          - Settings > Export private key
+
+          ### TODO COPY OTHER STUFF FROM README OR INVENT IT ASD
+
 
       .line-compress.center-content.bg-muted-inverse
         %span.push-left.font-big.bg-crazy.color-white

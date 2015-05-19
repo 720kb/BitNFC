@@ -12,11 +12,21 @@ guard:
 does it starts?
 
 
+#### With bundler
+
+    bundle
+
 #### Guard
 
 to install:
 
-   gem install guard-haml guard-sass
+   gem install guard-haml guard-sass redcarpet
+
+
+### Compile the haml directly
+
+
+   haml index.haml > index.html
 
 
 ### Run the project
