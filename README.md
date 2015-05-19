@@ -12,7 +12,10 @@
 
 ### Download
 
-<apk link>
+Download the APK from there it and install it on your Android phone!
+
+https://copy.com/RFU1SLqowCJEra4l
+
 
 ### Install
 
