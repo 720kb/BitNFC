@@ -1,4 +1,4 @@
-<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/logo.png"/>
+<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/logo.png" style="float:right;"/>
 
 # BitNFC
 <img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_home2.png" width="32%"/>
