@@ -1,11 +1,10 @@
 # BitNFC
 
+<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/logo.png" align="center"/>
 
-![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_home2.png)
-![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_send.png)
-![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_wallet_found.png)
-
-![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/logo.png)
+<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_home2.png" width="25%"/>
+<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_send.png" width="25%"/>
+<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_wallet_found.png" width="25%"/>
 
 
 ### Download
