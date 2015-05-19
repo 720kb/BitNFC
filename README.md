@@ -4,7 +4,7 @@
 ![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_home2.png)
 ![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_send.png)
 ![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_wallet_found.png)
-![](http://720kb.github.io/BitNFC/assets/img/logo.png)
+![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/logo.png)
 
 
 ### Download
