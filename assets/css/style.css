@@ -67,11 +67,17 @@ a:hover {
     text-align: center;
   }
 }
+.gallery-wrapper{
+  overflow: hidden;
+  max-height:380px;
+  margin-top:-5px;
+}
 .gallery {
   background:#1B1B1B;
   overflow-y:hidden;
   white-space:nowrap;
   max-width:90%;
+  height:500px;
   margin:0 auto;
   float:none;
   margin-top:-5px;
