@@ -80,6 +80,7 @@ a:hover {
   float:left;
 }
 .gallery img {
+  cursor: pointer;
   width:23%;
   margin:1%;
   display:inline;
