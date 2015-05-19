@@ -16,7 +16,7 @@ does it starts?
 
 to install:
 
-   gem install guard
+   gem install guard-haml guard-sass
 
 
 ### Run the project
