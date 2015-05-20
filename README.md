@@ -20,7 +20,7 @@ Doge plz help
 
 Download the APK from there it and install it on your Android phone!
 
-https://copy.com/RFU1SLqowCJEra4l
+[damn on BitNFC there's still the copy url ... oh doge!]
 
 
 ### Install
