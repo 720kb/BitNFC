@@ -1,4 +1,4 @@
-# BitNFC
+# DogeNFC
 
 
 <img src="https://github.com/makevoid/DogeNFC/edit/master/README.md" />
@@ -15,7 +15,7 @@ https://copy.com/RFU1SLqowCJEra4l
 
 ##### Dowload the APK from the website
 
-#### http://bitnfc.org
+#### http://dogenfc.com
 
 Search it on Google Play (soon!)
 
