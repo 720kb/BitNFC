@@ -1,7 +1,19 @@
 # DogeNFC
 
+<img src="http://mkvd.s3.amazonaws.com/DogeNFC/DogeNFC_Logo_Complete.png" />
 
-<img src="https://github.com/makevoid/DogeNFC/edit/master/README.md" />
+
+### Why Doge
+
+Research (Experience, Science!)
+2015 - What is crypto currency is still unkown
+London, age 15-30 - happened a bunch of times to be in a group where nobody knows bitcoin and only one knows Doge
+
+This is something we have to research:
+
+![](http://mkvd.s3.amazonaws.com/DogeNFC/DogeNFC_Logo_Doge.png)
+
+Doge plz help
 
 
 ### Download
