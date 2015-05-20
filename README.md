@@ -140,6 +140,9 @@ sms:path/?var=foo
 ![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/sms_copy1.jpg)
 ![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/sms_copy2.jpg)
 
+[these screenshots are from BitNFC - the forked (father) project] 
+
+
 on standard Mifare tags usually there is space for another NFC Record
 
 we can also embed a link to the app's google play store page so an user can just scan the nfc tag, click & download :)
