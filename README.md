@@ -1,10 +1,7 @@
 # BitNFC
-<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/logo.png"/>
 
 
-<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_home2.png" width="32.8%"/>
-<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_send.png" width="32.8%"/>
-<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_wallet_found.png" width="32.8%"/>
+<img src="https://github.com/makevoid/DogeNFC/edit/master/README.md" />
 
 
 ### Download
