@@ -1,6 +1,7 @@
 # BitNFC
 <img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/logo.png"/>
 
+[![Code Climate](https://codeclimate.com/github/720kb/BitNFC/badges/gpa.svg)](https://codeclimate.com/github/720kb/BitNFC)
 
 <img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_home2.png" width="32.8%"/>
 <img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_send.png" width="32.8%"/>
