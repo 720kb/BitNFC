@@ -5,8 +5,11 @@
     "ionic": "driftyco/ionic-bower#1.0.0-rc.5"
   },
   "dependencies": {
-    "bitcore": "^0.12.4",
+    "dogecore": "git@github.com:maraoz/dogecore.git",
     "angular-fx": "~1.0.0",
     "animate.css": "~3.2.6"
+  },
+  "unused": {
+    "bitcore": "^0.12.4"
   }
 }
