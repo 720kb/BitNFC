@@ -16,7 +16,39 @@ https://copy.com/RFU1SLqowCJEra4l
 
 ### Install
 
-TODO
+##### Dowload the APK from the website
+
+#### http://bitnfc.org
+
+Search it on Google Play (soon!)
+
+
+## Known Bugs
+
+##### 1. After the NFC tag is written, alert the user to stay away from the bug
+
+[There is a bug after you write  the tag, the nfc provider should deregister itself for few seconds]
+
+The problem can be fixed in many ways - see github issues for the full discussion :)
+
+The error happens also on very bad networking, but it's usually a rare occasion.
+
+##### 2. New empty tag > OK (Send) - The focus should happen on the field!
+
+UX problem (now it requires 2 click to select the field, it should automatically .focus() when the [OK] button from the popup has been pressed)
+
+##### 3. Save the phone wallet private key in the device
+
+Save the phone wallet private key in the device, instead that in localStorage (in the app data), otherwise if you uninstall the app, your private key is lost!
+
+##### 4. see github issues for more
+
+
+Please report as many bugs as you can, we'll try to fix them asap (remember we can't publish a new version until the hackathon is finished)
+
+
+For other known bugs - see the Github Issues section
+
 
 ### Moar Features
 
@@ -24,6 +56,20 @@ TODO
 - Ability to Copy (Clone the tag) (Backup)
 - Settings > Denominations (other than millibits: BTCs, bits)
 - Settings > Export private key
+- support for other cryptocurrencies
+- whitelabel version
+- BIP38 version
+- HD Wallet version
+- embed link to url as other NFC record or dedicated url like bitnfc:// or bitcoin://import/pvtkey
+- integrate qr.js library
+- scan qr code to send payment
+- export private key via SMS !!! <<<< **this is awesome**
+- use password protected nfc tokens
+- use BIP38 password protected private keys
+- embed the link for the app
+- copy tag (clone tag)
+- you name one!
+- many more features!!!
 
 ## Development
 
@@ -87,42 +133,31 @@ sms:path/?var=foo
 
 on standard Mifare tags usually there is space for another NFC Record
 
-we can also embed a link to the app's google play store page so an user can just scan the nfc tag, click & download :) 
+we can also embed a link to the app's google play store page so an user can just scan the nfc tag, click & download :)
 
 ## Release
 
-Create a keystore (only the first time): 
+Create a keystore (only the first time):
 
 ```keytool -genkey -v -keystore BitNFC.keystore -alias BitNFC -keyalg RSA -keysize 2048 -validity 10000```;
- 
-build the project in release mode: 
+
+build the project in release mode:
 
 ```cordova plugin rm org.apache.cordova.console && cordova build --release android```
 
-sign the two apk generated: 
+sign the two apk generated:
 
 ```jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore BitNFC.keystore platforms/android/build/outputs/apk/android-x86-release-unsigned.apk BitNFC && jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore BitNFC.keystore platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk BitNFC```
 
-use zipaling to slim the apks: 
+use zipaling to slim the apks:
 
 ```zipalign -v 4 platforms/android/build/outputs/apk/android-x86-release-unsigned.apk BitNFC-x86.apk && zipalign -v 4 platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk BitNFC-armv7.apk```
 
 
-
-#### Extras
-
-- embed link to url as other NFC record or dedicated url like bitnfc:// or bitcoin://import/pvtkey
-- integrate qr.js library
-- scan qr code to send payment
-- export private key via SMS
-- use password protected nfc tokens
-- use BIP38 password protected private keys
-- embed the link for the app
-- copy tag (clone tag)
-
+### Unlincensed under #The_Unlicense
 
 
 enjoy!
 
 
-<http://bitfc.org>
+#### <http://bitfc.org>
