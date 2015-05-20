@@ -18,11 +18,12 @@
       <div class='separator5'></div>
       <h1>BitNFC</h1>
       <div class='separator10'></div>
+      <div class='separator10'></div>
       <h3>Bitcoin NFC Android Mobile Wallet</h3>
-      <div class='separator30'></div>
+      <div class='separator50'></div>
       <div>
         <a href='http://mkvd.s3.amazonaws.com/apps/BitNFC-armv7.apk'>
-          <img src='assets/img/google-badge.png' width='170'>
+          <img src='assets/img/google-badge.png' width='190'>
         </a>
       </div>
       <span class='radius-crazy fixed bottom layer3 right bg-dark'>
@@ -43,14 +44,18 @@
     </div>
     <div class='line-compress center-content bg-dark'>
       <div class='separator50'></div>
-      <iframe allowfullscreen='' frameborder='0' height='620' src='https://www.youtube.com/embed/srE1fDB-dTY' width='90%'></iframe>
+      <iframe allowfullscreen='' frameborder='0' height='620' src='https://www.youtube.com/embed/srE1fDB-dTY?rel=0&autoplay=1&theme=light' width='75%'></iframe>
+      <iframe allowfullscreen='' frameborder='0' height='620' src='https://www.youtube.com/embed/8C2MHliSq8Q?rel=0&autoplay=1&start=3&theme=light' width='25%'></iframe>
+      <div class='separator50'></div>
+
       <div class="line gallery-wrapper">
       <div class="line gallery">
         <img class="slideImg" src="http://mkvphoto.s3.amazonaws.com/BitNFC/screen_home2.png" alt="">
         <img class="slideImg" src="http://mkvphoto.s3.amazonaws.com/BitNFC/screen_receive2.png" alt="">
         <img class="slideImg" src="http://mkvphoto.s3.amazonaws.com/BitNFC/screen_send.png" alt="">
         <img class="slideImg" src="http://mkvphoto.s3.amazonaws.com/BitNFC/screen_wallet_found.png" alt="">
-        <!-- too many images 
+        <img class="slideImg placeholder hidden" src="http://mkvphoto.s3.amazonaws.com/BitNFC/screen_qrcode.png" alt="">
+        <!-- too many images
         <img class="slideImg" src="http://mkvphoto.s3.amazonaws.com/BitNFC/sms_copy2.jpg" alt="">
         <img class="slideImg" src="http://mkvphoto.s3.amazonaws.com/BitNFC/screen_qrcode.png" alt="">
         <img class="slideImg" src="http://mkvphoto.s3.amazonaws.com/BitNFC/screen_settings1.png" alt="">
@@ -58,8 +63,27 @@
         -->
       </div>
     </div>
+    <div class='separator50'></div>
+      <div>
+        <a href='http://mkvd.s3.amazonaws.com/apps/BitNFC-armv7.apk'>
+          <img src='assets/img/google-badge.png' width='190'>
+        </a>
+      </div>
+
       <div class="line-compress center-content">
         <div class='separator50'></div>
+        <div class="line">
+          <h2 class="color-white">This project is open source, to get the source code or other infos about it:</h2>
+        <div class='separator5'></div>
+          <a href="https://github.com/720kb/BitNFC/blob/master/README.md" target="_blank">
+            <h1 class="color-white toggle-opacity-hover">Check the project Readme file on GitHub!</h1>
+          </a>
+        </div>
+        <div class='separator30'></div>
+        </div>
+      </div>
+
+      <div class="line-compress center-content">
         <div class='separator50'></div>
         <div class="line">
           <h2 class="color-white">This project is open source, to get the source code or other infos about it:</h2>
@@ -165,7 +189,8 @@
           </div>
           <div class='line-compress color-muted-inverse'>
             <div class='line-compress'>
-              © Bithack and  © Coinbase are trademarks by Coinbase - We are not affiliated
+              <p>© Bithack and Coinbase names and logos are trademarks by Coinbase</p>
+              <p>We are not affiliated in any way, we are only partecipating to the hackathon :)</p>
             </div>
           </div>
           <div class='separator10'></div>
@@ -177,10 +202,11 @@
     <script>
     (function () {
       $('.slideImg').on('click', function (el) {
-
-        $(el.target).toggleClass('active');
-      });
-    }());
+        $('.slideImg').removeClass("active")
+        $(".slideImg.placeholder").removeClass("hidden")
+        $(el.target).toggleClass('active')
+      })
+    }())
     </script>
   </body>
 </html>

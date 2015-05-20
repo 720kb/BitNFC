@@ -16,6 +16,9 @@ a:active {
 a:hover {
   color: black;
 }
+.hidden {
+  display: none;
+}
 .img-media {
   box-shadow: 0 0 0 5px white;
 }
@@ -116,4 +119,9 @@ a:hover {
   -ms-transform:      scale(1.3) translate3d(0, 35px, 0);
   -o-transform:       scale(1.3) translate3d(0, 35px, 0);
   transform:          scale(1.3) translate3d(0, 35px, 0);
+}
+
+iframe {
+
+  float: left;
 }
