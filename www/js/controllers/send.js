@@ -115,7 +115,7 @@
 
     $scope.$on('focus', function setFocus() {
       $timeout(function(){
-        document.getElementById('test').focus();
+        document.querySelector("input[type=number]").focus();
       }, 1);
     });
   }]);
