@@ -169,4 +169,4 @@ use zipaling to slim the apks:
 enjoy!
 
 
-#### <http://bitfc.org>
+#### <http://dogenfc.com>
