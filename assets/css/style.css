@@ -125,3 +125,11 @@ iframe {
 
   float: left;
 }
+
+a.color-white:hover {
+  color: #EEE;
+}
+
+.separator15 {
+  height: 15px
+}
