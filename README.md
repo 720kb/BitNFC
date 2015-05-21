@@ -2,6 +2,11 @@
 
 <img src="http://mkvd.s3.amazonaws.com/DogeNFC/DogeNFC_Logo_Complete.png" />
 
+# Đ
+
+!g latin capital letter d with stroke
+
+(utf-8 character)
 
 ### Why Doge
 
@@ -142,7 +147,7 @@ sms:path/?var=foo
 ![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/sms_copy1.jpg)
 ![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/sms_copy2.jpg)
 
-[these screenshots are from BitNFC - the forked (father) project] 
+[these screenshots are from BitNFC - the forked (father) project]
 
 
 on standard Mifare tags usually there is space for another NFC Record
