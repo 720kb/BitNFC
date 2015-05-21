@@ -1,10 +1,7 @@
 body {
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
 }
-small {
-  font-size: 12px;
-}
-small * {
+small, small * {
   font-size: 12px;
 }
 a {
@@ -38,13 +35,16 @@ a:hover {
   max-width: 40%;
 }
 .font-mega {
-  font-size: 28px;
+  font-size: 40px;
 }
 .font-big {
   font-size: 25px;
 }
 .font-medium {
-  font-size: 20px;
+  font-weight:500;
+}
+.font-ubuntu{
+  font-family: 'Ubuntu', sans-serif;
 }
 /*Backgrounds */
 .bg-purple{
@@ -55,6 +55,25 @@ a:hover {
 }
 .bg-crazy {
   background-color: #F62A41;
+}
+/*Video*/
+.video{
+  float:left;
+}
+.video.video-left{
+  width:60%;
+  margin:2%;
+  padding:1%;
+  float:left;
+  border-radius:5px;
+  background:white;
+}
+.video.video-right{
+  width:20%;
+  margin:2% 0;
+  padding:1%;
+  border-radius:5px;
+  background:white;
 }
 /*tablet */
 @media screen and (max-width: 800px) {
@@ -69,67 +88,4 @@ a:hover {
   .mobile-centered-content {
     text-align: center;
   }
-  .gallery img{
-    width:30%;
-    float:none;
-  }
-}
-.gallery {
-  background:#1B1B1B;
-  max-width:90%;
-  margin:0 auto;
-  margin-left:5%;
-  margin-top:-5px;
-  float:left;
-}
-.gallery img {
-  cursor: pointer;
-  width:23%;
-  margin:1%;
-  display:inline;
-  float:left;
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -ms-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
-  -webkit-transform:  scale(1) translate3d(0, 0, 0);
-  -moz-transform:     scale(1) translate3d(0, 0, 0);
-  -ms-transform:      scale(1) translate3d(0, 0, 0);
-  -o-transform:       scale(1) translate3d(0, 0, 0);
-  transform:          scale(1) translate3d(0, 0, 0);
-  opacity:1;
-}
-.gallery img:active{
-  opacity:0.7;
-}
-.gallery img.active{
-  opacity:1;
-  /*FIXME - box-shadow check performances on mobile*/
-  box-shadow:0 0 30px 20px rgba(0,0,0,0.45);
-  z-index:99;
-  position: fixed;
-  left:0;
-  right:0;
-  min-width: 200px;
-  top:7%;
-  margin:0 auto;
-  -webkit-transform:  scale(1.3) translate3d(0, 35px, 0);
-  -moz-transform:     scale(1.3) translate3d(0, 35px, 0);
-  -ms-transform:      scale(1.3) translate3d(0, 35px, 0);
-  -o-transform:       scale(1.3) translate3d(0, 35px, 0);
-  transform:          scale(1.3) translate3d(0, 35px, 0);
-}
-
-iframe {
-
-  float: left;
-}
-
-a.color-white:hover {
-  color: #EEE;
-}
-
-.separator15 {
-  height: 15px
 }
