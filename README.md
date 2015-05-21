@@ -39,6 +39,12 @@ Download the APK from there it and install it on your Android phone!
 Search it on Google Play (soon!)
 
 
+### Dev
+
+    npm install && bower install && ionic state reset
+
+
+
 ## Known Bugs
 
 ##### 1. After the NFC tag is written, alert the user to stay away from the bug
