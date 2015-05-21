@@ -2,6 +2,23 @@
 
 <img src="http://mkvd.s3.amazonaws.com/DogeNFC/DogeNFC_Logo_Complete.png" />
 
+
+DEMO Screenshots:
+
+(Bitcore needs to be swapped with Dogecore and tested but still!!!)
+
+
+
+<br><br><br>
+
+<img width=250  src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_home.png" />
+<img width=250 src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_receive.png" />
+<img width=250 src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_receive2.png" />
+<img width=250 src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_send.png" />
+<img width=250 src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_settings.png" />
+
+
+
 # Đ
 
 !g latin capital letter d with stroke
