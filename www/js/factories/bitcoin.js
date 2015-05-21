@@ -16,13 +16,13 @@
         'privateKey': {
           'get': function privateKey() {
 
-            if ($window.localStorage.bitNfcPrivateKey) {
+            if ($window.localStorage.dogeNfcPrivateKey) {
 
-              return new bitcore.PrivateKey($window.localStorage.bitNfcPrivateKey);
+              return new bitcore.PrivateKey($window.localStorage.dogeNfcPrivateKey);
             }
 
             var newPrivateKey = new bitcore.PrivateKey();
-            $window.localStorage.bitNfcPrivateKey = newPrivateKey.toString();
+            $window.localStorage.dogeNfcPrivateKey = newPrivateKey.toString();
             return newPrivateKey;
           }
         },
@@ -198,7 +198,7 @@
                     var amountMbtc = $filter('UnitConvert')(amount, 'satoshisToMbtc');
 
                     resolve({
-                      'message': 'You\'ve sent ' + amountMbtc + ' mBTC to ' + addressTo + ' !'
+                      'message': 'You\'ve sent ' + amountMbtc + ' doge to ' + addressTo + ' !'
                     });
                   }).catch(function onError(error){
 

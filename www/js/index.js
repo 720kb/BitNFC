@@ -161,7 +161,7 @@
 
                     $ionicPopup.alert({
                     'title': 'Tag Swept successfully!',
-                    'template': '<p>Your balance is now:</p><p>' + newBalanceMbtc + ' mBTC</p>',
+                    'template': '<p>Your balance is now:</p><p>' + newBalanceMbtc + ' doge</p>',
                     'buttons': [
                       {
                         'text': 'OK',

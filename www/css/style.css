@@ -103,3 +103,17 @@
 	vertical-align:middle;
 
 }
+
+/* Dogeify */
+
+
+/* bigger logo */
+
+.logo-img {
+  width: 120px;
+  padding: 5px 0;
+}
+
+.title.title-center.header-item, .bar-light.bar.bar-header {
+  height: 95px;
+}

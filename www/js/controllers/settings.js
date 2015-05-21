@@ -14,7 +14,7 @@
       $scope.setDefaultSettings = function setDefaultSettings() {
 
         $scope.settingsCurrency = $window.localStorage.settingsCurrency || 'USD';
-        $scope.settingsDenomination = $window.localStorage.settingsDenomination || 'mBTC';
+        $scope.settingsDenomination = $window.localStorage.settingsDenomination || 'doge';
         $window.localStorage.settingsCurrency = $scope.settingsCurrency;
         $window.localStorage.settingsDenomination = $scope.settingsDenomination;
       };
