@@ -11,11 +11,11 @@ DEMO Screenshots:
 
 <br><br><br>
 
-<img width=250  src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_home.png" />
-<img width=250 src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_receive.png" />
-<img width=250 src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_receive2.png" />
-<img width=250 src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_send.png" />
-<img width=250 src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_settings.png" />
+<img width=200  src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_home.png" />
+<img width=200 src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_receive.png" />
+<img width=200 src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_receive2.png" />
+<img width=200 src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_send.png" />
+<img width=200 src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_settings.png" />
 
 
 
