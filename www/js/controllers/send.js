@@ -75,27 +75,28 @@
     $scope.copyFromClipboard = function copyFromClipboard() {
 
       $scope.resetFlags();
-      $scope.copied = false;
 
-      CordovaClipboard.paste().then(function onPaste(clipboardText) {
+      if (!$scope.copied) {
 
-        if (clipboardText &&
-          clipboardText.match(/^[13][^O0Il]{25,33}/)) {
+        CordovaClipboard.paste().then(function onPaste(clipboardText) {
 
-          $scope.sendForm.toAddress = clipboardText;
-          $scope.copied = true;
-        } else {
+          if (clipboardText &&
+            clipboardText.match(/^[13][^O0Il]{25,33}/)) {
 
-          $scope.copied = false;
-          $scope.errorText = 'Clipboard doesn\'t cointain an address.';
-          $log.debug('Clipboard doesn\'t cointain an address.');
-        }
+            $scope.sendForm.toAddress = clipboardText;
+            $scope.copied = !$scope.copied;
+          } else {
 
-      }).catch(function onCopyError(error) {
+            $scope.copied = false;
+            $scope.errorText = 'Clipboard doesn\'t cointain an address.';
+            $log.debug('Clipboard doesn\'t cointain an address.');
+          }
 
-        $log.debug('Unable to copy to clipboard', error);
-      });
+        }).catch(function onCopyError(error) {
 
+          $log.debug('Unable to copy to clipboard', error);
+        });
+      }
     };
 
     BitCoin.balance().then(function onBalance(balance) {
