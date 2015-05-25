@@ -160,4 +160,4 @@ use zipaling to slim the apks:
 enjoy!
 
 
-#### <http://bitfc.org>
+#### <http://bitnfc.org>
