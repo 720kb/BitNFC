@@ -1,26 +1,65 @@
-# BitNFC
-<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/logo.png"/>
+# DogeNFC
+
+<img src="http://mkvd.s3.amazonaws.com/DogeNFC/DogeNFC_Logo_Complete.png" />
+
+<br><br><br>
+
+DEMO Screenshots:
+
+(Bitcore needs to be swapped with Dogecore and tested but still!!!)
+
+<br>
 
 
-<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_home2.png" width="32.8%"/>
-<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_send.png" width="32.8%"/>
-<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_wallet_found.png" width="32.8%"/>
+<img width=200  src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_home.png" />
+<img width=200 src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_receive2.png" />
+<img width=200 src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_send.png" />
+<img width=200 src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_receive.png" />
+<img width=200 src="http://mkvphoto.s3.amazonaws.com/BitNFC/DogeNFC/doge_settings.png" />
+
+
+
+# Đ
+
+!g latin capital letter d with stroke
+
+(utf-8 character)
+
+### Why Doge
+
+Research (Experience, Science!)
+
+2015 - What is crypto currency is still unkown
+
+London, age 15-30 - happened a bunch of times to be in a group where nobody knows bitcoin and only one knows Doge
+
+This is something we have to research:
+
+![](http://mkvd.s3.amazonaws.com/DogeNFC/DogeNFC_Logo_Doge.png)
+
+Doge plz help
 
 
 ### Download
 
 Download the APK from there it and install it on your Android phone!
 
-https://copy.com/RFU1SLqowCJEra4l
+[damn on BitNFC there's still the copy url ... oh doge!]
 
 
 ### Install
 
 ##### Dowload the APK from the website
 
-#### http://bitnfc.org
+#### http://dogenfc.com
 
 Search it on Google Play (soon!)
+
+
+### Dev
+
+    npm install && bower install && ionic state reset
+
 
 
 ## Known Bugs
@@ -131,6 +170,9 @@ sms:path/?var=foo
 ![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/sms_copy1.jpg)
 ![](http://mkvphoto.s3.amazonaws.com/BitNFC/small/sms_copy2.jpg)
 
+[these screenshots are from BitNFC - the forked (father) project]
+
+
 on standard Mifare tags usually there is space for another NFC Record
 
 we can also embed a link to the app's google play store page so an user can just scan the nfc tag, click & download :)
@@ -160,4 +202,4 @@ use zipaling to slim the apks:
 enjoy!
 
 
-#### <http://bitfc.org>
+#### <http://dogenfc.com>

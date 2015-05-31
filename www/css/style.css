@@ -103,3 +103,33 @@
 	vertical-align:middle;
 
 }
+
+/* Dogeify */
+
+.supertitle {
+  display: inline-block;
+  position: relative;
+  top: -15px;
+  left: 6px;
+}
+
+/* bigger logo */
+
+.logo-img {
+  width: 42px;
+}
+
+
+.logo-img-main {
+  width: 46%;
+}
+
+
+/*
+
+.title.title-center.header-item, .bar-light.bar.bar-header {
+  height: 95px;
+}
+*/
+
+/* naaah */

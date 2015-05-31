@@ -8,5 +8,8 @@
     "bitcore": "^0.12.4",
     "angular-fx": "~1.0.0",
     "animate.css": "~3.2.6"
+  },
+  "unused": {
+    "dogecore": "git@github.com:maraoz/dogecore.git"
   }
 }
