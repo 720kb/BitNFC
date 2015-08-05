@@ -1,4 +1,6 @@
 # BitNFC
+
+[![Join the chat at https://gitter.im/720kb/BitNFC](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/720kb/BitNFC?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 <img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/logo.png"/>
 
 
