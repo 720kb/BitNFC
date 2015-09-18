@@ -21,7 +21,21 @@
   <link href='https://fonts.googleapis.com/css?family=Ubuntu:300italic,700' rel='stylesheet' type='text/css'>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
   <script type="text/javascript">
-  $(document).ready(function DOMReady(){
+  $(function jREADY() {
+    var slideN = 1
+      slidesTotal = 6;
+    window.setInterval(function fader() {
+
+      $('.slide' + slideN).fadeOut(500).toggleClass('hide');
+
+      slideN += 1;
+
+      if (slideN > slidesTotal) {
+        slideN = 1;
+      }
+
+      $('.slide' + slideN).fadeIn(500).toggleClass('hide');
+    }, 10000);
     $('.toggle-video').bind('click', function videoClickToggle() {
       $('.video iframe').remove();
       $('.video').prepend('<iframe width="100%" height="90%" src="https://www.youtube.com/embed/srE1fDB-dTY?autoplay=1" frameborder="0" allowfullscreen></iframe>');
@@ -39,7 +53,14 @@
         <img src="assets/img/logo-text.png" width="120"/>
         <div class="separator50"></div>
         <div class="phone">
-          <img src="assets/img/mobile.png" width="100%"/>
+          <div class="slider">
+          <img class="slide1" src="assets/img/slider/1.png">
+          <img class="slide2 hide" src="assets/img/slider/2.png">
+          <img class="slide3 hide" src="assets/img/slider/3.png">
+          <img class="slide4 hide" src="assets/img/slider/4.png">
+          <img class="slide5 hide" src="assets/img/slider/5.png">
+          <img class="slide6 hide" src="assets/img/slider/6.png">
+        </div>
         </div>
       </div>
       <div class="col6 center-content line-tablet ">

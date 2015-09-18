@@ -80,11 +80,16 @@ h2{
   opacity:1;
 }
 .phone{
-  max-width:250px;
+  background: url('../img/mobile.png') no-repeat top center;
+  width:250px;
+  height:560px;
+  background-size:250px;
 }
-.phone #download {
-  position: relative;
-  top:-220px;
+.phone img{
+  margin:0 auto;
+  float:none;
+  width:230px;
+  margin-top:40px;
 }
 /*Media*/
 @media screen and (max-width:800px){
