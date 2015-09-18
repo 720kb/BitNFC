@@ -1,11 +1,143 @@
+
 <!DOCTYPE html>
-<html class='bg-dark'>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
-    <meta charset='UTF-8'>
-    <meta http-equiv="refresh" content="0; url=http://bitnfc.org">
-  </head>
-  <body>
-   <h1>Redirecting to <a href="http://bitnfc.org">http://bitnfc.org</a></h1>
-  </body>
+<html class="bg-dark">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta charset="UTF-8">
+  <meta name="robots" content="index, follow">
+  <meta name="google" content="notranslate" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <meta http-equiv="cache-control" content="max-age=43200" />
+  <meta name="description" content="Bitcoin NFC mobile wallet, 100% open source" >
+  <meta property="og:url" content="http://bitnfc.org"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="bitnfc.org"/>
+  <meta property="og:image" content="https://camo.githubusercontent.com/41f3f240b11a9bcc28e6356c910d2320a9fb3c08/687474703a2f2f6d6b7670686f746f2e73332e616d617a6f6e6177732e636f6d2f4269744e46432f736d616c6c2f6c6f676f2e706e67"/>
+  <meta property="og:description" content="Bitcoin NFC mobile wallet"/>
+  <title>BitNFC</title>
+  <link href="assets/css/vendor/helper.css" rel="stylesheet" type="text/css">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:300italic,700' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+  <script type="text/javascript">
+  $(function jREADY() {
+    var slideN = 1
+      slidesTotal = 6;
+    window.setInterval(function fader() {
+
+      $('.slide' + slideN).fadeOut(500).toggleClass('hide');
+
+      slideN += 1;
+
+      if (slideN > slidesTotal) {
+        slideN = 1;
+      }
+
+      $('.slide' + slideN).fadeIn(500).toggleClass('hide');
+    }, 10000);
+    $('.toggle-video').bind('click', function videoClickToggle() {
+      $('.video iframe').remove();
+      $('.video').prepend('<iframe width="100%" height="90%" src="https://www.youtube.com/embed/srE1fDB-dTY?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+      $('.video').toggleClass('hide active');
+    });
+  });
+  </script>
+</head>
+<body class="bg-white">
+  <div class="line-compress">
+    <div class="line-max">
+      <div class="separator50"></div>
+      <div class="separator15"></div>
+      <div class="col4 center-content line-tablet color-white">
+        <img src="assets/img/logo-text.png" width="120"/>
+        <div class="separator50"></div>
+        <div class="phone">
+          <div class="slider">
+          <img class="slide1" src="assets/img/slider/1.png">
+          <img class="slide2 hide" src="assets/img/slider/2.png">
+          <img class="slide3 hide" src="assets/img/slider/3.png">
+          <img class="slide4 hide" src="assets/img/slider/4.png">
+          <img class="slide5 hide" src="assets/img/slider/5.png">
+          <img class="slide6 hide" src="assets/img/slider/6.png">
+        </div>
+        </div>
+      </div>
+      <div class="col6 center-content line-tablet ">
+        <div class="separator10"></div>
+        <div class="separator10"></div>
+        <div class="menu font-custom">
+          <a href="//720kb.net/#team" class="color-white" target="blank">WHO DID IT</a>
+          <a href="#invest" class="color-white">INVEST</a>
+          <a href="mailto:makevoid@gmail.com" class="color-white">CONTACTS</a>
+        </div>
+        <div class="color-muted-more font-light">
+          <div class="separator100"></div>
+          <h1 class="font-light">The Bitcoin NFC</h1>
+          <h1 class="font-light"> mobile wallet.</h1>
+          <div class="separator50"></div>
+        </div>
+        <a href="javascript:void(0)" id="video-start" class="toggle-video toggle-opacity-hover">
+          <i class="fa fa-play color-muted"></i>
+        </a>
+        <div class="separator100"></div>
+        <div class="separator30"></div>
+        <a href="http://mkvd.s3.amazonaws.com/apps/BitNFC-armv7.apk">
+          <img src="assets/img/google-badge.png" class="badge" width="150"/>
+        </a>
+        <a href="//github.com/720kb/bitnfc" target="blank">
+          <img src="assets/img/github-badge.png" class="badge" width="150"/>
+        </a>
+      </div>
+      <div class="separator100"></div>
+    </div>
+  </div>
+  <div class="overlay  overlay-dark video layer2 fixed center-content hide">
+    <div class="video-content">
+    </div>
+    <div class="video-footer color-white">
+      <div class="separator30"></div>
+      <a href="javascript:void(0)" class="toggle-video color-white font-light">
+        CLOSE
+      </a>
+    </div>
+  </div>
+  <div class="line bg-white">
+    <div class="separator50"></div>
+    <div id="invest" class="line-compress line-max">
+      <div class="col4 line-tablet center-content">
+        <div class="separator15"></div>
+        <img src="assets/img/1BitNFC-qr.gif" class="radius5 qr" width="160" alt="1BitNFCdtWh4mJkVhygtjc88CR2r7gqkWt">
+        <div class="separator15"></div>
+      </div>
+      <div class="col6 line-tablet">
+        <div class="separator15"></div>
+        <div class="line-compress center-content-tablet ">
+          <h2 class="color-black font-light">
+            Do you want to invest in a good open source project?
+          </h2>
+          <div class="separator15"></div>
+          <h3 class="color-muted font-light">
+            Would you like this team to work for your idea?
+          </h3>
+          <div class="separator5"></div>
+          <h3 class="color-muted font-light">Send us some Bitcoins and let's start the conversation!</h3>
+          <div class="separator5"></div>
+          <h3 class="color-muted">1BitNFCdtWh4mJkVhygtjc88CR2r7gqkWt</h3>
+        </div>
+      </div>
+      <div class="separator100"></div>
+    </div>
+    <small class="footer line color-muted center-content">
+      <div class="separator30"></div>
+      <div>
+        Copyright © 2015
+        <b><a class="color-muted toggle-opacity-inverse-hover" href="//720kb.net" target="_blank">720kb</a></b>
+        &amp;
+        <b>  <a class="color-muted toggle-opacity-inverse-hover" href="//makevoid.com" target="_blank">makevoid</a></b>
+      </div>
+      <div class="separator50"></div>
+    </small>
+  </div>
+</body>
 </html>
