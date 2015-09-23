@@ -2,12 +2,6 @@ body,html{
   transition: opacity color 0.3s linear;
   background-color: #7416E5;
 }
-html{
-  background-image: url('../img/opensource.png');
-  background-position: top -10px right -50px;
-  background-repeat: no-repeat;
-  background-size:150px;
-}
 small{
   font-size:12px;
 }
@@ -16,6 +10,11 @@ h1{
 }
 h2{
   font-size: 24px;
+}
+.badge-top{
+  position:absolute;
+  top:-10px;
+  right:-50px;
 }
 /*Fonts*/
 .font-light{
