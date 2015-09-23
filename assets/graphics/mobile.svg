@@ -16,8 +16,8 @@
    inkscape:version="0.91 r13725"
    sodipodi:docname="mobile.svg"
    inkscape:export-filename="/Users/45kb/Projects/bitnfc/assets/img/mobile.png"
-   inkscape:export-xdpi="107.14286"
-   inkscape:export-ydpi="107.14286">
+   inkscape:export-xdpi="89.265305"
+   inkscape:export-ydpi="89.265305">
   <title
      id="title4567">Galaxy S4 Flat Template</title>
   <defs
@@ -148,9 +148,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.0058233"
-     inkscape:cx="252.65786"
-     inkscape:cy="294.46628"
+     inkscape:zoom="4.0232932"
+     inkscape:cx="101.73261"
+     inkscape:cy="23.630554"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -226,12 +226,12 @@
        d="m 1.2468493,624.34654 0,66.76875"
        style="fill:#e6e6e6;stroke:#5c5c5c;stroke-width:2.4936986;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
-       style="fill:#e6e6e6;stroke:#999999;stroke-width:2.14299989;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#464646;fill-opacity:1;stroke:#372f2f;stroke-width:2.14299989;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 251.0715,659.57294 0,31.7177"
        id="path4293"
        inkscape:connector-curvature="0" />
     <rect
-       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#464646;stroke-width:2.375;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#333333;stroke-width:2.375;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect2985"
        width="247.62524"
        height="487.62524"
@@ -248,7 +248,7 @@
        ry="2.0000072"
        rx="1.9833206" />
     <rect
-       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#b3b3b3;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.33088234;filter:url(#filter4575)"
+       style="fill:#333333;fill-opacity:0.53676468;fill-rule:nonzero;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.39705881;opacity:0.44999996"
        id="rect3773"
        width="60"
        height="15"
@@ -257,7 +257,7 @@
        rx="6"
        ry="5.5" />
     <rect
-       style="fill:#b3b3b3;fill-opacity:0.30514705;fill-rule:nonzero;stroke:none"
+       style="fill:#b3b3b3;fill-opacity:0.30514706;fill-rule:nonzero;stroke:none"
        id="rect3983"
        width="60"
        height="4"
