@@ -2,6 +2,8 @@
   "name": "bitnfc",
   "version": "1.0.0",
   "description": "bitNFC: An Ionic project",
+  "repository": "https://github.com/720kb/BitNFC",
+  "license": "Unlicense",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
