@@ -90,6 +90,10 @@ h2{
   width:230px;
   margin-top:40px;
 }
+.footer-header{
+  background:white;
+  box-shadow: 0 30000px 0 30000px  white;
+}
 /*Media*/
 @media screen and (max-width:800px){
   /*put in here all tablet rules*/
