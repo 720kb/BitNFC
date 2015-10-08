@@ -23,7 +23,9 @@
   <script type="text/javascript">
   $(function jREADY() {
     var slideN = 1
-      slidesTotal = 6;
+      , slidesTotal = 6
+      , youtubeSRC = 'https://www.youtube.com/embed/srE1fDB-dTY?autoplay=1';
+
     window.setInterval(function fader() {
 
       $('.slide' + slideN).fadeOut(500).toggleClass('hide');
@@ -36,9 +38,16 @@
 
       $('.slide' + slideN).fadeIn(500).toggleClass('hide');
     }, 10000);
-    $('.toggle-video').bind('click', function videoClickToggle() {
-      $('.video iframe').remove();
-      $('.video').prepend('<iframe width="100%" height="90%" src="https://www.youtube.com/embed/srE1fDB-dTY?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+    $('.start-video').bind('click', function startVideo() {
+      $('.video iframe').attr('src', youtubeSRC);
+      $('iframe').css({'height': window.innerHeight - 80});
+      $('.video').toggleClass('hide active');
+    });
+    $(window).on('resize', function onWindowResize() {
+        $('iframe').css({'height': window.innerHeight - 80});
+    });
+    $('.close-video').bind('click', function stopVideo() {
+      $('.video iframe').attr('src', '');
       $('.video').toggleClass('hide active');
     });
   });
@@ -80,7 +89,7 @@
           <h1 class="font-light"> mobile wallet.</h1>
           <div class="separator50"></div>
         </div>
-        <a href="javascript:void(0)" id="video-start" class="toggle-video toggle-opacity-hover">
+        <a href="javascript:void(0)" id="video-start" class="start-video toggle-opacity-hover">
           <i class="fa fa-play color-muted"></i>
         </a>
         <div class="separator100"></div>
@@ -97,10 +106,11 @@
   </div>
   <div class="overlay  overlay-dark video layer2 fixed center-content hide">
     <div class="video-content">
+      <iframe width="100%" height="90%" src="" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="video-footer color-white">
       <div class="separator30"></div>
-      <a href="javascript:void(0)" class="toggle-video color-white font-light">
+      <a href="javascript:void(0)" class="close-video color-white font-light">
         CLOSE
       </a>
     </div>

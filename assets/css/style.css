@@ -29,6 +29,10 @@ h2{
   background:black;
 }
 .video-footer a{
+  position:fixed;
+  bottom:25px;
+  left:0;
+  right:0;
   font-size:25px;
 }
 .video-footer i{
