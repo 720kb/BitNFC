@@ -3,8 +3,8 @@
   'use strict';
 
   angular.module('Send.controller', [])
-  .controller('SendCtrl', ['$rootScope', '$scope', '$window', '$log', '$stateParams', '$filter', 'BitCoin', 'CordovaClipboard',
-    function SendCtrlController($rootScope, $scope, $window, $log, $stateParams, $filter, BitCoin, CordovaClipboard) {
+  .controller('SendCtrl', ['$rootScope', '$scope', '$window', '$log', '$stateParams', '$filter', 'BitCoin', 'CordovaClipboard', '$timeout',
+    function SendCtrlController($rootScope, $scope, $window, $log, $stateParams, $filter, BitCoin, CordovaClipboard, $timeout) {
 
     var onNFCTag
       , inputToAddressElement = $window.document.getElementById('toAddress');
@@ -112,6 +112,12 @@
     $scope.$on('$destroy', function onDestroy() {
 
       onNFCTag();
+    });
+
+    $scope.$on('focus', function setFocus() {
+      $timeout(function(){
+        document.querySelector("input[type=number]").focus();
+      }, 1);
     });
   }]);
 }(angular));

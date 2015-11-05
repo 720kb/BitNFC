@@ -119,13 +119,14 @@
 
                 $state.go('app.send', {
                   'nfcAddress': $rootScope.tagAddress
+                }).then(function(){
+                  $rootScope.$broadcast('focus');
                 });
-                // TODO: focus on amount field - http://stackoverflow.com/a/22751353/160699 ?
               }
             }
           ]
         });
-      }
+      // }
     });
 
     $rootScope.$on('nfc:status-message', function onMessageTag(eventsInformations, payload) {
