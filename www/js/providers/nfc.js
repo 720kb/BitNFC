@@ -66,7 +66,8 @@
                   , privateKey = BitCoin.fromPrivateKey(privateKeyString)
                   , address = privateKey.toAddress();
                 $log.debug('There\'s a tag.');
-                BlockChain.balance(address.toString() ).then(function onBalance(tagBalance) {
+                BlockChain.balance(address.toString()).then(function onBalance(tagBalance) {
+                  $log.debug('Tag balance: ' + tagBalance);
 
                   if (Number(tagBalance) > 0) {
 
@@ -78,7 +79,12 @@
                     $log.debug('The tag contains: \'' + privateKey + '\'');
                   } else {
 
-                    newPrivateKey(scope);
+                    scope.$emit('nfc:status-balance-empty', {
+                      'privateKey': privateKey,
+                      'balance': tagBalance,
+                      'address': address
+                    });
+                    // newPrivateKey(scope);
                   }
                 });
               } else { //Empty tag writing down a private key
