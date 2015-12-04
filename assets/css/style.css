@@ -20,6 +20,16 @@ h3 *{
   top:0;
   right:0;
 }
+/*Buttons*/
+.btn-cookies{
+  width:40px;
+  float:none;
+  line-height: 20px;
+  font-size: 11.5px;
+  display: inline-block;
+  border-radius: 5px;
+  text-align: center;
+}
 /*Fonts*/
 .font-light{
   font-weight: lighter;
