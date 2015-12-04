@@ -160,6 +160,15 @@ use zipaling to slim the apks:
 
 ### Unlincensed under #The_Unlicense
 
+### Terms of Use
+
+Prior to using our wallet software, you acknowledge and agree that:
+
+Bitcoin is a dynamic digital currency, and there may be risk of loss when trading, holding, and transacting with bitcoin. 
+
+BitNFC and 720kb are not responsible for any loss of your bitcoin due to mishandling, theft, or any other factor outside of their direct control.
+
+
 
 enjoy!
 
