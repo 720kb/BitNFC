@@ -50,42 +50,10 @@
       $('.video iframe').attr('src', '');
       $('.video').toggleClass('hide active');
     });
-
-    //cookies eu law
-    var cookieDiv = document.getElementById('cookies')
-    , cookieBtn = document.getElementById('720kb-cookie-button')
-    , cookieAccept = function () {
-
-      localStorage['720kb-cookie-accept'] = true;
-      toggleCookieAlert();
-    }
-    , toggleCookieAlert = function () {
-
-      if (!localStorage['720kb-cookie-accept']) {
-
-        cookieDiv.style.display = 'initial';
-      } else {
-
-        cookieDiv.style.display = 'none';
-      }
-    };
-
-    cookieBtn.onclick = function () {
-
-      cookieAccept();
-    };
-
-    toggleCookieAlert();
   });
   </script>
 </head>
 <body class="bg-white">
-  <div id="cookies" class="line fixed bottom center-content bg-white color-muted">
-				<div class="separator10"></div>
-				We use cookies for your better experience
-				<button class=" btn-cookies bg-muted toggle-opacity-inverse-hover" type="button" id="720kb-cookie-button">OK</button>
-				<div class="separator10"></div>
-		</div>
   <a class="badge-top" href="http://github.com/720kb/bitnfc" target="_blank">
     <img src="assets/img/opensource.png"/>
   </a>
@@ -135,7 +103,8 @@
         <div class="line center-content color-white font-lighter">
         <div class="separator30"></div>
           <div class="col8 offset-left1">
-            <small class="col8 offset-left1 font-light">This is Beta software, please deposit only small amounts on NFC tags. By downloading the .apk file you agree with the
+            <small class="col8 offset-left1 font-lighter">
+              This is Beta software, please deposit only small amounts on NFC tags. By downloading the .apk file you agree with the
                <a class="color-muted-inverse font-light color-cyan" href="https://github.com/720kb/BitNFC#terms-of-use">terms and conditions of use</a>.
             </small>
         </div>
