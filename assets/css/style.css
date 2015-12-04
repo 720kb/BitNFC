@@ -2,7 +2,7 @@ body,html{
   transition: opacity color 0.3s linear;
   background-color: #7416E5;
 }
-small{
+small, small *{
   font-size:12px;
 }
 h1{
@@ -10,6 +10,9 @@ h1{
 }
 h2{
   font-size: 24px;
+}
+h3 *{
+  font-size: inherit;
 }
 .badge-top{
   position:absolute;
@@ -59,6 +62,13 @@ h2{
 .color-muted-more{
   color:rgba(0,0,0,0.4);
 }
+.color-cyan{
+  color:#7BEFFC;
+}
+/*Backgrounds*/
+.bg-red{
+  background-color: #ff0039;
+}
 /*Extras*/
 #video-start{
   border:3px solid rgba(0,0,0,0.5);
@@ -71,8 +81,7 @@ h2{
   text-indent:5px;
 }
 .badge:hover{
-  transition-duration: 0.3s;
-  transform: scale(1.05);
+  opacity:.8;
 }
 .menu a{
   margin: 0 2%;
@@ -86,7 +95,7 @@ h2{
 .phone{
   background: url('../img/mobile.png') no-repeat top center;
   width:250px;
-  height:560px;
+  height:500px;
   background-size:250px;
 }
 .phone img{
