@@ -87,8 +87,12 @@ h3 *{
   display:block;
   border-radius:200px;
   font-size:35px;
-  line-height: 80px;
+  line-height: 0;
   text-indent:5px;
+}
+#video-start i{
+  position: relative;
+  bottom:-22px;
 }
 .badge:hover{
   opacity:.8;
