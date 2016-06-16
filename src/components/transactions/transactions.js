@@ -6,7 +6,7 @@ export default class Transactions extends Comp {
   render() {
     return (
       <div>
-        <TransactionList />
+        <TransactionList store={this.props.store} />
       </div>
     )
   }

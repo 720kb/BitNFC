@@ -1,7 +1,6 @@
 import React  from 'React'
-import { Provider } from 'ReactRedux'
-import { Link } from 'ReactRouter'
-import store  from '../../store/store'
+
+
 import Comp  from '../comp'
 
 export default class Send extends Comp {
@@ -9,9 +8,7 @@ export default class Send extends Comp {
     return (
       <div>
         <h1>Send</h1>
-        <Provider store={store}>
-          <div>Antani</div>
-        </Provider>
+        <div>Antani</div>
       </div>
     )
   }

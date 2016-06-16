@@ -1,11 +1,8 @@
-import { createStore } from 'Redux'
 import actions from '../actions/actions'
+import defaultState from './default_state'
 
 let init = false
 
-const defaultState = {
-  antani: "-"
-}
 
 const catchAll = () => {
   console.error("Error:", err)
@@ -37,6 +34,10 @@ const mainStore = (state = defaultState, action) => {
   }
 }
 
+//// stricter, legacy version
+//
+// import { createStore } from 'Redux'
+//
 // const reducer = null
 //
 // const defaultReducer = () => { }
