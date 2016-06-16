@@ -4,6 +4,8 @@ import { render } from 'ReactDOM'
 
 import store from './store/store'
 import startup from './startup'
+import catchErrors from './errors'
+import mainRender from './main_render'
 import Comp from './components/comp'
 import Main from './components/main'
 import NotFound from './components/main/not_found'
@@ -11,14 +13,18 @@ import NotFound from './components/main/not_found'
 
 window.storeDebug = store.getState() // FIXME: disable in production
 
-// temporary router goes here ---- <RouterComp />
 
-import { Router, Route, IndexRoute, Link, hashHistory } from 'ReactRouter'
+
+
+// Main Components
+
+import {  Route, IndexRoute } from 'ReactRouter'
 import Receive        from './components/receive/receive'
 import Send           from './components/send/send'
 import Transactions   from './components/transactions/transactions'
 
-// dir struct and dev tool conf: http://www.jchapron.com/2015/08/14/getting-started-with-redux/
+
+// Routes
 
 const routes =
   <Route path="/" component={Main}>
@@ -29,28 +35,20 @@ const routes =
   </Route>
 
 
-// main component, calls the global re-render
-//
-const mainRender = () => {
-  render(
-    <div>
-      <h1>App</h1>
-      <Router history={hashHistory}>
-        {routes}
-      </Router>
-    </div>,
-    document.querySelector('.container')
-  )
+
+// Main render (execution)
+
+try {
+  mainRender(routes)
+} catch (err) {
+  catchErrors(err)
+  throw(err)
 }
-
-
-// main render!!
-
-mainRender()
 
 store.subscribe((evt) =>
   mainRender()
 )
+
 
 
 // startup has the task of filling in the stores with startup data

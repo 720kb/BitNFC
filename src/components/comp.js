@@ -1,7 +1,9 @@
 import React from 'React'
 
 class Comp extends React.Component {
-  // nothing to see here :p
+  componentDidMount() {
+    if (this.props.children) this.props.store = this.props.children.store
+  }
 }
 
 Comp.contextTypes = { store: React.PropTypes.object }

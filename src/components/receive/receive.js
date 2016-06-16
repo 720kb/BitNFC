@@ -1,8 +1,9 @@
-import React  from 'React'
+import React        from 'React'
 import { Provider } from 'ReactRedux'
-import { Link } from 'ReactRouter'
-import store  from '../../store/store'
-import Comp  from '../comp'
+import store        from '../../store/store'
+import { Link }     from 'ReactRouter'
+import Comp         from '../comp'
+import QRAddress    from '../qr/qr_address'
 
 export default class Receive extends Comp {
   render () {
@@ -10,7 +11,10 @@ export default class Receive extends Comp {
       <div>
         <h1>Receive</h1>
         <Provider store={store}>
-          <div>Antani</div>
+          <div>
+            <div>Antani</div>
+            <QRAddress />
+          </div>
         </Provider>
       </div>
     )
