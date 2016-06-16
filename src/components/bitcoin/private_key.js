@@ -1,16 +1,19 @@
 import React  from 'React'
 import Comp  from '../comp'
-import bitcore from 'bitcore-lib'
+import { Provider } from 'ReactRedux'
+import store        from '../../store/store'
 
-console.log(bitcore)
-var privateKey = new bitcore.PrivateKey()
-var privateKeyWif = privateKey.toWIF()
 
 class PrivateKey extends Comp {
+  // componentDidMount()
   render () {
     return (
       <div>
-        PrivateKey
+        <div className="s30" />
+        <strong>PrivateKey (backup this!)</strong>
+        <Provider store={store}>
+          <p>{store.getState().privateKey.toWIF()}</p>
+        </Provider>
       </div>
     )
   }

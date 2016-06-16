@@ -4,11 +4,12 @@ import QR       from './qr'
 import Address  from '../bitcoin/address'
 
 export default class QRAddress extends Comp {
-  render () {
+  render() {
+    let address = this.context.store.getState().address
     return (
       <div>
-        <QR />
-        <Address />
+        <QR address={address}/>
+        <Address address={address}/>
       </div>
     )
   }

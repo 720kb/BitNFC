@@ -7,7 +7,7 @@ class Address extends Comp {
       <div>
         <label>Your Address:</label>
         <div className="s10" />
-        <input type="text" placeholder="1...." disabled />
+        <input type="text" placeholder="1...." value={this.props.address} disabled />
       </div>
     )
   }

@@ -4,6 +4,7 @@ import store        from '../../store/store'
 import { Link }     from 'ReactRouter'
 import Comp         from '../comp'
 import QRAddress    from '../qr/qr_address'
+import AddressBalanceFiat  from '../bitcoin/address_balance_fiat'
 
 export default class Receive extends Comp {
   render () {
@@ -11,7 +12,10 @@ export default class Receive extends Comp {
       <section className="receive">
         <h1>Receive</h1>
         <Provider store={store}>
-          <QRAddress />
+          <div>
+            <QRAddress />
+            <AddressBalanceFiat />
+          </div>
         </Provider>
       </section>
     )

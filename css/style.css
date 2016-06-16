@@ -139,3 +139,7 @@ nav li:hover a {
   width: 43%;
   margin: 0 auto 40px;
 }
+
+.receive input[type=text] {
+  text-align: center;
+}

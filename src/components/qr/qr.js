@@ -15,7 +15,7 @@ class QR extends Comp {
   componentDidMount()  {
     new QRCode(this.refs.qr, _.extend(
       {
-        text: "http://jindo.dev.naver.com/collie",
+        text: this.props.address,
       },
       options
     ))
