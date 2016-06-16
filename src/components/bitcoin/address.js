@@ -6,6 +6,7 @@ class Address extends Comp {
     return (
       <div>
         <label>Your Address:</label>
+        <div className="s10" />
         <input type="text" placeholder="1...." disabled />
       </div>
     )

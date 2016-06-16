@@ -7,7 +7,6 @@ export default class QRAddress extends Comp {
   render () {
     return (
       <div>
-        QRAddress
         <QR />
         <Address />
       </div>

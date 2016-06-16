@@ -9,7 +9,7 @@ export default class Transactions extends Comp {
     return (
       <section className="transactions">
         <Provider store={store}>
-          <TransactionList store={this.props.store} />
+          <TransactionList />
         </Provider>
       </section>
     )

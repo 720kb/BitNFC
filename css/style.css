@@ -123,11 +123,18 @@ nav li a {
   width: 100%;
 }
 
-
 nav li:hover {
   background: #704789;
 }
 
 nav li:hover a {
   color: #FFF;
+}
+
+
+/* Receive */
+
+.qrCode img {
+  width: 40%;
+  margin: 0 auto 40px;
 }

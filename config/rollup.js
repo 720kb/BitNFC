@@ -1,5 +1,6 @@
 import babel   from 'rollup-plugin-babel'
 import replace from 'rollup-plugin-replace'
+// import browserify from 'rollup-plugin-browserify-transform'
 
 export default {
   entry: 'src/app.js',

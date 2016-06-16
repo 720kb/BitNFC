@@ -7,7 +7,7 @@ export default class TransactionList extends Comp {
     let rows = []
     transactions.forEach((tx, _) => {
       rows.push(
-        <Transaction key={tx.id} attributes={tx.attributes} store={this.props.store} />
+        <Transaction key={tx} txid={tx} />
       )
     })
     return rows
@@ -17,7 +17,8 @@ export default class TransactionList extends Comp {
     let transactions = this.context.store.getState().transactions
     return (
       <div>
-        Transaction count: {transactions.length}
+        <h1>Transactions ({transactions.length})</h1>
+        <div className="s20"></div>
         <div>{this.transactionList(transactions)}</div>
       </div>
     )
