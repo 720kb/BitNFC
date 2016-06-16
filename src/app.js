@@ -6,7 +6,6 @@ import store from './store/store'
 import startup from './startup'
 import Comp from './components/comp'
 import Main from './components/main'
-import Receive from './components/receive'
 import NotFound from './components/main/not_found'
 
 

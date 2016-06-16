@@ -9,6 +9,11 @@ Instal npm dependencies
 
     npm i
 
+Re-compile (babel):
+
+   rollup -c config/rollup.js
+
+
 Run with your favourite web server:
 
     python -m SimpleHTTPServer 3000
@@ -25,4 +30,4 @@ Run:
 
     guard
 
-Modify a file and then you should have the build compiled and see the browser reloaded. 
+Modify a file and then you should have the build compiled and see the browser reloaded.

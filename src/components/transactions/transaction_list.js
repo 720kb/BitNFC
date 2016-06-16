@@ -5,10 +5,9 @@ import Transaction  from './transaction'
 export default class TransactionList extends Comp {
   transactionList(transactions) {
     let rows = []
-    transactions.forEach((org, _) => {
-      console.log("ORG", org)
+    transactions.forEach((tx, _) => {
       rows.push(
-        <Transaction key={org.id} attributes={org.attributes} />
+        <Transaction key={tx.id} attributes={tx.attributes} />
       )
     })
     return rows
