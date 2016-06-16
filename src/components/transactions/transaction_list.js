@@ -14,7 +14,7 @@ export default class TransactionList extends Comp {
   }
 
   render() {
-    let transactions = this.context.store.getState().transactions
+    let transactions = this.getStore().transactions
     return (
       <div>
         <h1>Transactions ({transactions.length})</h1>

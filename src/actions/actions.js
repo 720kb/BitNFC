@@ -4,16 +4,10 @@ const catchAll = (err) => {
   console.error("Error:", err.stack)
 }
 
-const someSubAction = () => {
-  // ...
-}
-
 const actions = {
   gotBalance: (balance) => {
+    console.log("GOT_BALANCE", balance)
     store.dispatch({ type: 'GOT_BALANCE', balance: balance })
-  },
-  comeSeFosseAntani: () => {
-    store.dispatch({ type: 'ANTANI', antani: "antani! (foobar)" })
   },
 }
 

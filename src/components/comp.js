@@ -7,6 +7,10 @@ class Comp extends React.Component {
       this.props.store = this.props.children.store
     }
   }
+
+  getStore() {
+    return this.context.store.getState()
+  }
 }
 
 Comp.contextTypes = { store: React.PropTypes.object }

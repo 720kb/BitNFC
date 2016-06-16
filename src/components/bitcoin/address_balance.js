@@ -9,13 +9,11 @@ import Comp  from '../comp'
 //
 // will return the balance in bits
 
-
 class AddressBalance extends Comp {
   render () {
-    let state = this.context.store.getState()
-    let balance = state.balance
+    let balance = this.getStore().balance
     return (
-      <div className="balance">
+      <div className="balance btc mbtc">
         <div>
           <strong>Balance:</strong>
         </div>

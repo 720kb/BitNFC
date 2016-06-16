@@ -144,3 +144,7 @@ nav li:hover a {
 .receive input[type=text] {
   text-align: center;
 }
+
+.balance.btc {
+  font-size: 1.2em;
+}

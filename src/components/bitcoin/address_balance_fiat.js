@@ -38,12 +38,12 @@ class AddressBalanceFiat extends Comp {
   }
 
   render () {
-    let state = this.context.store.getState()
-    let balance = state.balance || 0
+    let store = this.getStore()
+    let balance = store.balance || 0
     balance = balance / 100000000 *  this.state.rate
     balance = Math.round(balance * 100) / 100
     return (
-      <div className="balance">
+      <div className="balance fiat">
         <div>{balance} {this.rate.toUpperCase()}</div>
       </div>
     )

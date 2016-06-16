@@ -17,7 +17,7 @@ const mainStore = (state = defaultState, action) => {
   switch (action.type) {
 
     case "GOT_BALANCE":
-      state.balance = action.balance
+      Object.assign(state, action.balance)
       return state
 
     case "GET_ANTANI":
