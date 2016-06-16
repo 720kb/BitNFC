@@ -9,6 +9,8 @@ Instal npm dependencies
 
     npm i
 
+    npm i -g rollup
+
 Re-compile (babel):
 
    rollup -c config/rollup.js
