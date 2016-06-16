@@ -1,9 +1,5 @@
 node_modules/
 npm-debug.log
-www/lib/*
-platforms/
-plugins/
-engine/
 .DS_Store
 .sass-cache/
 BitNFC.keystore
