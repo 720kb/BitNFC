@@ -9,10 +9,9 @@
 rollup = "rollup -c config/rollup.js"
 
 guard :shell do
-  watch(%r{^src/.+\.js$}) { |m| `#{rollup}` }
+  watch(%r{^src/.+\.js|css/.+\.css$}) { |m| `#{rollup}` }
 end
 
 guard :livereload do
   watch(%r{^dist/bundle\.js$})
 end
-

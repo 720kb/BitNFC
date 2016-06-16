@@ -9,9 +9,9 @@ import Nav      from './main/nav'
 export default class Main extends Comp {
   render() {
     return (
-      <div>
-        <Nav />
+      <div className="main">
         {this.props.children || (<Receive />)}
+        <Nav />
       </div>
     )
   }

@@ -8,15 +8,12 @@ import QRAddress    from '../qr/qr_address'
 export default class Receive extends Comp {
   render () {
     return (
-      <div>
+      <section className="receive">
         <h1>Receive</h1>
         <Provider store={store}>
-          <div>
-            <div>Antani</div>
-            <QRAddress />
-          </div>
+          <QRAddress />
         </Provider>
-      </div>
+      </section>
     )
   }
 }

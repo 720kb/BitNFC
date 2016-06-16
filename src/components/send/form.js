@@ -5,8 +5,19 @@ class Form extends Comp {
   render() {
     return (
       <div>
-        <input name="to" />
-        <input name="amount" />
+        <label>
+          Address:
+          <div className="s10" />
+          <input name="to"     type="text" placeholder="1....." />
+        </label>
+        <div className="s30" />
+        <label>
+          Amount:
+          <div className="s10" />
+          <input name="amount" type="text" placeholder="0.10" />
+          <div className="hoverInput">mBTC</div>
+        </label>
+        <div className="s30" />
         <input type="submit" value="Send" />
       </div>
     )

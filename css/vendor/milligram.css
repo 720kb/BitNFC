@@ -68,8 +68,8 @@ input[type='reset']:hover,
 input[type='reset']:focus,
 input[type='submit']:hover,
 input[type='submit']:focus {
-  background-color: #606c76;
-  border-color: #606c76;
+  background-color: #704789;
+  border-color: #704789;
   color: #fff;
   outline: 0;
 }
@@ -122,9 +122,9 @@ input[type='reset'].button-outline:hover,
 input[type='reset'].button-outline:focus,
 input[type='submit'].button-outline:hover,
 input[type='submit'].button-outline:focus {
-  color: #606c76;
+  color: #704789;
   background-color: transparent;
-  border-color: #606c76;
+  border-color: #704789;
 }
 .button.button-outline.button-disabled:hover, .button.button-outline.button-disabled:focus, .button.button-outline[disabled]:hover, .button.button-outline[disabled]:focus,
 button.button-outline.button-disabled:hover,
@@ -164,7 +164,7 @@ input[type='reset'].button-clear:hover,
 input[type='reset'].button-clear:focus,
 input[type='submit'].button-clear:hover,
 input[type='submit'].button-clear:focus {
-  color: #606c76;
+  color: #704789;
   background-color: transparent;
   border-color: transparent;
 }

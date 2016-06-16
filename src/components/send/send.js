@@ -7,14 +7,15 @@ import Form         from './form'
 export default class Send extends Comp {
   render () {
     return (
-      <div>
+      <section className="send">
         <Provider store={store}>
           <div>
             <h1>Send</h1>
+            <div className="s40" />
             <Form store={store} />
           </div>
         </Provider>
-      </div>
+      </section>
     )
   }
 }

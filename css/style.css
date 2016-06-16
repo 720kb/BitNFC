@@ -1,4 +1,133 @@
+/* fonts TODO */
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/roboto.ttf");
+}
+
+/* reset */
+
 .container {
-  margin-top: 4%;
-  margin-right: 4%;
+  margin: 0;
+  padding: 0;
+}
+
+/** {
+  box-sizing: border-box;
+}*/
+
+html, body, .container, .app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.app {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.3em;
+}
+
+.app > h1 {
+  line-height: 50px;
+  font-size: 1.5em;
+  background: linear-gradient( 0deg, #eee, #fafafa );
+  border-bottom: 1px solid #AAA;
+}
+
+.main > section {
+  margin-top: 30px;
+  padding: 0 10%;
+}
+
+.main > section > h1 {
+  margin-bottom: 30px;
+}
+
+
+/* utils */
+
+.s10 { height: 10px; }
+.s20 { height: 20px; }
+.s30 { height: 30px; }
+.s40 { height: 40px; }
+.s50 { height: 50px; }
+.s60 { height: 60px; }
+
+
+/* form */
+
+input {
+  font-size: 1.3em;
+}
+
+input[type='email'], input[type='number'], input[type='password'], input[type='search'], input[type='tel'], input[type='text'], input[type='url'], textarea, select {
+  padding: 30px 3%;
+}
+
+input[type=submit] {
+  width: 50%;
+  height: 60px;
+  font-size: 1.1em;
+  margin-top: 40px;
+}
+
+label {
+  position: relative;
+  font-size: 1.3em;
+}
+
+/* send */
+
+.hoverInput {
+  position: absolute;
+  right: 3%;
+  font-size: 18px;
+  /*top: 40px;*/
+  bottom: 20px;
+  line-height: 50px;
+  color: #888;
+}
+
+label:hover .hoverInput  {
+  color: #333;
+}
+
+/*  nav  */
+
+nav {
+  position: absolute;
+  bottom: -35px;
+  left: -5px;
+  display: block;
+  width: 102%;
+}
+
+nav li {
+  display: inline-block;
+  background: #9b4dca;
+  width: 33%;
+}
+
+nav li a {
+  display: inline-block;
+  color: #EEE;
+  padding: 40px;
+  width: 100%;
+}
+
+
+nav li:hover {
+  background: #704789;
+}
+
+nav li:hover a {
+  color: #FFF;
 }

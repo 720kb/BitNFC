@@ -7,11 +7,11 @@ import TransactionList  from './transaction_list'
 export default class Transactions extends Comp {
   render() {
     return (
-      <div>
+      <section className="transactions">
         <Provider store={store}>
           <TransactionList store={this.props.store} />
         </Provider>
-      </div>
+      </section>
     )
   }
 }

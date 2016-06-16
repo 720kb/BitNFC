@@ -6,8 +6,8 @@ import { Router, Route, IndexRoute, Link, hashHistory } from 'ReactRouter'
 //
 const mainRender = (routes) => {
   render(
-    <div>
-      <h1>App</h1>
+    <div className="app main_render">
+      <h1>BitNFC</h1>
       <Router history={hashHistory}>
         {routes}
       </Router>

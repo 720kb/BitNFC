@@ -2,7 +2,10 @@ import React from 'React'
 
 class Comp extends React.Component {
   componentDidMount() {
-    if (this.props.children) this.props.store = this.props.children.store
+    if (this.props && this.props.children && !this.props.route) {
+      console.log(this.props)
+      this.props.store = this.props.children.store
+    }
   }
 }
 
