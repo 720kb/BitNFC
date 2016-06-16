@@ -1,6 +1,6 @@
 import React  from 'React'
 import Comp  from '../comp'
-import axios from 'axios'
+import fiatRate from '../../api/fiat_rate'
 
 // <AddressBalanceFiat address='1abcde'>
 //
@@ -11,9 +11,6 @@ import axios from 'axios'
 // will return the rate in EUR
 
 const defaultRate = "usd"
-const fiatRate = (rate) => {
-  return axios.get(`https://bitpay.com/api/rates/${rate}`)
-}
 
 class AddressBalanceFiat extends Comp {
   constructor(props) {
@@ -25,7 +22,6 @@ class AddressBalanceFiat extends Comp {
   }
 
   componentDidMount() {
-    console.log("MOUNT")
     fiatRate(this.rate)
       .catch(console.error)
       .then((resp) => {
