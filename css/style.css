@@ -121,6 +121,7 @@ nav li a {
   color: #EEE;
   padding: 40px;
   width: 100%;
+  font-size: 1.5em;
 }
 
 nav li:hover {
@@ -135,6 +136,6 @@ nav li:hover a {
 /* Receive */
 
 .qrCode img {
-  width: 40%;
+  width: 43%;
   margin: 0 auto 40px;
 }
