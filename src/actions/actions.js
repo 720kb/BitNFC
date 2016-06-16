@@ -9,9 +9,12 @@ const someSubAction = () => {
 }
 
 const actions = {
+  gotBalance: (balance) => {
+    store.dispatch({ type: 'GOT_BALANCE', balance: balance })
+  },
   comeSeFosseAntani: () => {
-   store.dispatch({ type: 'ANTANI', antani: "antani! (foobar)" })
- },
+    store.dispatch({ type: 'ANTANI', antani: "antani! (foobar)" })
+  },
 }
 
 export default actions

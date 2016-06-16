@@ -22,7 +22,7 @@ Run with your favourite web server:
 
 Then access <http://localhost:3000>
 
-### Re-rollup + livereload
+### Automatic re-rollup + livereload
 
 Setup:
 
@@ -33,3 +33,14 @@ Run:
     guard
 
 Modify a file and then you should have the build compiled and see the browser reloaded.
+
+
+### Update bitcoin-api-light browserify vendored bundle
+
+If you need to update the `BitcoinLightClient` bundle, build it up via browserify:
+
+   npm i
+
+Or a specific force-update to bitcoin-api-light itself, then:
+
+   browserify vendor/bitcoin_api_light.js -o vendor/bitcoin_api_light_bundle.js

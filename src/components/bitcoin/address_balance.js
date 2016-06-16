@@ -12,9 +12,15 @@ import Comp  from '../comp'
 
 class AddressBalance extends Comp {
   render () {
+    let state = this.context.store.getState()
+    let balance = state.balance
     return (
       <div className="balance">
-        <div></div>
+        <div>
+          <strong>Balance:</strong>
+        </div>
+        <div className="s10"></div>
+        <div>{balance / 100000} mBTC</div>
       </div>
     )
   }

@@ -1,5 +1,7 @@
 import store from './store/store'
 import websocketInit from './utils/websocket'
+import Client from "Client"
+import actions from "./actions/actions"
 
 const catchAll = (err) => {
   console.error("Error:", err.stack)
@@ -8,7 +10,15 @@ const catchAll = (err) => {
 
 const startup = () => {
 
+  const state = store.getState()
+
   console.log("STARTUP!")
+
+  const balance = Client.getBalance(state.address)
+  balance
+    .then(actions.gotBalance)
+    .catch(console.error)
+
 
 }
 

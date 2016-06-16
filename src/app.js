@@ -5,7 +5,7 @@ import { render } from 'ReactDOM'
 import store from './store/store'
 import startup from './startup'
 import catchErrors from './errors'
-import mainRender from './main_render'
+// import mainRender from './main_render'
 import Comp from './components/comp'
 import Main from './components/main'
 import NotFound from './components/main/not_found'
@@ -34,6 +34,23 @@ const routes =
     <Route path="*"             component={NotFound}/>
   </Route>
 
+  // import React from 'React'
+  // import { render } from 'ReactDOM'
+  import { Router, hashHistory } from 'ReactRouter'
+
+  // main component, calls the global re-render
+  //
+  const mainRender = () => {
+    render(
+      <div className="app main_render">
+        <h1>BitNFC</h1>
+        <Router history={hashHistory}>
+          {routes}
+        </Router>
+      </div>,
+      document.querySelector('.container')
+    )
+  }
 
 
 // Main render (execution)

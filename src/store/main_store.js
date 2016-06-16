@@ -16,6 +16,10 @@ const mainStore = (state = defaultState, action) => {
   console.log("ACTION:", action.type)
   switch (action.type) {
 
+    case "GOT_BALANCE":
+      state.balance = action.balance
+      return state
+
     case "GET_ANTANI":
       // getAntani()
       state.antani = action.antani

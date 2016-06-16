@@ -25,6 +25,7 @@ class AddressBalanceFiat extends Comp {
   }
 
   componentDidMount() {
+    console.log("MOUNT")
     fiatRate(this.rate)
       .catch(console.error)
       .then((resp) => {
@@ -37,10 +38,13 @@ class AddressBalanceFiat extends Comp {
   }
 
   render () {
-    let balance = this.props.balance || 0
+    let state = this.context.store.getState()
+    let balance = state.balance || 0
+    balance = balance / 100000000 *  this.state.rate
+    balance = Math.round(balance * 100) / 100
     return (
       <div className="balance">
-        <div>{balance * this.state.rate} {this.rate.toUpperCase()}</div>
+        <div>{balance} {this.rate.toUpperCase()}</div>
       </div>
     )
   }
