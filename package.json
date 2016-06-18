@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "axios": "^0.11.1",
-    "bitcoin-api-light": "^1.5.0",
+    "bitcoin-api-light": "^1.6.0",
     "bitcore-lib": "^0.13.16",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",

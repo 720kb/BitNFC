@@ -4,13 +4,7 @@ import defaultState from './default_state'
 let init = false
 
 
-const catchAll = () => {
-  console.error("Error:", err)
-  return Promise.reject(err)
-}
-
 const mainStore = (state = defaultState, action) => {
-
   //reducer composition (action can be handled by 0,1 or more reducers)
 
   console.log("ACTION:", action.type)

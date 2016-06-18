@@ -1,12 +1,14 @@
 import store from './store/store'
 import websocketInit from './utils/websocket'
 import Balance from "./api/balance"
+import Transactions from "./api/transactions"
 import actions from "./actions/actions"
 
-const catchAll = (err) => {
-  console.error("Error:", err.stack)
-  return Promise.reject(err)
-} // TODO: move to utils
+const pReject = (err)  => Promise.reject(err)
+const pLog     = (resp) => {
+  console.log(resp)
+  return resp
+}
 
 const startup = () => {
 
@@ -15,10 +17,16 @@ const startup = () => {
   console.log("STARTUP!")
 
   Balance.get(state.address)
-    .catch(console.error)
+    .catch(pReject)
     .then(actions.gotBalance)
-    .catch(console.error)
+    .catch(pReject)
 
+  Transactions.all(state.address)
+    .then(pLog)
+    .then((transactions) => {
+      console.log(transactions)
+    })
+    .catch(pReject)
 }
 
 export default startup
