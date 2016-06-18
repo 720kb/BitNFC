@@ -5,6 +5,7 @@ import { Link }     from 'ReactRouter'
 import Comp         from '../comp'
 import QRAddress    from '../qr/qr_address'
 import AddressBalance  from '../bitcoin/address_balance'
+import AddressBalanceZeroconf  from '../bitcoin/address_balance_zeroconf'
 import AddressBalanceFiat  from '../bitcoin/address_balance_fiat'
 
 export default class Receive extends Comp {
@@ -18,6 +19,7 @@ export default class Receive extends Comp {
             <div className="s20"></div>
             <AddressBalance />
             <AddressBalanceFiat />
+            <AddressBalanceZeroconf />
           </div>
         </Provider>
       </section>

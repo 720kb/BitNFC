@@ -72,8 +72,13 @@ h1 {
   float: right;
   text-align: right;
 }
+
 .clearRight {
   clear: right;
+}
+
+.clear {
+  clear: both;
 }
 
 /* form */

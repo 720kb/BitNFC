@@ -20,9 +20,10 @@ export default class Transaction extends Comp {
     return (
       <div>
         <strong>Transaction</strong>
-        <div className="confirmations right">{tx.confirmations}</div>
+        <div className="confirmations right">Confirmations: {tx.confirmations}</div>
         <div className="clearRight"></div>
         <div className="confirmedAt right">{dateFmt(tx.confirmedAt)}</div>
+        <div className="clear"></div>
         <div className="txHash">{tx.hash}</div>
 
         <div className="value">{tx.valueMbtc} mBTC</div>

@@ -15,8 +15,8 @@ class Balance {
       .catch(pReject)
       .then((balances) => {
         let balance = {
-          balance:         balances[0],
-          balanceZeroConf: balances[1]
+          balanceZeroconf: balances[0],
+          balance:         balances[1],
         }
         return balance
       })
