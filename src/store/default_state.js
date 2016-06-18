@@ -28,7 +28,7 @@ const defaultState = {
   privateKey:      privateKey,
   balance:         0,
   balanceZeroConf: 0,
-  transactions:    [tx1, tx2, tx3],
+  transactions:    [],
   antani:          "-" // TODO remove debug
 }
 

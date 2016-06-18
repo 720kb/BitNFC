@@ -23,9 +23,7 @@ const startup = () => {
 
   Transactions.all(state.address)
     .then(pLog)
-    .then((transactions) => {
-      console.log(transactions)
-    })
+    .then(actions.gotTxs)
     .catch(pReject)
 }
 

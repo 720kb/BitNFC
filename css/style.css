@@ -45,13 +45,19 @@ h1 {
 
 .main > section {
   margin-top: 30px;
+}
+
+.main > section{
+  padding: 0 1%;
+}
+
+.main > section.receive, .main > section.send {
   padding: 0 10%;
 }
 
 .main > section > h1 {
   margin-bottom: 30px;
 }
-
 
 /* utils */
 
@@ -62,6 +68,13 @@ h1 {
 .s50 { height: 50px; }
 .s60 { height: 60px; }
 
+.right {
+  float: right;
+  text-align: right;
+}
+.clearRight {
+  clear: right;
+}
 
 /* form */
 

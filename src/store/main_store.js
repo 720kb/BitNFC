@@ -14,6 +14,10 @@ const mainStore = (state = defaultState, action) => {
       Object.assign(state, action.balance)
       return state
 
+    case "GOT_TXS":
+      state.transactions = action.transactions
+      return state
+
     case "GET_ANTANI":
       // getAntani()
       state.antani = action.antani

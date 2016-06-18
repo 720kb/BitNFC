@@ -7,7 +7,7 @@ export default class TransactionList extends Comp {
     let rows = []
     transactions.forEach((tx, _) => {
       rows.push(
-        <Transaction key={tx} txid={tx} />
+        <Transaction key={tx.hash} tx={tx} />
       )
     })
     return rows
