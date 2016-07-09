@@ -52,7 +52,7 @@ class PrivateKey extends Comp {
     return (
       <div>
         <div>
-          <div className="s60" />
+          <div className="s40" />
           {this._buttonOn(verb)}
         </div>
         <div style={styles}>

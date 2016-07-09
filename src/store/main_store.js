@@ -28,6 +28,10 @@ const mainStore = (state = defaultState, action) => {
       state.ping = "pong"
       return state
 
+    case "GET_BALANCE":
+      actions.getBalanceCall(state.address)
+      return state
+
     default:
       if (init)
         console.log(`action: ${action.type} - no state change`)

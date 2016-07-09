@@ -1,4 +1,5 @@
 import store from '../store/store'
+import Balance from '../api/balance'
 
 const actions = {
   gotBalance: (balance) => {
@@ -9,6 +10,14 @@ const actions = {
   },
   getBalance: () => {
     store.dispatch({ type: 'GET_BALANCE' })
+  },
+
+  // API actions
+  getBalanceCall: (address) => {
+    Balance.get(address)
+      .then((balance) => {
+        actions.gotBalance(balance)
+      })
   },
 }
 

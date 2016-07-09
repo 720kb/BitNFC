@@ -13,9 +13,9 @@
   max-width: 100%;
 }
 
-/** {
+* {
   box-sizing: border-box;
-}*/
+}
 
 html, body, .container, .app {
   margin: 0;
@@ -92,7 +92,8 @@ input {
 }
 
 input[type='email'], input[type='number'], input[type='password'], input[type='search'], input[type='tel'], input[type='text'], input[type='url'], textarea, select {
-  padding: 30px 3%;
+  padding: 0 10px;
+  min-height: 55px;
 }
 
 input[type=submit] {
