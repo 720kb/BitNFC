@@ -32,21 +32,35 @@ class PrivateKey extends Comp {
     }
   }
 
+  _button(verb) {
+    return <a className="btn button btn-danger button-danger" onClick={this._toggleKey}>
+      {verb} Private Key
+    </a>
+  }
+
+  _buttonOn(verb) {
+    return !this.state.toggled && this._button(verb)
+  }
+
+  _buttonOff(verb) {
+    return this.state.toggled && this._button(verb)
+  }
+
   render() {
     let {verb, styles} = this.state.toggled ? this._onState() : this._offState()
+
     return (
       <div>
         <div>
           <div className="s60" />
-          <a className="btn button btn-danger button-danger" onClick={this._toggleKey}>
-            {verb} Private Key
-          </a>
+          {this._buttonOn(verb)}
         </div>
         <div style={styles}>
           <strong>PrivateKey (backup this!)</strong>
           <Provider store={store}>
             <p>{store.getState().privateKey.toWIF()}</p>
           </Provider>
+          {this._buttonOff(verb)}
         </div>
       </div>
     )
