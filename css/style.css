@@ -183,3 +183,16 @@ nav li:hover a {
   padding:  2px 10px 10px;
   height: 40px;
 }
+
+
+/* behavuoural elements / colors */
+
+.btn-danger,
+.button-danger {
+  background-color: orangeRed;
+}
+
+.btn-danger:hover,
+.button-danger:hover {
+  background-color: brown;
+}

@@ -38,9 +38,11 @@ Transactions.all = (address) => {
     })
     .catch(pReject)
     .then((txs) => {
-      return txs.map((tx) => {
+      let _txs = []
+      if (txs) _txs = txs.map((tx) => {
         return parseTx(tx)
       })
+      return _txs
     })
     .catch(pReject)
 }
