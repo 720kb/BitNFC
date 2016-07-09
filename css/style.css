@@ -81,6 +81,10 @@ h1 {
   clear: both;
 }
 
+.relative {
+  position: relative;
+}
+
 /* form */
 
 input {
@@ -165,4 +169,17 @@ nav li:hover a {
 
 .balance.btc {
   font-size: 1.2em;
+}
+
+.refreshBalance {
+  position: absolute;
+  left: 50%;
+  margin-left: 65px;
+  top: -4px;
+}
+
+.refreshBalance button {
+  font-size: 1.4em;
+  padding:  2px 10px 10px;
+  height: 40px;
 }

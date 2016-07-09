@@ -4,9 +4,10 @@ import store        from '../../store/store'
 import { Link }     from 'ReactRouter'
 import Comp         from '../comp'
 import QRAddress    from '../qr/qr_address'
-import AddressBalance  from '../bitcoin/address_balance'
-import AddressBalanceZeroconf  from '../bitcoin/address_balance_zeroconf'
-import AddressBalanceFiat  from '../bitcoin/address_balance_fiat'
+import AddressBalance         from '../bitcoin/address_balance'
+import AddressBalanceZeroconf from '../bitcoin/address_balance_zeroconf'
+import AddressBalanceFiat     from '../bitcoin/address_balance_fiat'
+import BalanceRefreshButton   from './balance_refresh_button'
 
 export default class Receive extends Comp {
   render () {
@@ -17,7 +18,10 @@ export default class Receive extends Comp {
           <div>
             <QRAddress />
             <div className="s20"></div>
-            <AddressBalance />
+            <div className="relative">
+              <AddressBalance />
+              <BalanceRefreshButton />
+            </div>
             <AddressBalanceFiat />
             <AddressBalanceZeroconf />
           </div>

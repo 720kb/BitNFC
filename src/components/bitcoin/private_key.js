@@ -6,7 +6,11 @@ import store        from '../../store/store'
 
 class PrivateKey extends Comp {
   // componentDidMount()
-  render () {
+  constructor() {
+    console.log("lol")
+  }
+
+  render() {
     return (
       <div>
         <div className="s30" />

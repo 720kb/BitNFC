@@ -7,6 +7,9 @@ const actions = {
   gotTxs: (transactions) => {
     store.dispatch({ type: 'GOT_TXS', transactions: transactions })
   },
+  getBalance: () => {
+    store.dispatch({ type: 'GET_BALANCE' })
+  },
 }
 
 export default actions
