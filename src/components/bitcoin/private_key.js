@@ -63,13 +63,3 @@ class PrivateKey extends Comp {
 }
 
 export default PrivateKey
-
-
-// in the future maybe?
-//
-// let state = {
-//   ...this.state,
-//   ...styles,
-// }
-// console.log(state)
-// this.state = state
