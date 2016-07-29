@@ -126,7 +126,7 @@
             }
           ]
         });
-      // }
+       }
     });
 
     $rootScope.$on('nfc:status-message', function onMessageTag(eventsInformations, payload) {
