@@ -7,9 +7,6 @@
   <img src="https://img.shields.io/gitter/room/720kb/bitnfc.svg"/>
 </p>
 
-## BitNFC 
-
-
 <p align="center">
 <img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_home2.png" width="32.8%"/>
 <img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_send.png" width="32.8%"/>
