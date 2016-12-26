@@ -18,19 +18,7 @@
 
 ## Download
 
-Download the APK from there it and install it on your Android phone!
-
-https://copy.com/RFU1SLqowCJEra4l
-
-
-## Install
-
-##### Dowload the APK from the website
-
-#### http://bitnfc.org
-
-Search it on Google Play (soon!)
-
+Download the APK from http://bitnfc.org
 
 ## Known Bugs
 
