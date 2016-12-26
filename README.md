@@ -1,24 +1,26 @@
-# BitNFC
+## BitNFC 
 
+<p align="center">
 <img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/logo.png"/>
 
-[![Join the chat at https://gitter.im/720kb/BitNFC](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/720kb/BitNFC?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-[![Code Climate](https://codeclimate.com/github/720kb/BitNFC/badges/gpa.svg)](https://codeclimate.com/github/720kb/BitNFC)
 
 <img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_home2.png" width="32.8%"/>
 <img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_send.png" width="32.8%"/>
 <img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_wallet_found.png" width="32.8%"/>
+</p>
 
+[![Code Climate](https://codeclimate.com/github/720kb/BitNFC/badges/gpa.svg)](https://codeclimate.com/github/720kb/BitNFC)
+[![Github All Releases](https://img.shields.io/github/downloads/720kb/bitnfc/total.svg)]()
+[![Join the chat at https://gitter.im/720kb/BitNFC](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/720kb/BitNFC?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-### Download
+## Download
 
 Download the APK from there it and install it on your Android phone!
 
 https://copy.com/RFU1SLqowCJEra4l
 
 
-### Install
+## Install
 
 ##### Dowload the APK from the website
 
