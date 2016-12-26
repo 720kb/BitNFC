@@ -8,9 +8,9 @@
 </p>
 
 <p align="center">
-<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_home2.png" width="32.8%"/>
-<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_send.png" width="32.8%"/>
-<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_wallet_found.png" width="32.8%"/>
+<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_home2.png" width="250"/>
+<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_send.png" width="250"/>
+<img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_wallet_found.png" width="250"/>
 </p>
 
 ## Download
