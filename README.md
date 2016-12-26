@@ -1,5 +1,7 @@
-<p align="center">
+<p>
 <img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/logo.png"/>
+<img src="https://codeclimate.com/github/720kb/BitNFC/badges/gpa.svg"/>
+<img src="https://img.shields.io/gitter/room/720kb/bitnfc.svg"/>
 </p>
 
 
@@ -9,12 +11,6 @@
 <img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_wallet_found.png" width="250"/>
 </p>
 
-<br>
-<p align="center">
-  <img src="https://codeclimate.com/github/720kb/BitNFC/badges/gpa.svg"/>
-  <img src="https://img.shields.io/gitter/room/720kb/bitnfc.svg"/>
-</p>
-<br>
 ## Download
 
 Download the APK from http://bitnfc.org
