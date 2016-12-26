@@ -6,7 +6,7 @@
   <img src="https://codeclimate.com/github/720kb/BitNFC/badges/gpa.svg"/>
   <img src="https://img.shields.io/gitter/room/720kb/bitnfc.svg"/>
 </p>
-<br><br>
+
 ## BitNFC 
 
 
