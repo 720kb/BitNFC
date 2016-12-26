@@ -1,8 +1,9 @@
-## BitNFC 
-
 <p align="center">
 <img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/logo.png"/>
 </p>
+
+## BitNFC 
+
 
 <p align="center">
 <img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/screen_home2.png" width="32.8%"/>
