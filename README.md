@@ -2,9 +2,10 @@
 
 This is the repository of the BitNFC project, the BitNFC project is archived, 3itcoin-wallet and makevoid/xdai-wallet thou are actively in development now (cordova but not ionic based, onsen UI): 
 
-LINKS: 
-- BTCLN:  http://github.com/makevoid/3itcoin-wallet (soon)
-- xDAI:   http://github.com/makevoid/xdai-wallet (current)
+GH repos (onsen based wallets, html generated via haml, js vanilla "ES2020"):
+
+- BTCLN:  https://github.com/makevoid/3itcoin-wallet (soon - keychain/wallet using gh.com/makevoid/bitcoin-keychain - bitcoinjs based - supports segwit and based on a grpc library)
+- xDAI:   https://github.com/makevoid/xdai-wallet (current - keychain/wallet using gh.com/makevoid/ethereum-keychain and a web3 node )
 
 check them out!
 
