@@ -1,3 +1,13 @@
+### bit-nfc
+
+This is the repository of the BitNFC project, the BitNFC project is archived, 3itcoin-wallet and makevoid/xdai-wallet thou are actively in development now (cordova but not ionic based, onsen UI): current: http://github.com/makevoid/3itcoin-wallet - next: http://github.com/makevoid/3itcoin-wallet
+
+check them out!
+
+@makevoid
+
+---
+
 <p align="center">
 <img src="http://mkvphoto.s3.amazonaws.com/BitNFC/small/logo.png"/>
 </p>
